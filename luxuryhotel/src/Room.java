@@ -4,15 +4,16 @@ public class Room {
     private double price;
     private String utilities;
     private boolean booked;
-    private StoredFilesHotelController rooms = new StoredFilesHotelController("rooms.json");
+    // private StoredFilesRoomController roomss = new StoredFilesRoomController("rooms.json");
+    private StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
 
-    public StoredFilesHotelController getRooms() {
+    public StoredFilesRoom getRooms() {
         return rooms;
     }
 
-    public void setRooms(StoredFilesHotelController rooms) {
-        this.rooms = rooms;
-    }
+    // public StoredFilesRoomController getRoomss() {
+    //     return roomss;
+    // }
 
     public boolean check_booked() {
         return booked;
