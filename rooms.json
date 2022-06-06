@@ -3,18 +3,18 @@
         "id": 101,
         "area": 30,
         "price": 3.500000,
-        "utilities": "máy lạnh"
+        "utilities": "may lanh"
     },
     {
         "id": 102,
         "area": 40,
         "price": 4.000000,
-        "utilities": "máy lạnh"
+        "utilities": "may lanh"
     },
     {
         "id": 103,
         "area": 45,
         "price": 4.500000,
-        "utilities": "máy lạnh"
+        "utilities": "may lanh"
     }
 ]

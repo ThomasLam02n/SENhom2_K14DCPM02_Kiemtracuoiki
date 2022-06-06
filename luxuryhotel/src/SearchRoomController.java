@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 public class SearchRoomController {
     private Room roomObject;
+    private StoredFilesRoom rooms = new StoredFilesRoom("rooms.json"); 
 
     public void searchRoom(int area, double price, String utilities) {
         List<Object> listCheck;
@@ -24,21 +25,21 @@ public class SearchRoomController {
 
     public List<Object> check_room_valid(int area, double price, String utilities) {
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = roomObject.getRooms().getMemory();
+        JsonArray tempMemory = rooms.getMemory();//roomObject.getRooms().getMemory();
         int index = 0;
         int index2 = 0;
         int index3 = 0;
-        index = roomObject.getRooms().searchInt("area", area);
+        index = rooms.searchInt("area", area);//roomObject.getRoomss().
         if (index == -1) {
             list.add(false);
             list.add("There is no suitable space.");
         }
-        index2 = roomObject.getRooms().searchDouble("price", price);
+        index2 = rooms.searchDouble("price", price);
         if (index2 == -1) {
             list.add(false);
             list.add("There is no matching price.");
         }
-        index3 = roomObject.getRooms().search("utilities", utilities);
+        index3 = rooms.search("utilities", utilities);
         if (index3 == -1) {
             // valid = false;
             list.add(false);
