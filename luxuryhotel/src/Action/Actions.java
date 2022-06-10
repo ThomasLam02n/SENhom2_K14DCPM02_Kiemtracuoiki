@@ -1,5 +1,5 @@
 package Action;
 
 public enum Actions {
-    CA,LI,LO
+    CA,LI,LO, SI
 }
