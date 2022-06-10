@@ -17,14 +17,18 @@ public class CheckBookedRoomController {
                 System.out.println(listcheck.get(1));
             
             } else {
-                System.out.println(listcheck.get(1));
+                for (int i = 1; i < listcheck.size(); i++) {
+                    System.out.println(listcheck.get(i));
+                }
+                
             }
         }
 
     public List<Object> check_bill_valid(int id){
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = bookedRoom.getBookedRoom().getAll();
-        int index = bookedRoom.getBookedRoom().search("id", id);
+        JsonArray tempMemory = BookedRoom.getStoredFilesBill().getAll();
+        int index = 0;
+        index = BookedRoom.getStoredFilesBill().search("id", id);
         if(index == -1){
             list.add(false);
             list.add("This room id doesn't exist");
@@ -32,7 +36,7 @@ public class CheckBookedRoomController {
         if(index != -1){
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
             int ids = jsonObject.get("id").getAsInt();
-            String nameCusomer = jsonObject.get("name").getAsString();
+            String nameCusomer = jsonObject.get("un").getAsString();
             double price = jsonObject.get("price").getAsDouble();
             boolean sate = jsonObject.get("sate").getAsBoolean();
             list.add(true);
@@ -47,5 +51,7 @@ public class CheckBookedRoomController {
         return list;
       
     }
+
+    
 
 }
