@@ -1,3 +1,3 @@
 public enum Actions {
-    SR
+    SR, BR
 }

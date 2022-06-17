@@ -5,9 +5,9 @@ public class Room {
     private String utilities;
     private boolean booked;
     // private StoredFilesRoomController roomss = new StoredFilesRoomController("rooms.json");
-    private StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
+    private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
 
-    public StoredFilesRoom getRooms() {
+    public static StoredFilesRoom getRooms() {
         return rooms;
     }
 
@@ -16,13 +16,29 @@ public class Room {
     // }
 
     public boolean check_booked() {
+
         return booked;
     }
 
-    public void setRoom(int area, double price, String utilities) {
-        this.area = area;
+    public void setRoom(int b, double price, String utilities) {
+        this.area = b;
         this.price = price;
         this.utilities = utilities;
         this.booked = true;
     }
+
+    public boolean isBooked() {
+        return booked;
+    }
+
+    public void setBooked(boolean booked) {
+        this.booked = booked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+   
+    
 }
