@@ -13,12 +13,11 @@ import com.google.gson.JsonParser;
 public  class StorefliesBookedRoom {
     private JsonArray memory;
     private String nameFile;
-    private String storeFile ;
     SimpleDateFormat ngayVN = new SimpleDateFormat("dd-MM-yyyy");
 
     public StorefliesBookedRoom( String nameFile) {
         this.nameFile = nameFile;
-        this.memory = read(nameFile);
+        this.memory = read();
     }
 
     public JsonArray getMemory() {
@@ -42,13 +41,18 @@ public  class StorefliesBookedRoom {
     }
 
     public int searchInt(String key, Integer value) {
+
+        //duyet
         int index = -1;
-        Integer intdex2 = null;
+
+
+        //....
+        Integer id = null;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
-            
-            intdex2 = jsonObject.get(key).getAsInt();
-            if (value == intdex2) {
+        
+            id = jsonObject.get(key).getAsInt();
+            if (value == id) {
                 index = i;
                 break;
             }
@@ -72,10 +76,11 @@ public  class StorefliesBookedRoom {
     }
     
 
-    public JsonArray read(String storeFile) {
+   public JsonArray read() {
         JsonArray jsonArray = null;
-           
-        try (FileReader reader = new FileReader(storeFile)) {
+        
+        
+        try (FileReader reader = new FileReader(nameFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,13 +145,14 @@ public  class StorefliesBookedRoom {
     public void write() {
         
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(storeFile)) {
+        try (FileWriter writer = new FileWriter(nameFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
+
     public JsonArray getAll(){
         return this.memory;
     }

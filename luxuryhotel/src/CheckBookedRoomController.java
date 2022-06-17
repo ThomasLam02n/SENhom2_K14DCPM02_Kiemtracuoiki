@@ -1,6 +1,5 @@
-package SearchBookedRoom;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -26,9 +25,9 @@ public class CheckBookedRoomController {
 
     public List<Object> check_bill_valid(int id){
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = BookedRoom.getStoredFilesBill().getAll();
+        JsonArray tempMemory = BookedRoom.getBookedRoom().getAll();
         int index = 0;
-        index = BookedRoom.getStoredFilesBill().search("id", id);
+        index = BookedRoom.getBookedRoom().searchInt("id", id);
         if(index == -1){
             list.add(false);
             list.add("This room id doesn't exist");
@@ -37,13 +36,17 @@ public class CheckBookedRoomController {
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
             int ids = jsonObject.get("id").getAsInt();
             String nameCusomer = jsonObject.get("un").getAsString();
-            double price = jsonObject.get("price").getAsDouble();
+            Integer phone = jsonObject.get("phone").getAsInt();
+            String email = jsonObject.get("email").getAsString();
             boolean sate = jsonObject.get("sate").getAsBoolean();
+
             list.add(true);
             list.add(ids);
             list.add(nameCusomer);
-            list.add(price);
+            list.add(phone);
+            list.add(email);
             list.add(sate);
+
 
             return list;
         }
@@ -51,7 +54,4 @@ public class CheckBookedRoomController {
         return list;
       
     }
-
-    
-
 }

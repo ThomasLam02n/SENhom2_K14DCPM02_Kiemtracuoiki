@@ -1,12 +1,10 @@
-package SearchBookedRoom;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import Action.Actions;
+public class CheckBookedRoomUI extends UITerminal {
 
-public class CheckBookedRoomUI extends UIterminal {
+
     private Actions command;
     private CheckBookedRoomController checkBookedRoomController;
     Scanner scanner = new Scanner(System.in);
@@ -20,6 +18,7 @@ public class CheckBookedRoomUI extends UIterminal {
 
     public CheckBookedRoomUI() {
     }
+
 
 
     @Override
