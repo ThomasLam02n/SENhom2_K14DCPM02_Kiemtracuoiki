@@ -1,3 +1,7 @@
 public enum Actions {
-    SR
+    SR,
+    //Locations
+    HANOI, HCM, DANANG,
+    //name Hotel
+    REX, SIXSENSE
 }
