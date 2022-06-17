@@ -1,0 +1,26 @@
+[
+    {
+        "na":"sixsenses",
+        "add":"12/1, HaiBaChung, District 1",
+        "loca":"HANOI",
+        "room":24,
+        "ev":"excellent",
+        "uti":"five star"
+    },
+    {
+        "na":"rex",
+        "add":"12/1, HaiBaChung, District 1",
+        "loca":"HCM",
+        "room":40,
+        "ev":"good",
+        "uti":"three star"
+    },
+    {
+        "na":"rex",
+        "add":"12/1, HaiBaChung, District 1",
+        "loca":"HCM",
+        "room":30,
+        "ev":"good",
+        "uti":"three star"
+    }
+]
