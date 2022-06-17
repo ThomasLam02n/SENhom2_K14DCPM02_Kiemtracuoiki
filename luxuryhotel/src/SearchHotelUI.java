@@ -13,7 +13,7 @@ public class SearchHotelUI extends UITerminal{
 
     @Override
     public void handleInputs() {
-        if(this.command.equals(Actions.REX));
+        
     }
 
     public void searchHotelInput(String name){
