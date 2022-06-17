@@ -1,6 +1,10 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+<<<<<<< HEAD
         "gson-2.8.9.jar"
+=======
+        "c:\\Users\\ASUS\\Downloads\\gson-2.8.9.jar"
+>>>>>>> dffad973f3a790d42a132febffa050e12b0260c1
     ]
 }
