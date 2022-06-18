@@ -12,6 +12,7 @@ public class BootStrapWeb {
 
 
         System.out.println("Welcom to the LuxuryHotel System");
+        System.out.println("Hello");
 
         while (true){
             Scanner scanner = new Scanner(System.in);
