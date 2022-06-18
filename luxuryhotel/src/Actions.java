@@ -1,5 +1,5 @@
 public enum Actions {
-    SR,
+    SR, SH,
     //Locations
     HANOI, HCM, DANANG,
     //name Hotel

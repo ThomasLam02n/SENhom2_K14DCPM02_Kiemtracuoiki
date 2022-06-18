@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SearchHotelUI extends UITerminal{
@@ -16,9 +18,12 @@ public class SearchHotelUI extends UITerminal{
         
     }
 
-    public void searchHotelInput(String name){
+    public List<Object>searchHotelInput(){
+        List<Object> list = new ArrayList<>();
         System.out.println("Name Hotel: ");
-        name = inputs.nextLine();
+        String name = inputs.nextLine();
+        list.add(name);
+        return list;
     }
     
 }
