@@ -13,11 +13,12 @@ import com.google.gson.JsonParser;
 public  class StorefliesBookedRoom {
     private JsonArray memory;
     private String nameFile;
+    private String storeFile ;
     SimpleDateFormat ngayVN = new SimpleDateFormat("dd-MM-yyyy");
 
     public StorefliesBookedRoom( String nameFile) {
         this.nameFile = nameFile;
-        this.memory = read();
+        this.memory = read(nameFile);
     }
 
     public JsonArray getMemory() {
@@ -41,18 +42,13 @@ public  class StorefliesBookedRoom {
     }
 
     public int searchInt(String key, Integer value) {
-
-        //duyet
         int index = -1;
-
-
-        //....
-        Integer id = null;
+        Integer intdex2 = null;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
-        
-            id = jsonObject.get(key).getAsInt();
-            if (value == id) {
+            
+            intdex2 = jsonObject.get(key).getAsInt();
+            if (value == intdex2) {
                 index = i;
                 break;
             }
@@ -75,12 +71,10 @@ public  class StorefliesBookedRoom {
         return index;
     }
     
-
-   public JsonArray read() {
+    public JsonArray read(String storeFile) {
         JsonArray jsonArray = null;
-        
-        
-        try (FileReader reader = new FileReader(nameFile)) {
+           
+        try (FileReader reader = new FileReader(storeFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,14 +139,15 @@ public  class StorefliesBookedRoom {
     public void write() {
         
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(nameFile)) {
+
+        try (FileWriter writer = new FileWriter(storeFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
-
+    
     public JsonArray getAll(){
         return this.memory;
     }

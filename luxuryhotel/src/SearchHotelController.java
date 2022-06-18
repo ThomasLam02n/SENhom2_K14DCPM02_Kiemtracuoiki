@@ -33,13 +33,20 @@ public class SearchHotelController {
         List<Object> listCheck;
         listCheck = checklocationHotel(location);
         if(!(boolean)listCheck.get(0)){
-            for(int index = 1; index < listCheck.size(); index++){
-                System.out.println(listCheck.get(index));
-            }
+            System.out.println(listCheck.get(1));
+            System.out.println(listCheck.get(2));
+            System.out.println(listCheck.get(3));
+            System.out.println(listCheck.get(4));
+            System.out.println(listCheck.get(5));
+            System.out.println(listCheck.get(6));
         }else{
-            for(int index = 1; index < listCheck.size(); index++){
-                System.out.println(listCheck.get(index));
-            }
+            System.out.println(listCheck.get(1));
+            System.out.println(listCheck.get(2));
+            System.out.println(listCheck.get(3));
+            System.out.println(listCheck.get(4));
+            System.out.println(listCheck.get(5));
+            System.out.println(listCheck.get(6));
+
         }
     }
 
@@ -50,7 +57,7 @@ public class SearchHotelController {
         for(int i = 0; i < tempMemory.size(); i++){
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             String locations = jsonObject.get("loca").getAsString();
-            if(location == locations){
+            if(location.equalsIgnoreCase(locations)){
                 index ++;
                 String names = jsonObject.get("na").getAsString();
                 String addresses = jsonObject.get("add").getAsString();

@@ -1,4 +1,7 @@
 public enum Actions {
+
+     SH,
+
     //Create Account , Login Account, Logout
     CA, LO, LA,
 

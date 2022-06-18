@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NewAccountUI extends UITerminal {
+public class NewAccountUI {
     private static Scanner scanner = new Scanner(System.in);
     private Actions command;
     private NewAccountController newAccountController;
@@ -16,6 +16,16 @@ public class NewAccountUI extends UITerminal {
         this.newAccountController = newAccountController;
     }
 
+    // CA LI LO li
+    public String handleCommands(String rep) {
+        String cmd = rep.toUpperCase();
+        this.command = Actions.valueOf(cmd);
+        if (this.command.equals(Actions.CA)) {
+            return "Enter a username, a password, a email";
+        } else {
+            return "Unkown command.";
+        }
+    }
 
     public void handleInputs() {
         if (this.command.equals(Actions.CA)) {
@@ -36,16 +46,5 @@ public class NewAccountUI extends UITerminal {
         Integer phone = scanner.nextInt();
         scanner.nextLine();
         return new Account(username, password, email, phone);
-    }
-
-    @Override
-    public String handleCommand(String rep) {
-        String cmd = rep.toUpperCase();
-        this.command = Actions.valueOf(cmd);
-        if (this.command.equals(Actions.CA)) {
-            return "Enter a username, a password, a email";
-        } else {
-            return "Unkown command.";
-        }
     }
 }
