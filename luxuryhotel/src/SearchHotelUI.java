@@ -8,6 +8,7 @@ public class SearchHotelUI extends UITerminal{
     SearchHotelController searchHotelControllerObj;
     Scanner inputs = new Scanner(System.in);
     private Actions command;
+
     @Override
     public String handleCommand(String rep) {
          String cmd = rep.toUpperCase();
@@ -26,7 +27,6 @@ public class SearchHotelUI extends UITerminal{
         String name = inputs.nextLine();
         list.add(name);
         return list;
-
     }
     
 }
