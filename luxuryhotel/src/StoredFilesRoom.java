@@ -8,11 +8,11 @@ import com.google.gson.JsonParser;
 
 public class StoredFilesRoom {
     private JsonArray memory;
-    private String nameFile;
+    private String storeFile;
 
-    public StoredFilesRoom( String nameFile) {
-        this.nameFile = nameFile;
-        this.memory = read(nameFile);
+    public StoredFilesRoom( String storeFile) {
+        this.storeFile = storeFile;
+        this.memory = read(storeFile);
     }
 
     public JsonArray getMemory() {
@@ -20,7 +20,7 @@ public class StoredFilesRoom {
     }
     // public abstract void update();
 
-    public int search(String key, String value) {
+    public int searchString(String key, String value) {
         int index = -1;
         String username = null;
         for (int i = 0; i < memory.size(); i++) {
@@ -78,25 +78,9 @@ public class StoredFilesRoom {
         return jsonArray;
     }
 
-    // // add to memory
-    // public void update(String username, Integer password, String email) {
-    //     JsonObject jsonObject = new JsonObject();
-
-
-    //     //JsonArray jsonArray = new JsonArray();
-    //     //jsonArray.ad
-
-    //     jsonObject.addProperty("un", username);
-    //     jsonObject.addProperty("ps", password);
-    //     jsonObject.addProperty("email", email);
-
-    //     memory.add(jsonObject);
-    //     // memory.ad
-    // }
-
-    public void write(String storeFile) {
+    public void write() {
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(storeFile)) {
+        try (FileWriter writer = new FileWriter(this.storeFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
