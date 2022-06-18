@@ -13,6 +13,7 @@
         "loca":"HCM",
         "room":40,
         "ev":"good",
+<<<<<<< HEAD
         "uti":"five star"
     },
     {
@@ -22,5 +23,16 @@
         "room":30,
         "ev":"good",
         "uti":"five star"
+=======
+        "uti":"three star"
+    },
+    {
+        "na":"rex",
+        "add":"12/1, HaiBaChung, District 1",
+        "loca":"HCM",
+        "room":30,
+        "ev":"good",
+        "uti":"three star"
+>>>>>>> b07a46619d7c528c20950761c89b8a8a6d26411d
     }
 ]

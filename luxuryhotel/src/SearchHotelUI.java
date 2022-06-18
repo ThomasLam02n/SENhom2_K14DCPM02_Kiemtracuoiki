@@ -1,5 +1,7 @@
+
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Scanner;
 
 public class SearchHotelUI extends UITerminal{
@@ -24,6 +26,7 @@ public class SearchHotelUI extends UITerminal{
         String name = inputs.nextLine();
         list.add(name);
         return list;
+
     }
     
 }

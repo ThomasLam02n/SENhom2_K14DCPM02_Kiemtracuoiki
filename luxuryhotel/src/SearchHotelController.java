@@ -46,6 +46,7 @@ public class SearchHotelController {
             System.out.println(listCheck.get(4));
             System.out.println(listCheck.get(5));
             System.out.println(listCheck.get(6));
+
         }
     }
 
