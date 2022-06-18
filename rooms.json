@@ -1,20 +1,76 @@
 [
     {
         "id": 101,
-        "area": 30,
-        "price": 3.500000,
-        "utilities": "may lanh"
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
     },
     {
         "id": 102,
         "area": 40,
-        "price": 4.000000,
-        "utilities": "may lanh"
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 1,
+        "state": false
     },
     {
         "id": 103,
-        "area": 45,
-        "price": 4.500000,
-        "utilities": "may lanh"
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2,
+        "state": false
+    },
+    {
+        "id": 104,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 1,
+        "state": false
+    },
+    {
+        "id": 105,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2,
+        "state": false
     }
 ]
