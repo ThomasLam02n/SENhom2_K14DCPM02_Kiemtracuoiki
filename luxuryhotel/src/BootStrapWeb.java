@@ -5,26 +5,28 @@ import java.util.Scanner;
 import javax.xml.crypto.Data;
 
 public class BootStrapWeb {
-        
-    public static void main(String[] args) throws InterruptedException {
-       
-          Scanner scanner = new Scanner(System.in);
-          Account account = new Account();
-           NewAccountController newAccountController = new NewAccountController(account);
-           NewAccountUI newAccountUI =new NewAccountUI(newAccountController);
+    private static  String name = null;
 
-        //login
+    public static void main(String[] args) throws InterruptedException{
+        SearchHotelController searchHotelController = new SearchHotelController();
+        Scanner scanner = new Scanner(System.in);
 
-         LoginAccountController loginAccountController = new LoginAccountController(account);
-          LoginAccountUI loginAccountUI = new LoginAccountUI(loginAccountController);
-       
+        Account account = new Account();
+        NewAccountController newAccountController = new NewAccountController(account);
+        NewAccountUI newAccountUI = new NewAccountUI(newAccountController);
+
+        LoginAccountController loginAccountController = new LoginAccountController(account);
+        LoginAccountUI loginAccountUI = new LoginAccountUI(loginAccountController);
+
 
         System.out.println("Welcom to the LuxuryHotel System");
+        System.out.println("Hello");
 
         while (true){
-            Thread.sleep(5000);
+
+            Thread.sleep(1000);
             displayOption(newAccountController);
-            String prompt = getPrompt(newAccountController);
+            String prompt = getPromt(newAccountController);
             System.out.print(prompt);
             // chon
             // command
@@ -48,9 +50,27 @@ public class BootStrapWeb {
                     loginAccountUI.handleInputs();
                 }
             }
-                
+            // String cmd = uiTerminal.handleCommands(rep);
+
+            // if (cmd != null && !cmd.equals("Unkown command.")) {
+            // System.out.println(cmd);
+            // uiTerminal.handleInputs();
+            // }
+            // inpuScanner.nextLine();
+
+/* 
+            System.out.println("Location: ");
+            String location = scanner.nextLine();
+            System.out.println("Check in Date:");
+            String cid = scanner.nextLine();
+            System.out.println("Check out Date: ");
+            String cod = scanner.nextLine();
+            System.out.println("Amount of people:");
+            int aop = scanner.nextInt(); */
         }
-    }
+            
+        }
+    
 
     public static void displayOption(NewAccountController newAccountController){
         System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
@@ -70,16 +90,18 @@ public class BootStrapWeb {
     }
 
 
-    public static String getPrompt(NewAccountController newAccountController){
-        
+
+    public static String getPromt(NewAccountController newAccountController){
         if(!newAccountController.getAccount().checkLoggedIn()){
             return "";
         }
 
         return "LOGGED IN AS # " + newAccountController.getAccount().getUsername();
+
     }
 
-    public void handleInputs(){
+
+    public static void handleInputs(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Location: ");
         String location = scanner.nextLine();
