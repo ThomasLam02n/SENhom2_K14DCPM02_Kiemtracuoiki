@@ -3,7 +3,7 @@ public class hotelTestDrive {
         StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
         /* hotels.read(); */
         SearchHotelController searchHotelController = new SearchHotelController();
-        /* searchHotelController.searchHotelName("REX"); */
+        /* searchHotelController.searchHotelName("gallici"); */
         searchHotelController.checklocationHotel("HCM");
     }
 }

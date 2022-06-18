@@ -71,7 +71,6 @@ public  class StorefliesBookedRoom {
         return index;
     }
     
-
     public JsonArray read(String storeFile) {
         JsonArray jsonArray = null;
            
@@ -140,6 +139,7 @@ public  class StorefliesBookedRoom {
     public void write() {
         
         Gson gson = new Gson();
+
         try (FileWriter writer = new FileWriter(storeFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
@@ -147,6 +147,7 @@ public  class StorefliesBookedRoom {
 
         }
     }
+    
     public JsonArray getAll(){
         return this.memory;
     }
