@@ -42,7 +42,7 @@ public class StorefilesHotelController {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             address = jsonObject.get(key).getAsString();
             if (value.equalsIgnoreCase(address)) {
-                index = i;
+                index = i++;
                 break;
             }
         }
