@@ -4,6 +4,7 @@ public class hotelTestDrive {
         /* hotels.read(); */
         SearchHotelController searchHotelController = new SearchHotelController();
         /* searchHotelController.searchHotelName("gallici"); */
-        searchHotelController.checklocationHotel("HCM");
+        /* searchHotelController.checklocationHotel("HCM"); */
+        searchHotelController.searchLocation("DANANG");
     }
 }
