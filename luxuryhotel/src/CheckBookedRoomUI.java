@@ -39,15 +39,15 @@ public class CheckBookedRoomUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.SI)) {
             List<Object> list =  searchInputId();
-            checkBookedRoomController.SearchBill((int)list.get(0 ));
+            checkBookedRoomController.SearchBookedRoom((int)list.get(0 ));
         }
     }
 
     public List<Object> searchInputId() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
-        int id = scanner.nextInt();
-        list.add(id);
+        int ids = scanner.nextInt();
+        list.add(ids);
         return list;
     }
     

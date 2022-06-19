@@ -14,6 +14,7 @@ public  class StorefliesBookedRoom {
     private String storeFile ;
     SimpleDateFormat ngayVN = new SimpleDateFormat("dd/MM/yyyy");
 
+
     public StorefliesBookedRoom( String storeFile) {
         this.storeFile = storeFile;
         this.memory = read();
@@ -41,7 +42,7 @@ public  class StorefliesBookedRoom {
 
     public int searchInt(String key, Integer value) {
         int index = -1;
-        Integer intdex2 = null;
+        Integer intdex2 = 0;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             
@@ -53,6 +54,22 @@ public  class StorefliesBookedRoom {
         }
         return index;
     }
+
+   /*  //search booked room
+    public int searchBR(String key, String value) {
+        int index = -1;
+        String intdex3 = null;
+        for (int i = 0; i < memory.size(); i++) {
+            JsonObject jsonObject = memory.get(i).getAsJsonObject();
+            
+            intdex3 = jsonObject.get(key).getAsString();
+            if (value == intdex3) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    } */
 
     public int searchDouble(String key, double value) {
         int index = -1;

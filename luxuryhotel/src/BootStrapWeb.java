@@ -43,6 +43,7 @@ public class BootStrapWeb {
             }
 
             String rep = scanner.nextLine();
+        }
             
         }
 
@@ -70,9 +71,8 @@ public class BootStrapWeb {
                     loginAccountUI.handleInputs();
                 }
             }
+<<<<<<< HEAD
         }   */    
-    }
-
     public static void displayOption(NewAccountController newAccountController) {
         System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
         // check
