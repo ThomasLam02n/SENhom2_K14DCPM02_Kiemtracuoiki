@@ -2,33 +2,28 @@
     {
         "id": "101716217898",
         "id room": 101,
-        "um": "thai",
+        "un": "thai",
+        "phone": 12345,
         "email": "thai@",
-        "date int": "20/07/2022",
+        "date in": "20/07/2022",
         "date out": "23/07/2022"
     },
     {
         "id": "103328546960",
         "id room": 103,
-        "um": "tai",
+        "un": "tai",
+        "phone": 13579,
         "email": "tai@",
-        "date int": "19/06/2022",
+        "date in": "19/06/2022",
         "date out": "20/06/2022"
     },
     {
         "id": "104287813466",
         "id room": 104,
-        "um": "thach",
+        "un": "thach",
+        "phone": 12468,
         "email": "thach@",
-        "date int": "30/06/2022",
+        "date in": "30/06/2022",
         "date out": "01/07/2022"
-    },
-    {
-        "id": "102629187572",
-        "id room": 102,
-        "um": "thach",
-        "email": "thach@",
-        "date int": "19/06/2022",
-        "date out": "01/01/2023"
     }
 ]

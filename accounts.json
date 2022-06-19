@@ -58,5 +58,11 @@
         "ps": 123,
         "email": "thach@",
         "phone": 12468
+    },
+    {
+        "un": "thai1",
+        "ps": 123,
+        "email": "thai1",
+        "phone": 1236789
     }
 ]
