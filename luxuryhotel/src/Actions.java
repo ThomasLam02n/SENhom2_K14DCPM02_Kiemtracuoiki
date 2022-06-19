@@ -14,6 +14,8 @@ public enum Actions {
     //name Hotel
     REX, SIXSENSE,
 
-    BR, PB, AS
+    BR, PB, AS,
+    //canel bill
+    CB,
 
 }
