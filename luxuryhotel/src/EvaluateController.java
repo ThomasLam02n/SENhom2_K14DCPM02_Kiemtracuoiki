@@ -1,4 +1,7 @@
 public class EvaluateController {
-    Room rom ;
     
+    
+    public void Evaluate(){
+        
+    }
 }

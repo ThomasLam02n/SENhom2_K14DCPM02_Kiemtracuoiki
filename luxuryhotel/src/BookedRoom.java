@@ -45,6 +45,15 @@ public class BookedRoom {
 
     public Date getCheckout_date() {
         return checkout_date;
+    }
+
+    public int getIdRoom() {
+        return idRoom;
+    }
+
+    public void setIdRoom(int idRoom) {
+        this.idRoom = idRoom;
     } 
+    
 
 }
