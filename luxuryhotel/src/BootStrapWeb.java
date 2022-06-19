@@ -41,7 +41,7 @@ public class BootStrapWeb {
             }else{
                 System.out.println("[ERRO] Unknow command");
             }
-
+            
             String rep = scanner.nextLine();
         }
             

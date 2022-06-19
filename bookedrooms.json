@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
     {
         "id": "101716217898",
@@ -32,12 +31,4 @@
         "date int": "19/06/2022",
         "date out": "01/01/2023"
     }
-=======
-[{"id": "10183728","id room":101,"um":"thai","email":"thai@","date int":"20/07/2022","date out":"23/07/2022"},
-    {"id":"1033","id room":103,"um":"tai","email":"tai@","date int":"19/06/2022","date out":"20/06/2022"},
-    {"id":"1042","id room":104,"um":"thach","email":"thach@","date int":"30/06/2022","date out":"01/07/2022"},
-    {"id":"1026","id room":102,"um":"thach","email":"thach@","date int":"19/06/2022","date out":"01/01/2023"},
-   {"id": 219837, "id room":219,"um":"phong","email":"phong@","date int":"19/06/2022","date out":"01/01/2023"}
-   
->>>>>>> 69a4c9b29f8662f04b418386e1f0e87b1c3f9a54
 ]

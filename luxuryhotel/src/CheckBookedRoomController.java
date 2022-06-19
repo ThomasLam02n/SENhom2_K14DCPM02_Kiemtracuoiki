@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 public class CheckBookedRoomController {
     private BookedRoom bookedRoom;
 
-    public void SearchBookedRoom(Integer id){
+    public void SearchBookedRoom(String id){
         List<Object> listcheck;
         listcheck = check_bill_valid(id);
 
@@ -22,24 +22,24 @@ public class CheckBookedRoomController {
             }
         }
 
-    public List<Object> check_bill_valid(int id){
+    public List<Object> check_bill_valid(String id){
         List<Object> list = new ArrayList<>();
         JsonArray tempMemory = BookedRoom.getBookedRoom().getAll();
         int index = 0;
-        index = BookedRoom.getBookedRoom().searchInt("id", id);
+        index = BookedRoom.getBookedRoom().searchString("id", id);
         if(index == -1){
             list.add(false);
             list.add("This room id doesn't exist");
         }
         if(index != -1){
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            Integer ids = jsonObject.get("id").getAsInt();
+            String ids = jsonObject.get("id").getAsString();
             Integer idr = jsonObject.get("id room").getAsInt();
             String nameCusomer = jsonObject.get("um").getAsString();
             String date = jsonObject.get("date int").getAsString();
             String dateo = jsonObject.get("date out").getAsString();
             String email = jsonObject.get("email").getAsString();
-            boolean sate = jsonObject.get("sate").getAsBoolean();
+            // boolean sate = jsonObject.get("sate").getAsBoolean();
             list.add(true);
             list.add(ids);
             list.add(idr);
@@ -47,7 +47,7 @@ public class CheckBookedRoomController {
             list.add(date);
             list.add(dateo);
             list.add(email);
-            list.add(sate);
+            // list.add(sate);
             return list;
         }
 
