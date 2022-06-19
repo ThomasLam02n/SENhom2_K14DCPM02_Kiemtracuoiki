@@ -9,7 +9,11 @@ public class BootStrapWeb {
 
     public static void main(String[] args) throws InterruptedException{
         SearchHotelController searchHotelController = new SearchHotelController();
+        SearchRoomController searchRoomController = new SearchRoomController();
+        SearchHotelUI searchHotelUI = new SearchHotelUI();
+        SearchRoomUI searchRoomUI = new SearchRoomUI();
         Scanner scanner = new Scanner(System.in);
+        Scanner scanners = new Scanner(System.in);
 
         Account account = new Account();
         NewAccountController newAccountController = new NewAccountController(account);
@@ -19,7 +23,6 @@ public class BootStrapWeb {
         LoginAccountUI loginAccountUI = new LoginAccountUI(loginAccountController);
 
         System.out.println("Welcom to the LuxuryHotel System");
-        System.out.println("Hello");
 
         while (true){
             System.out.println("Location: ");
@@ -28,10 +31,19 @@ public class BootStrapWeb {
             String cid = scanner.nextLine();
             System.out.println("Check out Date: ");
             String cod = scanner.nextLine();
-            System.out.println("Amount of people:");
-            int aop = scanner.nextInt();
-            
+           /*  System.out.println("Amount of people:");
+            int aop = scanners.nextInt();
+     */
+            String resCMD;
+            searchHotelController.searchLocation(location);
+            if(location.toUpperCase().equals(Actions.HCM.HANOI.DANANG.toString())){
 
+            }else{
+                System.out.println("[ERRO] Unknow command");
+            }
+
+            String rep = scanner.nextLine();
+            
         }
 
        /*  while (true){
@@ -87,15 +99,4 @@ public class BootStrapWeb {
 
     }
 
-    public static void handleInputs() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Location: ");
-        String location = scanner.nextLine();
-        System.out.println("Check in Date:");
-        String cid = scanner.nextLine();
-        System.out.println("Check out Date: ");
-        String cod = scanner.nextLine();
-        System.out.println("Amount of people:");
-        int aop = scanner.nextInt();
-    }
 }
