@@ -22,7 +22,6 @@ public  class StorefliesBookedRoom {
     public JsonArray getMemory() {
         return memory;
     }
-    // public abstract void update();
 
     public int searchString(String key, String value) {
         int index = -1;
@@ -32,7 +31,7 @@ public  class StorefliesBookedRoom {
             
             username = jsonObject.get(key).getAsString();
             if (value.equalsIgnoreCase(username)) {
-                index = i;//
+                index = i;
                 break;
             }
         }
@@ -82,16 +81,15 @@ public  class StorefliesBookedRoom {
         return jsonArray;
     }
 
-    // // add to memory String nameCustomer, int phoneNumber, String email,
     public void update(String id, Integer idRoom, String username, Integer phoneNumber, String email , Date check_in, Date check_out) {
         JsonObject jsonObject = new JsonObject();
 
         jsonObject.addProperty("id", id);
         jsonObject.addProperty("id room", idRoom);
-        jsonObject.addProperty("um", username);
+        jsonObject.addProperty("un", username);
         jsonObject.addProperty("phone", phoneNumber);
         jsonObject.addProperty("email", email);
-        jsonObject.addProperty("date int", ngayVN.format(check_in));
+        jsonObject.addProperty("date in", ngayVN.format(check_in));
         jsonObject.addProperty("date out", ngayVN.format(check_out));
         
         this.memory.add(jsonObject);
