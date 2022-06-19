@@ -45,14 +45,7 @@ public class BootStrapWeb {
                     loginAccountUI.handleInputs();
                 }
             }
-            System.out.println("Location: ");
-            String location = scanner.nextLine();
-            System.out.println("Check in Date:");
-            String cid = scanner.nextLine();
-            System.out.println("Check out Date: ");
-            String cod = scanner.nextLine();
-            System.out.println("Amount of people:");
-            int aop = scanner.nextInt();
+
         }   
     }
 
@@ -82,15 +75,5 @@ public class BootStrapWeb {
 
     }
 
-    public static void handleInputs() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Location: ");
-        String location = scanner.nextLine();
-        System.out.println("Check in Date:");
-        String cid = scanner.nextLine();
-        System.out.println("Check out Date: ");
-        String cod = scanner.nextLine();
-        System.out.println("Amount of people:");
-        int aop = scanner.nextInt();
-    }
+
 }
