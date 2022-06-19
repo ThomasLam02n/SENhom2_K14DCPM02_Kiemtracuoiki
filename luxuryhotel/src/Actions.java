@@ -5,8 +5,8 @@ public enum Actions {
     //Create Account , Login Account, Logout
     CA, LO, LA,
 
-    //check BookedRoom
-    SI,
+    //check BookedRoom and confirm
+    SI, CI,
 
     SR,
     //Locations

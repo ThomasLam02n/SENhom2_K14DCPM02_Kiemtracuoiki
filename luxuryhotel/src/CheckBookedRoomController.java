@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -8,7 +7,7 @@ import com.google.gson.JsonObject;
 public class CheckBookedRoomController {
     private BookedRoom bookedRoom;
 
-    public void SearchBill(Integer id){
+    public void SearchBookedRoom(Integer id){
         List<Object> listcheck;
         listcheck = check_bill_valid(id);
 
@@ -34,20 +33,21 @@ public class CheckBookedRoomController {
         }
         if(index != -1){
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            int ids = jsonObject.get("id").getAsInt();
-            String nameCusomer = jsonObject.get("un").getAsString();
-            Integer phone = jsonObject.get("phone").getAsInt();
+            Integer ids = jsonObject.get("id").getAsInt();
+            Integer idr = jsonObject.get("id room").getAsInt();
+            String nameCusomer = jsonObject.get("um").getAsString();
+            String date = jsonObject.get("date int").getAsString();
+            String dateo = jsonObject.get("date out").getAsString();
             String email = jsonObject.get("email").getAsString();
             boolean sate = jsonObject.get("sate").getAsBoolean();
-
             list.add(true);
             list.add(ids);
+            list.add(idr);
             list.add(nameCusomer);
-            list.add(phone);
+            list.add(date);
+            list.add(dateo);
             list.add(email);
             list.add(sate);
-
-
             return list;
         }
 
