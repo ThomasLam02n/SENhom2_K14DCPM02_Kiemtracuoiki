@@ -3,24 +3,22 @@ import java.util.Date;
 public class BookedRoom {
     private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
     
-    private Integer id;
+
     private String nameCustomer;
     private int phoneNumber;
     private String email;
     private int idRoom;
-    private boolean confirm;
+
     private Date checkin_date;
     private Date checkout_date;
     
     public BookedRoom() {
-        this.id = null;
         this.nameCustomer = null;
         this.phoneNumber = 0;
         this.email = null;
         this.idRoom = 0;
         this.checkin_date = null;
         this.checkout_date = null;
-        this.confirm = false;
     }
 
     public BookedRoom(Integer id ,String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
