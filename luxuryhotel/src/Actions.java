@@ -14,6 +14,6 @@ public enum Actions {
     //name Hotel
     REX, SIXSENSE,
 
-    BR
+    BR, PB, AS
 
 }
