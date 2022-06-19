@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class BookingRoomUI extends UITerminal{
     private Actions command;
     private BookingRoomController bookingRoomController;
-    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     static Scanner scanner = new Scanner(System.in);
 
     public BookingRoomUI() {
@@ -32,49 +33,41 @@ public class BookingRoomUI extends UITerminal{
     @Override
     public void handleInputs() {
         if (this.command.equals(Actions.BR)) {
-            // List<Object> list =  bookingRoomInput();
-           // bookingRoomController.searchRoom((int)list.get(0), (double)list.get(1), list.get(2).toString());
+            List<Object> list =  bookingRoomInput();
+            try {
+                this.bookingRoomController.bookingRoom((int)list.get(0), dateFormat.parse(list.get(1).toString()), dateFormat.parse(list.get(2).toString()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public static BookedRoom bookingRoomInput() {
+    public List<Object> bookingRoomInput() {
         List<Object> list = new ArrayList<>();
-        // System.out.print("Name: ");
-        // String nameCustomer = scanner.nextLine();
-        // System.out.print("Phone Number: ");
-        // int phoneNumber = scanner.nextInt();
-        // scanner.nextLine();
-        // System.out.print("Email: ");
-        // String email = scanner.nextLine();
-        System.out.println(" Nhap id phong:");
+        System.out.print("ID room: ");
         int idRoom = scanner.nextInt();
-        System.out.println("Nhap ngay dat phong theo dd-MM -yyyy:");
+        scanner.nextLine();
+        System.out.print("Received date(dd/MM/yyyy): ");
         String ngayDatPhong = scanner.nextLine();
         Date date2 = null;
         try {
             date2 = dateFormat.parse(ngayDatPhong);
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
         }
-        System.out.println("Nhap tra phong theo dd- MM-yyyy");
+        System.out.print("Pay date(dd/MM/yyyy): ");
         
         String ngayTraPhong = scanner.nextLine();
         Date date3 = null;
         try {
             date3 = dateFormat.parse(ngayTraPhong);
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
         }
-        // list.add(idRoom);
-        // list.add(ngayDatPhong);
-        // list.add(ngayTraPhong);
-        
-        
-        // list.add(area);
-        // list.add(price);
-        // list.add(utilities);
-        return new BookedRoom();
+        list.add(idRoom);
+        list.add(dateFormat.format(date2));
+        list.add(dateFormat.format(date3));
+
+        return list;
     }
 }
