@@ -20,7 +20,16 @@ public class StorefilesHotelController {
     public JsonArray getMemory() {
         return memory;
     }
+    public void update(String name, String address,int room_quantity, String evaluation, String utilities){
+        JsonObject jsonObject = new JsonObject();
 
+        jsonObject.addProperty("name", name);
+        jsonObject.addProperty("address", address);
+        jsonObject.addProperty("RoomQuantity", room_quantity);
+        jsonObject.addProperty("Evaluation", evaluation);
+        jsonObject.addProperty("utilities", utilities);
+        this.memory.add(jsonObject);
+    }
     public int search(String key, String value) {
         int index = -1;
         String name = null;
