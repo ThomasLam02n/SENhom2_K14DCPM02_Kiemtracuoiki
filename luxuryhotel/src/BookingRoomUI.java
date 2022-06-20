@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class BookingRoomUI extends UITerminal{
     private Actions command;
     private BookingRoomController bookingRoomController;
-    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    static Scanner scanner = new Scanner(System.in);
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Scanner scanner = new Scanner(System.in);
 
     public BookingRoomUI() {
     }

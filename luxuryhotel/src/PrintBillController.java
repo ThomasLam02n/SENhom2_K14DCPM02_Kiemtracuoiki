@@ -20,14 +20,16 @@ public class PrintBillController {
         List<Object> listCheck;
         
         listCheck = bill_valid(id);
+        int index = 0;
         if (!(boolean) listCheck.get(0)) {
-            for (int index = 1; index < listCheck.size(); index++) {
-                System.out.println(listCheck.get(index));
+            for (int i = 1; i < listCheck.size(); i++) {
+                System.out.println(listCheck.get(i));
             }
         } else {
-            for (int index = 1; index < listCheck.size(); index++) {
-                System.out.println(listCheck.get(index));
-            }
+            JsonArray jsonArray = Bill.getStoredFilesBill().getMemory();
+            index = Bill.getStoredFilesBill().searchString("id", id);
+            JsonObject jsonObject = jsonArray.get(index).getAsJsonObject();
+            System.out.println(jsonObject.toString());
             System.out.print("Do you want to print invoices?(Y/N): ");
             String print = scanner.nextLine();
             if (print.equalsIgnoreCase("Y")) {
@@ -37,7 +39,7 @@ public class PrintBillController {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Print bill successful.");              
+                System.out.println(listCheck.get(1));              
             }
         }
     }
@@ -49,18 +51,43 @@ public class PrintBillController {
             list.add(false);
             list.add("ID does not exist.");
         } else {
-            JsonArray tempMemory = Bill.getStoredFilesBill().getMemory();
-            JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            String username = jsonObject.get("username").getAsString();
-            double price = jsonObject.get("price").getAsDouble();
             list.add(true);
-            list.add(id);
-            list.add(username);
-            list.add(price);
+            list.add("Print bill successful.");
         }
         return list;
     }
-    public Bill getRooms() {
-        return bill;
-    }
+    
+    // @Override
+    // public String toString() {
+    //     JsonArray tempMemory = Bill.getStoredFilesBill().getMemory();
+    //     JsonObject jsonObject = tempMemory.get(this.bill.hashCode()).getAsJsonObject();
+    //     String id = jsonObject.get("id").getAsString();
+    //     int idRoom = jsonObject.get("id room").getAsInt();
+    //     String username = jsonObject.get("un").getAsString();
+    //     int phone = jsonObject.get("phone").getAsInt();
+    //     String email = jsonObject.get("email").getAsString();
+    //     String datein = jsonObject.get("date in").getAsString();
+    //     String dateout = jsonObject.get("date out").getAsString();
+    //     JsonArray service = jsonObject.get("service").getAsJsonArray();
+    //     jsonObject.toString();
+    //     double price = jsonObject.get("price").getAsDouble();
+    //     //  System.out.println("id: "+ idRoom +
+    //     //     "\nid room: "+ idRoom +
+    //     //     "\nuser name:"+ username+
+    //     //     "\nphone"+ phone+
+    //     //     "\nemail"+ email+
+    //     //     "\ndate in"+ datein+
+    //     //     "\ndate out"+ dateout+
+    //     //     "\nservice"+ service+
+    //     //     "\nprice"+ price);
+    //     return "id: "+ idRoom +
+    //     "\nid room: "+ idRoom +
+    //     "\nuser name:"+ username+
+    //     "\nphone"+ phone+
+    //     "\nemail"+ email+
+    //     "\ndate in"+ datein+
+    //     "\ndate out"+ dateout+
+    //     "\nservice"+ service+
+    //     "\nprice"+ price;
+    // }
 }

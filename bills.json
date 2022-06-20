@@ -1,22 +1,31 @@
 [
     {
-        "id": 101,
-        "username": "tai",
-        "price": 4000000
+        "id": "101716217898",
+        "id room": 101,
+        "un": "thai",
+        "phone": 12345,
+        "email": "thai@",
+        "date in": "20/07/2022",
+        "date out": "21/07/2022",
+        "service": [
+            {
+                "1": "wifi"
+            },
+            {
+                "1": "laundry"
+            }
+        ],
+        "price": 4160000.0
     },
     {
-        "id": 102,
-        "username": "phong",
-        "price": 4000000
-    },
-    {
-        "id": 103,
-        "username": "thai",
-        "price": 4000000
-    },
-    {
-        "id": 104,
-        "username": "thach",
-        "price": 4000000
+        "id": "105647368375",
+        "id room": 105,
+        "un": "thai1",
+        "phone": 1236789,
+        "email": "thai1",
+        "date in": "22/06/2022",
+        "date out": "24/06/2022",
+        "service": [],
+        "price": 8000000.0
     }
 ]

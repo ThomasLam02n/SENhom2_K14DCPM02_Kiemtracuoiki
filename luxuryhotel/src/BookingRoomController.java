@@ -13,7 +13,7 @@ public class BookingRoomController {
     private BookedRoom bookroom ;
     private Room room;
     private Account account;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     public BookingRoomController(){
         
     }
@@ -50,12 +50,32 @@ public class BookingRoomController {
                 System.out.println(listCheck2.toString());
             }
         } else {
+            JsonArray tempMemory = Room.getRooms().getMemory();
+            int index = 0;
+            index = Room.getRooms().searchInt("id", idRoom);
+            JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
+            int areas = jsonObject.get("area").getAsInt();
+            double prices = jsonObject.get("price").getAsDouble();
+            JsonArray utilitiess = jsonObject.get("utilities").getAsJsonArray();
+            int aop = jsonObject.get("amount of people").getAsInt();
+            try {
+                this.room.setRoom(idRoom, areas, prices, utilitiess, aop);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+
             this.account.checkLoggedIn();
             String nameCustomer = this.account.getUsername();
-            Integer phoneNumber = this.account.getPhonenumber();
-            String email =  this.account.getEmail();
+            JsonArray accArray = Account.getAccounts().getAll();
+            int index3 = 0;
+            index3 = Account.getAccounts().search("un", nameCustomer);
+            JsonObject accObject = accArray.get(index3).getAsJsonObject();
+            Integer phoneNumber = accObject.get("phone").getAsInt();
+            String email =  accObject.get("email").getAsString();
+            int diffDays = (int)calculate_the_date_of_use(check_in, check_out);
+            prices = prices * diffDays;
             String id = createID(idRoom);
-            BookedRoom.getBookedRoom().update(id, idRoom, nameCustomer, phoneNumber, email, check_in, check_out);
+            BookedRoom.getBookedRoom().update(id, idRoom, nameCustomer, phoneNumber, email, check_in, check_out, prices);
             BookedRoom.getBookedRoom().write();
             System.out.println(listCheck.get(1));
         } 
@@ -63,46 +83,45 @@ public class BookingRoomController {
     
     public List<Object> checkBookedRoom_valid(int idRoom , Date check_in , Date check_out){
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = Room.getRooms().getMemory();
         int index = 0;
         int index2 = 0;
         int index3 = 0;
         index = Room.getRooms().searchInt("id", idRoom);
         if(index != -1){
-            JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            JsonArray bookedroomArray = BookedRoom.getBookedRoom().getMemory();
-            JsonObject bookedroomObject = bookedroomArray.get(index2).getAsJsonObject();
-            // List<Object> list2 = new ArrayList<>();
-            List<Object> list3 = new ArrayList<>();
-            String dateout = bookedroomObject.get("date out").getAsString();
+            JsonArray bookedroomArray = BookedRoom.getBookedRoom().getAll();
+            index2 = BookedRoom.getBookedRoom().searchInt("id room", idRoom);
             index3 = BookedRoom.getBookedRoom().searchString("un", this.account.getUsername());
-            try {
-                list3 = check_date_valid(dateFormat.parse(dateout), check_in);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } 
-            if (index3 != -1) {
+            if (index2 != -1) {
+                JsonObject bookedroomObject = bookedroomArray.get(index2).getAsJsonObject();
+                List<Object> list3 = new ArrayList<>();
+                String dateout = bookedroomObject.get("date out").getAsString();
+                
+                try {
+                    list3 = check_date_valid(dateFormat.parse(dateout), check_in);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                } 
+
+                if (index3 != -1) {
+                    list.add(false);
+                    list.add("The account has made a reservation before.");
+                } else if((boolean)list3.get(0)){                   
+                    list.add(true);
+                    list.add("[BOOK ROOM SUCCESSFUL] You have successfully booked your room.");
+                    return list;
+                } else if (!(boolean)list3.get(0)) {
+                    list.add(false);
+                    list.add("[ID ROOM EXISTS] This room ID is already booked.");
+                    return list;
+                }
+            }else if (index3 != -1) {
                 list.add(false);
                 list.add("The account has made a reservation before.");
-            } else if((boolean)list3.get(0)){
-                int areas = jsonObject.get("area").getAsInt();
-                double prices = jsonObject.get("price").getAsDouble();
-                JsonArray utilitiess = jsonObject.get("utilities").getAsJsonArray();
-                int aop = jsonObject.get("amount of people").getAsInt();
-                try {
-                    this.room.setRoom(idRoom, areas, prices, utilitiess, aop);
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-                
+            } else {
                 list.add(true);
                 list.add("[BOOK ROOM SUCCESSFUL] You have successfully booked your room.");
                 return list;
-            } else if (!(boolean)list3.get(0)) {
-                list.add(false);
-                list.add("[ID ROOM EXISTS] This room ID is already booked.");
-                return list;
-            }
+            }            
         } else {
             list.add(false);
             list.add("Room ID does not exist.");
@@ -194,5 +213,12 @@ public class BookingRoomController {
             }            
         }
         return false;
-    }      
+    }  
+    
+    public long calculate_the_date_of_use(Date dateint, Date dateout) {
+        long diffDays;
+        long diff = dateout.getTime() - dateint.getTime();
+        diffDays = (diff / 3600000)/24;
+        return diffDays;
+    }
 }
