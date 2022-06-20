@@ -19,10 +19,6 @@ public  class StorefliesBookedRoom {
         this.memory = read();
     }
 
-    public JsonArray getMemory() {
-        return memory;
-    }
-
     public int searchString(String key, String value) {
         int index = -1;
         String username = null;
@@ -81,7 +77,8 @@ public  class StorefliesBookedRoom {
         return jsonArray;
     }
 
-    public void update(String id, Integer idRoom, String username, Integer phoneNumber, String email , Date check_in, Date check_out) {
+    public void update(String id, Integer idRoom, String username, Integer phoneNumber, 
+    String email , Date check_in, Date check_out, double price) {
         JsonObject jsonObject = new JsonObject();
 
         jsonObject.addProperty("id", id);
@@ -91,6 +88,7 @@ public  class StorefliesBookedRoom {
         jsonObject.addProperty("email", email);
         jsonObject.addProperty("date in", ngayVN.format(check_in));
         jsonObject.addProperty("date out", ngayVN.format(check_out));
+        jsonObject.addProperty("price", price);
         
         this.memory.add(jsonObject);
     }
@@ -132,7 +130,7 @@ public  class StorefliesBookedRoom {
         return index;
     }
 
-    public void write() {//String storeFile
+    public void write() {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(storeFile)) {
             gson.toJson(memory, writer);
