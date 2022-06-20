@@ -17,6 +17,7 @@ public class Hotel {
         this.evaluation = evaluation;
         this.utilities = utilities;
     }
+   
 
     public static StorefilesHotelController getHotels() {
         return hotels;
@@ -29,4 +30,17 @@ public class Hotel {
     public String getAddress() {
         return address;
     }
+
+    public int getRoom_quantity() {
+        return room_quantity;
+    }
+
+    
+
+    public String getUtilities() {
+        return utilities;
+    }
+
+    
+    
 }
