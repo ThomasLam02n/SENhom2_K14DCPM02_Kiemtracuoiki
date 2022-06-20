@@ -5,8 +5,8 @@ public enum Actions {
     //Create Account , Login Account, Logout
     CA, LO, LA,
 
-    //check BookedRoom and confirm
-    SI, CI,
+    //check BookedRoom
+    SI,
 
     SR,
     //Locations
@@ -14,6 +14,8 @@ public enum Actions {
     //name Hotel
     REX, SIXSENSE,
 
-    BR
+    BR, PB, AS,
+    //canel bill
+    CB,
 
 }

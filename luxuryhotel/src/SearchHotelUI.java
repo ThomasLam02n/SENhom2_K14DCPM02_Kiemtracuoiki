@@ -13,20 +13,23 @@ public class SearchHotelUI extends UITerminal{
     public String handleCommand(String rep) {
          String cmd = rep.toUpperCase();
          this.command = Actions.valueOf(cmd);
-        return null;
+
+         if(this.command.equals(Actions.HCM.HANOI.DANANG)){
+            return "[FOUND OUT] Hotel information";
+         }else{
+            return "[ERRO] Unknow command";
+         }
     }
 
     @Override
     public void handleInputs() {
-        
-    }
-
-    public List<Object>searchHotelInput(){
-        List<Object> list = new ArrayList<>();
-        System.out.println("Name Hotel: ");
-        String name = inputs.nextLine();
-        list.add(name);
-        return list;
+        if(this.command.equals(Actions.HANOI.toString())){
+            searchHotelControllerObj.searchLocation("HANOI");
+        }else if(this.command.equals(Actions.HCM.toString())){
+            searchHotelControllerObj.searchLocation("HCM");
+        }else if(this.command.equals(Actions.DANANG.toString())){
+            searchHotelControllerObj.searchLocation("DANANG");
+        }
     }
     
 }

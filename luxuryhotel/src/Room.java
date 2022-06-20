@@ -1,30 +1,50 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 public class Room {
     private int id;
     private int area;
     private double price;
-    private String utilities;
+    private JsonArray utilities;
+    private int amounOfPeople;
     private boolean booked;
-    // private StoredFilesRoomController roomss = new StoredFilesRoomController("rooms.json");
     private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
+
+    public Room() {
+    }
+
+    public Room(int id, int area, double price, JsonArray utilities, int amounOfPeople) {
+        this.id = id;
+        this.area = area;
+        this.price = price;
+        this.utilities = utilities;
+        this.amounOfPeople = amounOfPeople;
+        this.booked = false;
+    }
 
     public static StoredFilesRoom getRooms() {
         return rooms;
     }
 
-    // public StoredFilesRoomController getRoomss() {
-    //     return roomss;
-    // }
-
     public boolean check_booked() {
-
         return booked;
     }
 
-    public void setRoom(int b, double price, String utilities) {
-        this.area = b;
+    public void setRoom(int id, int area, double price, JsonArray utilities, int amounOfPeople) {
+        this.id = id;
+        this.area = area;
         this.price = price;
         this.utilities = utilities;
+        this.amounOfPeople = amounOfPeople;
         this.booked = true;
+    }
+    public void CancelBill(){
+        this.id = id;
+        this.area = area;
+        this.price = price;
+        this.utilities = utilities;
+        this.amounOfPeople = amounOfPeople;
+        this.booked = false;
     }
 
     public boolean isBooked() {

@@ -3,14 +3,13 @@ import java.util.Date;
 public class BookedRoom {
     private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
     
-
     private String nameCustomer;
     private int phoneNumber;
     private String email;
     private int idRoom;
-
     private Date checkin_date;
     private Date checkout_date;
+    private boolean checkBookedRoom;
     
     public BookedRoom() {
         this.nameCustomer = null;
@@ -19,9 +18,10 @@ public class BookedRoom {
         this.idRoom = 0;
         this.checkin_date = null;
         this.checkout_date = null;
+        this.checkBookedRoom = false;
     }
 
-    public BookedRoom(Integer id ,String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
+    public BookedRoom(String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
             Date checkout_date) {
         this.nameCustomer = nameCustomer;
         this.phoneNumber = phoneNumber;
@@ -37,6 +37,17 @@ public class BookedRoom {
         this.checkout_date = checkout_date;
     }
 
+
+    public void setBookedRoom(String name, int phonr, String  email, int idRoom, Date checkdi, Date checkdo, boolean check_booked){
+        this.nameCustomer = name;
+        this.idRoom = idRoom;
+        this.email = email;
+        this.phoneNumber = phonr;
+        this.checkin_date = checkdi;
+        this.checkout_date = checkdo;
+        this.checkBookedRoom = true;
+    }
+
     public static StorefliesBookedRoom getBookedRoom(){
         return bookRoom;
     }
@@ -47,7 +58,18 @@ public class BookedRoom {
 
     public Date getCheckout_date() {
         return checkout_date;
-    } 
+    }
 
+    public int getIdRoom() {
+        return idRoom;
+    }
+
+    public void setIdRoom(int idRoom) {
+        this.idRoom = idRoom;
+    } 
     
+    public boolean check_booked(){
+        return checkBookedRoom;
+    }
+
 }

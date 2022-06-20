@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.google.gson.JsonArray;
+
 public class CheckBookedRoomUI extends UITerminal {
 
 
@@ -27,9 +29,11 @@ public class CheckBookedRoomUI extends UITerminal {
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
-        if (this.command.equals(Actions.SI)) {
+        if (this.command.equals(Actions.CB)) {
+            return " Confirm";
+        } else if (this.command.equals(Actions.SI)) {
             return "Enter the request you want to find.";
-        } else {
+        }else {
             return "Unkown command.";
         }
     }
@@ -39,16 +43,17 @@ public class CheckBookedRoomUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.SI)) {
             List<Object> list =  searchInputId();
-            checkBookedRoomController.SearchBookedRoom((int)list.get(0 ));
+            checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
         }
     }
 
     public List<Object> searchInputId() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
-        int ids = scanner.nextInt();
-        list.add(ids);
+        String id = scanner.nextLine();
+        list.add(id);
         return list;
     }
-    
+
+
 }

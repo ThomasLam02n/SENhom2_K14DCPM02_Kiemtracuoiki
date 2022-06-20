@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,20 +11,19 @@ import com.google.gson.JsonParser;
 
 public  class StorefliesBookedRoom {
     private JsonArray memory;
-    private String nameFile;
-    SimpleDateFormat ngayVN = new SimpleDateFormat("dd-MM-yyyy");
+    private String storeFile ;
+    SimpleDateFormat ngayVN = new SimpleDateFormat("dd/MM/yyyy");
 
-    public StorefliesBookedRoom( String nameFile) {
-        this.nameFile = nameFile;
-        this.memory = read(nameFile);
+    public StorefliesBookedRoom( String storeFile) {
+        this.storeFile = storeFile;
+        this.memory = read();
     }
 
     public JsonArray getMemory() {
         return memory;
     }
-    // public abstract void update();
 
-    public int search(String key, String value) {
+    public int searchString(String key, String value) {
         int index = -1;
         String username = null;
         for (int i = 0; i < memory.size(); i++) {
@@ -33,7 +31,7 @@ public  class StorefliesBookedRoom {
             
             username = jsonObject.get(key).getAsString();
             if (value.equalsIgnoreCase(username)) {
-                index = i;//
+                index = i;
                 break;
             }
         }
@@ -42,7 +40,7 @@ public  class StorefliesBookedRoom {
 
     public int searchInt(String key, Integer value) {
         int index = -1;
-        Integer intdex2 = 0;
+        Integer intdex2 = null;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             
@@ -54,22 +52,6 @@ public  class StorefliesBookedRoom {
         }
         return index;
     }
-
-   /*  //search booked room
-    public int searchBR(String key, String value) {
-        int index = -1;
-        String intdex3 = null;
-        for (int i = 0; i < memory.size(); i++) {
-            JsonObject jsonObject = memory.get(i).getAsJsonObject();
-            
-            intdex3 = jsonObject.get(key).getAsString();
-            if (value == intdex3) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    } */
 
     public int searchDouble(String key, double value) {
         int index = -1;
@@ -86,7 +68,8 @@ public  class StorefliesBookedRoom {
         return index;
     }
     
-    public JsonArray read(String storeFile) {
+
+    public JsonArray read() {
         JsonArray jsonArray = null;
            
         try (FileReader reader = new FileReader(storeFile)) {
@@ -98,23 +81,21 @@ public  class StorefliesBookedRoom {
         return jsonArray;
     }
 
-    // // add to memory String nameCustomer, int phoneNumber, String email,
-    public void update( Integer idRoom , String check_in, String check_out) {
+    public void update(String id, Integer idRoom, String username, Integer phoneNumber, String email , Date check_in, Date check_out) {
         JsonObject jsonObject = new JsonObject();
 
-
-        //JsonArray jsonArray = new JsonArray();
-        //jsonArray.ad
-
-        jsonObject.addProperty("ci", check_in);
-        jsonObject.addProperty("co", check_out);
-        jsonObject.addProperty("id", idRoom);
-
-        memory.add(jsonObject);
-        // memory.ad
+        jsonObject.addProperty("id", id);
+        jsonObject.addProperty("id room", idRoom);
+        jsonObject.addProperty("un", username);
+        jsonObject.addProperty("phone", phoneNumber);
+        jsonObject.addProperty("email", email);
+        jsonObject.addProperty("date in", ngayVN.format(check_in));
+        jsonObject.addProperty("date out", ngayVN.format(check_out));
+        
+        this.memory.add(jsonObject);
     }
    
-    public int search2(String key, Date value) {
+    public int searchDate(String key, Date value) {
         int index = -1;
         String date = "";
         Date date2 = null;
@@ -151,19 +132,21 @@ public  class StorefliesBookedRoom {
         return index;
     }
 
-    public void write() {
-        
+    public void write() {//String storeFile
         Gson gson = new Gson();
-
-        try (FileWriter writer = new FileWriter(nameFile)) {
+        try (FileWriter writer = new FileWriter(storeFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
-    
+
     public JsonArray getAll(){
         return this.memory;
+    }
+
+    public String getNameFile() {
+        return storeFile;
     }
 }

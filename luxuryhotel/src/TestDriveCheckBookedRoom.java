@@ -1,8 +1,7 @@
-
-
 public class TestDriveCheckBookedRoom {
     public static void main(String[] args) {
-        CheckBookedRoomController checkBookedRoomController = new CheckBookedRoomController();
-        checkBookedRoomController.SearchBookedRoom(219837);
+        BookedRoom bookedRoom = new BookedRoom();
+        CheckBookedRoomController checkBookedRoomController = new CheckBookedRoomController(bookedRoom);
+        checkBookedRoomController.SearchBookedRoom("104287813466");
     }
 }
