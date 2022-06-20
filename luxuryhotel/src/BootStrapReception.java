@@ -1,61 +1,56 @@
-import java.util.List;
+import java.lang.management.ThreadInfo;
 import java.util.Scanner;
 
 public class BootStrapReception {
-    private static String prompt;
+
     private static Scanner scanner = new Scanner(System.in);
-    private static CheckBookedRoomController checkBookedRoomController = new CheckBookedRoomController();
+    private static BookedRoom bookedRoom = new BookedRoom();
+    private static CheckBookedRoomController checkBookedRoomController = new CheckBookedRoomController(bookedRoom);
     private static CheckBookedRoomUI checkBookedRoomUI = new CheckBookedRoomUI(checkBookedRoomController);
-   public static void main(String[] args) throws InterruptedException {
-    System.out.println("management reception department");
 
-    while(true){
-        Thread.sleep(1000);
-        disPlayOptions();
-        System.out.println(getPrompt());
-        
+    public static void main(String[] args) throws InterruptedException {
+       
+       
+       
+        System.out.println("Front desk system");
+        while(true){
+            Thread.sleep(1000);
+            displayOption();
 
-        //chon
-        //command
-        String rep = scanner.nextLine();
+            //chon
+            //command
+            String rep = scanner.nextLine();
+            //si
+            String rescmd;
+            if(rep.toUpperCase().equals(Actions.SI.toString())){
+                rescmd = checkBookedRoomUI.handleCommand(rep);
+                System.out.println(rescmd);
 
 
-        //SI
-        String resCmd;
-        if(rep.toUpperCase().equals(Actions.SI.toString())){
-            resCmd = checkBookedRoomUI.handleCommand(rep);
-            System.out.println(resCmd);
-
-            if(resCmd != null && !resCmd.equals("Unkown commad.")){
-                checkBookedRoomUI.handleInputs();
+                if(rescmd != null && !rescmd.equals("Unkown command.")){
+                    checkBookedRoomUI.handleInputs();
+                } 
+            }else if(rep.toUpperCase().equals(Actions.CB.toString())){
+                
             }
         }
-        
-        
-      }
-       
     }
 
-   
-    public static void disPlayOptions(){
-        System.out.println("____________________________CRS MENU______________________");
-        //check
-        String str= "";
+
+    public static void displayOption(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
+        // check
+        String str = "";
+        if(!checkBookedRoomController.getBookedRoom().check_booked()){
+             str = "Enter one of the command in the brakets:\n" + 
+                      "[SI] check booked room ";
+                         System.out.println(str);
+        }else if (checkBookedRoomController.getBookedRoom().check_booked()){
+              System.out.println("Enter on of the conmand in brackets: \n"+
+            "[CB] Confirm BookedRoom");
+        }
+    }
+
+
     
-            str = "Enter one of the commands in the brackets: \n" + 
-            "[SI] Check booked room";
-
-            System.out.println(str);
-
-        
-    }
-
-
-    public static String getPrompt() {
-        return prompt;
-      }
-
-
-   
-   
 }
