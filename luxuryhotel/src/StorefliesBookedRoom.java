@@ -94,6 +94,7 @@ public  class StorefliesBookedRoom {
         
         this.memory.add(jsonObject);
     }
+    
    
     public int searchDate(String key, Date value) {
         int index = -1;

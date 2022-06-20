@@ -128,7 +128,7 @@ public class BookingRoomController {
         return list;
     }
 
-    private String createID(int idRoom){
+    public String createID(int idRoom){
         String id = "";
         int index = 0;
         int index2 = 0;
