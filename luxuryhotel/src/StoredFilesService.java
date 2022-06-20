@@ -16,7 +16,6 @@ public class StoredFilesService {
     public JsonArray getMemory() {
         return memory;
     }
-    // public abstract void update();
 
     public int searchString(String key, String value) {
         int index = -1;
@@ -26,7 +25,7 @@ public class StoredFilesService {
             
             username = jsonObject.get(key).getAsString();
             if (value.equalsIgnoreCase(username)) {
-                index = i;//
+                index = i;
                 break;
             }
         }
@@ -74,15 +73,6 @@ public class StoredFilesService {
 
         return jsonArray;
     }
-    
-    // public void update(String nameService, double price) {
-    //     JsonObject jsonObject = new JsonObject();
-
-    //     jsonObject.addProperty("name service", nameService);
-    //     jsonObject.addProperty("price service", price);
-
-    //     memory.add(jsonObject);        
-    // }
 
     public void write() {
         Gson gson = new Gson();
