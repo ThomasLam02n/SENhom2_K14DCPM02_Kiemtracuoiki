@@ -4,6 +4,7 @@ public class Hotel {
     private int room_quantity;
     private String evaluation;
     private String utilities;
+    private boolean opening;
     private static StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
     
     public Hotel(){
@@ -20,6 +21,10 @@ public class Hotel {
 
     public static StorefilesHotelController getHotels() {
         return hotels;
+    }
+
+    public boolean check_opening(){
+        return this.opening;
     }
     
     public String getName() {

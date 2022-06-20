@@ -30,7 +30,7 @@ public class SearchRoomUI extends UITerminal{
     @Override
     public void handleInputs() {
         if (this.command.equals(Actions.SR)) {
-            this.searchRoomController.viewRoom();
+            // this.searchRoomController.viewRoom();
             List<Object> list =  searchRoomInput();
             this.searchRoomController.searchRoom((int)list.get(0));
             // (int)list.get(0), (double)list.get(1), list.get(2).toString(), (int)list.get(3)

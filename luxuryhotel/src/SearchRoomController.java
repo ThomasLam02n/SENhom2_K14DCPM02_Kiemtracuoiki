@@ -100,7 +100,7 @@ public class SearchRoomController {
         }
         return list;
     }
-    public StoredFilesRoom getRooms() {
-        return rooms;
+    public Room getRooms() {
+        return roomObject;
     }
 }

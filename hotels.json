@@ -1,26 +1,50 @@
 [
     {
-        "na":"sixsenses",
+        "na":"SIXSENSES",
         "add":"12/1, HaiBaChung, District 1",
         "loca":"HANOI",
         "room":24,
-        "ev":"excellent",
-        "uti":"five star"
+        "ev":[
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Very good"
+            }
+        ],
+        "uti":"five star",
+        "op":true
     },
     {
-        "na":"rex",
+        "na":"REXIMOND",
         "add":"12/1, HaiBaChung, District 1",
         "loca":"HCM",
-        "room":40,
-        "ev":"good",
-        "uti":"five star"
+        "room":25,
+        "ev":[
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Very good"
+            }
+        ],
+        "uti":"five star",
+        "op":true
     },
     {
-        "na":"gallici",
+        "na":"GALLICI",
         "add":"12/1, HaiBaChung, District 1",
         "loca":"DANANG",
-        "room":30,
-        "ev":"good",
-        "uti":"five star"
+        "room":28,
+        "ev":[
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Very good"
+            }
+        ],
+        "uti":"five star",
+        "op":true
     }
 ]
