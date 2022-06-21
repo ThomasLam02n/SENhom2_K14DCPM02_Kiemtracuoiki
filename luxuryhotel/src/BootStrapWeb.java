@@ -14,7 +14,7 @@ public class BootStrapWeb {
 
         Room room = new Room();
         SearchHotelController searchHotelController = new SearchHotelController();
-        SearchRoomController searchRoomController = new SearchRoomController(room);
+        SearchRoomController searchRoomController = new SearchRoomController("REXIMONDROOMS.json");
 
         SearchHotelUI searchHotelUI = new SearchHotelUI(searchHotelController);
         SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
