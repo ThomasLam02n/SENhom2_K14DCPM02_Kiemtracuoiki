@@ -10,33 +10,37 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class BookingRoomController {
-    private BookedRoom bookroom ;
-    private Room room;
-    private Account account;
+    private static BookedRoom bookroom;
+    private static Room room;
+    private static Account account;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     public BookingRoomController(){
         
     }
     
+    // public BookingRoomController(Room room) {
+    //     this.room = room;
+    // }
+
     public BookingRoomController(Room room) {
-        this.room = room;
+        BookingRoomController.room = room;
     }
 
     public BookingRoomController(BookedRoom bookroom) {
-        this.bookroom = bookroom;
+        BookingRoomController.bookroom = bookroom;
     }
 
     public BookingRoomController(Account account) {
-        this.account = account;
+        BookingRoomController.account = account;
     }
 
     public BookingRoomController(BookedRoom bookroom, Room room, Account account) {
-        this.bookroom = bookroom;
-        this.room = room;
-        this.account = account;
+        BookingRoomController.bookroom = bookroom;
+        BookingRoomController.room = room;
+        BookingRoomController.account = account;
     }
 
-    public void  bookingRoom(int idRoom , Date check_in , Date check_out){
+    public void bookingRoom(int idRoom , Date check_in , Date check_out){
         List<Object> listCheck;
         List<Object> listCheck2;
         listCheck = checkBookedRoom_valid(idRoom, check_in, check_out);
@@ -59,13 +63,13 @@ public class BookingRoomController {
             JsonArray utilitiess = jsonObject.get("utilities").getAsJsonArray();
             int aop = jsonObject.get("amount of people").getAsInt();
             try {
-                this.room.setRoom(idRoom, areas, prices, utilitiess, aop);
+                BookingRoomController.room.setRoom(idRoom, areas, prices, utilitiess, aop);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
 
-            this.account.checkLoggedIn();
-            String nameCustomer = this.account.getUsername();
+            BookingRoomController.account.checkLoggedIn();
+            String nameCustomer = BookingRoomController.account.getUsername();
             JsonArray accArray = Account.getAccounts().getAll();
             int index3 = 0;
             index3 = Account.getAccounts().search("un", nameCustomer);
@@ -90,7 +94,7 @@ public class BookingRoomController {
         if(index != -1){
             JsonArray bookedroomArray = BookedRoom.getBookedRoom().getAll();
             index2 = BookedRoom.getBookedRoom().searchInt("id room", idRoom);
-            index3 = BookedRoom.getBookedRoom().searchString("un", this.account.getUsername());
+            index3 = BookedRoom.getBookedRoom().searchString("un", BookingRoomController.account.getUsername());
             if (index2 != -1) {
                 JsonObject bookedroomObject = bookedroomArray.get(index2).getAsJsonObject();
                 List<Object> list3 = new ArrayList<>();
