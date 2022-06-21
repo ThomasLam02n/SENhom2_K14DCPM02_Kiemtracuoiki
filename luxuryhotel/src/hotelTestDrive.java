@@ -4,7 +4,7 @@ public class hotelTestDrive {
         /* hotels.read(); */
         Room room = new Room();
         SearchHotelController searchHotelController = new SearchHotelController();
-        SearchRoomController searchRoomController = new SearchRoomController("REXIMONDROOMS.json");
+        SearchRoomController searchRoomController = new SearchRoomController();
         // searchHotelController.searchHotelName("GALLICI");
         /* searchHotelController.searchHotelName("REXIMON"); */
         /* searchHotelController.searchLocation("DANANG"); */

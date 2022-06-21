@@ -43,6 +43,7 @@ public class PrintBillController {
             }
         }
     }
+    
     public List<Object> bill_valid(String id) {
         List<Object> list =  new ArrayList<>();
         int index = 0;

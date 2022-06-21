@@ -22,13 +22,6 @@ public class Bill {
         this.price = price;
     }
 
-    // public void setBill(String username, String id, double price) {
-    //     this.username = username;
-    //     this.id = id;
-    //     this.price = price;
-    //     this.state_bill = true;
-    // } 
-
     public Bill(String username, int id, double prices, JsonArray service) {
         this.username = username;
         this.id = id;

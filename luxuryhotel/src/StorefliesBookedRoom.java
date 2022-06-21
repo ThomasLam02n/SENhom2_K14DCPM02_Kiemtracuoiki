@@ -62,8 +62,7 @@ public  class StorefliesBookedRoom {
             }
         }
         return index;
-    }
-    
+    }    
 
     public JsonArray read() {
         JsonArray jsonArray = null;

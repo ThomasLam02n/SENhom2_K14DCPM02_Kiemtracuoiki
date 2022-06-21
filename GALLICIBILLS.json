@@ -6,7 +6,7 @@
         "phone": 12345,
         "email": "thai@",
         "date in": "20/07/2022",
-        "date out": "21/07/2022",
+        "date out": "21/07/2022", 
         "service": [
             {
                 "1": "wifi"

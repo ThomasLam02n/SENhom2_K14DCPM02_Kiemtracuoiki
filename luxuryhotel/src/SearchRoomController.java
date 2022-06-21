@@ -15,6 +15,7 @@ public class SearchRoomController {
     public SearchRoomController(String nameFile) {
         SearchRoomController.rooms = new StoredFilesRoom(nameFile);
     }
+    
     public void searchRoom(int aop) { 
         List<Object> listCheck;
         
@@ -32,6 +33,7 @@ public class SearchRoomController {
 
     public void viewRoom() {
         JsonArray tempMemory = rooms.getMemory();
+        
         System.out.println("ID: \t EREA: \t PRICE: \t UTILITIES: \t\t AMOUNT OF PEOPLE:");
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
@@ -107,6 +109,7 @@ public class SearchRoomController {
         }
         return list;
     }
+
     public Room getRooms() {
         return roomObject;
     }

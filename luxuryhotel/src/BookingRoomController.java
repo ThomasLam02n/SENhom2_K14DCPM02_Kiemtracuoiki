@@ -17,10 +17,6 @@ public class BookingRoomController {
     public BookingRoomController(){
         
     }
-    
-    // public BookingRoomController(Room room) {
-    //     this.room = room;
-    // }
 
     public BookingRoomController(Room room) {
         BookingRoomController.room = room;

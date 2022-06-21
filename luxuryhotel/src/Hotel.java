@@ -14,10 +14,6 @@ public class Hotel {
 
     }
 
-    // public Hotel(String nameFile){
-    //     Hotel.hotels = new StorefilesHotelController(nameFile);
-    // }
-
     public Hotel(String name, String address,int room_quantity, JsonArray evaluation, String utilities) {
         this.name = name;
         this.address = address;
@@ -31,16 +27,14 @@ public class Hotel {
         this.evaluation = evaluation;
     }
 
-    public void setHotel(String name, String address,int room_quantity, JsonArray evaluation, String utilities) {
+    public void setHotel(String name, String address,int room_quantity, String utilities) {
         this.name = name;
         this.address = address;
         this.room_quantity = room_quantity;
-        this.evaluation = evaluation;
         this.utilities = utilities;
         this.opening = true;
     }
    
-
     public static StorefilesHotelController getHotels() {
         return hotels;
     }
@@ -60,8 +54,6 @@ public class Hotel {
     public int getRoom_quantity() {
         return room_quantity;
     }
-
-    
 
     public String getUtilities() {
         return utilities;
