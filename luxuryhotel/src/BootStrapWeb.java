@@ -14,6 +14,16 @@ public class BootStrapWeb {
         Scanner scanner = new Scanner(System.in);
         Scanner scanners = new Scanner(System.in);
 
+<<<<<<< HEAD
+=======
+        // Room room = new Room();
+        // SearchHotelController searchHotelController = new SearchHotelController();
+        SearchRoomController searchRoomController = new SearchRoomController("REXIMONDROOMS.json");
+
+        // SearchHotelUI searchHotelUI = new SearchHotelUI(searchHotelController);
+        SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
+
+>>>>>>> dfec031c55f8244abb56274e29e18f8433e45af9
         Account account = new Account();
         NewAccountController newAccountController = new NewAccountController(account);
         NewAccountUI newAccountUI = new NewAccountUI(newAccountController);

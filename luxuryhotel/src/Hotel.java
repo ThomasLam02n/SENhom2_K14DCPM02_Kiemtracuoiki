@@ -59,9 +59,6 @@ public class Hotel {
         return utilities;
     }
 
-    public void setHotel(String string, String string2, int room_quantity2, String string3, String string4) {
-    }
-
     
     
 }

@@ -31,7 +31,7 @@ public class CancelBillUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.SI)) {
             List<Object> list =  CancelBill();
-            checkBookedRoomController.SearchBill(list.get(0 ).toString());
+            checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
         }
     }
 

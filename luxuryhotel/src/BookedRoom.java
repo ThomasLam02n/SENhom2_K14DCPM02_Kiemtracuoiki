@@ -10,6 +10,7 @@ public class BookedRoom {
     private int idRoom;
     private Date checkin_date;
     private Date checkout_date;
+    private boolean checkBookedRoom;
     
     public BookedRoom() {
         this.nameCustomer = null;
@@ -18,6 +19,7 @@ public class BookedRoom {
         this.idRoom = 0;
         this.checkin_date = null;
         this.checkout_date = null;
+        this.checkBookedRoom = false;
     }
 
     public BookedRoom(String nameFile) {
@@ -32,12 +34,23 @@ public class BookedRoom {
         this.idRoom = idRoom;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
+        this.checkBookedRoom = true;
     }
 
     public void  setBookedRoom(int idRoom, Date checkin_date, Date checkout_date) {
         this.idRoom = idRoom;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
+    }
+
+    public void setBookedRoom(String name, int phonr, String  email, int idRoom, Date checkdi, Date checkdo, boolean check_booked){
+        this.nameCustomer = name;
+        this.idRoom = idRoom;
+        this.email = email;
+        this.phoneNumber = phonr;
+        this.checkin_date = checkdi;
+        this.checkout_date = checkdo;
+        this.checkBookedRoom = true;
     }
 
     public static StorefliesBookedRoom getBookedRoom(){
@@ -59,6 +72,7 @@ public class BookedRoom {
     public void setIdRoom(int idRoom) {
         this.idRoom = idRoom;
     } 
-    
-
+    public boolean check_booked() {
+        return checkBookedRoom;
+    }
 }
