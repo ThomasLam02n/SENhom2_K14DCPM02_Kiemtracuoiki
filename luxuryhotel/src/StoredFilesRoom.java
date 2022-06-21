@@ -18,7 +18,6 @@ public class StoredFilesRoom {
     public JsonArray getMemory() {
         return this.memory;
     }
-    // public abstract void update();
 
     public int searchString(String key, String value) {
         int index = -1;

@@ -21,7 +21,6 @@ public class StoredFilesBill{
     public JsonArray getMemory() {
         return memory;
     }
-    // public abstract void update();
 
     public int searchString(String key, String value) {
         int index = -1;
@@ -105,6 +104,5 @@ public class StoredFilesBill{
             e.printStackTrace();
 
         }
-    }
-    
+    }    
 }

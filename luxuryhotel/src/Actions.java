@@ -4,7 +4,7 @@ public enum Actions {
     //check BookedRoom
     SI,
     //Search
-    SR, SH,
+    SR, SH, 
     //Locations
     HANOI, HCM, DANANG,
     //name Hotel

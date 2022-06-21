@@ -26,4 +26,5 @@ public class Service {
     public double getPrice() {
         return price;
     }
+    
 }

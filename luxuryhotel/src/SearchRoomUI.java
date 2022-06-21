@@ -30,7 +30,7 @@ public class SearchRoomUI extends UITerminal{
     @Override
     public void handleInputs() {
         if (this.command.equals(Actions.SR)) {
-            // this.searchRoomController.viewRoom();
+            this.searchRoomController.viewRoom();
             List<Object> list =  searchRoomInput();
             this.searchRoomController.searchRoom((int)list.get(0));
         }
@@ -38,19 +38,9 @@ public class SearchRoomUI extends UITerminal{
 
     public List<Object> searchRoomInput() {
         List<Object> list = new ArrayList<>();
-        // System.out.print("AREA: ");
-        // int area = scanner.nextInt();
-        // System.out.print("PRICE: ");
-        // double price = scanner.nextDouble();
-        // scanner.nextLine();
-        // System.out.print("UTILITIES: ");
-        // String utilities = scanner.nextLine();
         System.out.print("AMOUNT OF PEOPLE: ");
         int aop = scanner.nextInt();
         scanner.nextLine();
-        // list.add(area);
-        // list.add(price);
-        // list.add(utilities);
         list.add(aop);
         return list;
     }
