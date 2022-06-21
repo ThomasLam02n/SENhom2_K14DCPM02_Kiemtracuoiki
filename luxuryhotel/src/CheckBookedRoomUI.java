@@ -19,17 +19,17 @@ public class CheckBookedRoomUI extends UITerminal {
     public CheckBookedRoomUI() {
     }
 
-
-
     @Override
     public String handleCommand(String rep) {
         // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
-        if (this.command.equals(Actions.SI)) {
+        if (this.command.equals(Actions.CB)) {
+            return " Confirm";
+        } else if (this.command.equals(Actions.CF)) {
             return "Enter the request you want to find.";
-        } else {
+        }else {
             return "Unkown command.";
         }
     }
@@ -39,14 +39,14 @@ public class CheckBookedRoomUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.SI)) {
             List<Object> list =  searchInputId();
-            checkBookedRoomController.SearchBill(list.get(0 ).toString());
+            checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
         }
     }
 
     public List<Object> searchInputId() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
-        int id = scanner.nextInt();
+        String id = scanner.nextLine();
         list.add(id);
         return list;
     }

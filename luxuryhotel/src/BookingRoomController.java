@@ -14,8 +14,8 @@ public class BookingRoomController {
     private static Room room;
     private static Account account;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    public BookingRoomController(){
-        
+
+    public BookingRoomController(){        
     }
 
     public BookingRoomController(Room room) {
@@ -52,6 +52,9 @@ public class BookingRoomController {
         } else {
             JsonArray tempMemory = Room.getRooms().getMemory();
             int index = 0;
+            for (int i = 0; i < tempMemory.size(); i++) {
+                
+            }
             index = Room.getRooms().searchInt("id", idRoom);
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
             int areas = jsonObject.get("area").getAsInt();
