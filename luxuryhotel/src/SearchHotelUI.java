@@ -23,7 +23,7 @@ public class SearchHotelUI extends UITerminal{
             this.command = Actions.valueOf(cmd);
     
             if (this.command.equals(Actions.SH)) {
-                return "Choose the hotel you want to stay:";
+                return "Choose the Location you want to go:";
             } else {
                 return "Unkown command.";
             }
@@ -33,13 +33,13 @@ public class SearchHotelUI extends UITerminal{
     public void handleInputs() {
        if(this.command.equals(Actions.SH)){
         List<Object> list = searchHotelInput();
-        this.searchHotelControllerObj.searchHotelName(list.get(0).toString());
+        this.searchHotelControllerObj.searchLocation(list.get(0).toString());
        }
     }
 
     public List<Object> searchHotelInput(){
         List<Object> list = new ArrayList<>();
-        System.out.print("Name of Hotel: ");
+        System.out.print("Location: ");
         String name = inputs.nextLine();
         list.add(name);
         return list;

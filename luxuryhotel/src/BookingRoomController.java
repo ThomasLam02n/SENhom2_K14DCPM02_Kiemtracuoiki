@@ -36,7 +36,7 @@ public class BookingRoomController {
         this.account = account;
     }
 
-    public void bookingRoom(int idRoom , Date check_in , Date check_out){
+    public void  bookingRoom(int idRoom , Date check_in , Date check_out){
         List<Object> listCheck;
         List<Object> listCheck2;
         listCheck = checkBookedRoom_valid(idRoom, check_in, check_out);

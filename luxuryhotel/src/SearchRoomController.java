@@ -8,6 +8,10 @@ public class SearchRoomController {
     private Room roomObject;
     private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json"); 
 
+    public SearchRoomController(Room room){
+        this.roomObject = room;
+    }
+
     public void searchRoom(int aop) { 
         List<Object> listCheck;
         

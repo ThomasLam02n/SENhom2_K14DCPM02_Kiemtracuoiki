@@ -64,5 +64,17 @@
         "ps": 123,
         "email": "thai1",
         "phone": 1236789
+    },
+    {
+        "un": "tung",
+        "ps": 4444,
+        "email": "tung@gmail.com",
+        "phone": 126236
+    },
+    {
+        "un": "tu",
+        "ps": 5555,
+        "email": "tu@gamail.com",
+        "phone": 1234566
     }
 ]
