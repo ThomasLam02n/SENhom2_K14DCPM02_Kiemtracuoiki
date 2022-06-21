@@ -29,16 +29,12 @@ public class AddServicesUI extends UITerminal {
     public void handleInputs() {
         if (this.command.equals(Actions.AS)) {
             addServiceController.viewService();
-            while (true) {
-                List<Object> list =  addServiceInput();
-                addServiceController.addService((int)list.get(0), list.get(1).toString());
-                System.out.print("Do you want to continue adding services?(Y/N): ");
-                if (scanner.nextLine().equalsIgnoreCase("N")) {
-                    break;
-                }
+            List<Object> list =  addServiceInput();
+            for (int i = 1; i < list.size(); i++) {
+                addServiceController.addService((int)list.get(0), list.get(i).toString());
             }
-            
         }
+            
     }
 
     public List<Object> addServiceInput() {
@@ -46,10 +42,21 @@ public class AddServicesUI extends UITerminal {
         System.out.print("ID room: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Name Service: ");
-        String nameSv = scanner.nextLine();
         list.add(id);
-        list.add(nameSv);
+        while (true) {
+            System.out.print("Name Service: ");
+            String nameSv = scanner.nextLine();
+            
+            list.add(nameSv);
+            // System.out.print("Do you want to continue adding services?(Y/N): ");
+            // if (scanner.nextLine().equalsIgnoreCase("n")) {
+            //     break;
+            // }
+            if (nameSv.equals("")) {
+                break;
+            }
+        }
+        
         return list;
     }
 }

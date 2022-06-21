@@ -8,9 +8,14 @@ public class Room {
     private JsonArray utilities;
     private int amounOfPeople;
     private boolean booked;
-    private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
+    private static StoredFilesRoom rooms ;
+    // private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
 
     public Room() {
+    }
+
+    public Room(String nameFile) {
+        Room.rooms = new StoredFilesRoom(nameFile);
     }
 
     public Room(int id, int area, double price, JsonArray utilities, int amounOfPeople) {

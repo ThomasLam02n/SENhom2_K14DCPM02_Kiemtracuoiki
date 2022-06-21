@@ -1,0 +1,72 @@
+[
+    {
+        "id": 101,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 102,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 103,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 104,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 105,
+        "area": 40,
+        "price": 4000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    }
+]

@@ -16,6 +16,10 @@ public class SearchHotelController {
 
     }
 
+    public SearchHotelController(Hotel hotelobject) {
+        this.hotelobject = hotelobject;
+    }
+    
     public void searchHotelName(String name) {
         List<Object> listCheck;
         listCheck = checkHotel_Valid(name);
@@ -27,6 +31,8 @@ public class SearchHotelController {
             System.out.print("\tRooms: "+listCheck.get(5));
             System.out.print("\tEvaluations: "+listCheck.get(6));
             System.out.println("\tUtilities: "+listCheck.get(7));
+            this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), (int)listCheck.get(5),
+             listCheck.get(6).toString(), listCheck.get(7).toString());
         } else {
             System.out.println("[NOT FOUND OUT] name hotel wrong baby !");
         }
@@ -35,18 +41,18 @@ public class SearchHotelController {
 
     public void searchLocation(String location) {
         List<Object> listCheck;
-        listCheck = checkLocationHotel_Valid(location);
+        listCheck = checkLocation_Valid(location);
         if (!(boolean) listCheck.get(0)) {
             System.out.println(listCheck.get(1));
-            System.out.print("Name: "+listCheck.get(2));
-            System.out.print("\tAddress: "+listCheck.get(3));
-            System.out.print("\tLocation: "+listCheck.get(4));
-            System.out.print("\tRooms: "+listCheck.get(5));
-            System.out.print("\tEvaluations: "+listCheck.get(6));
-            System.out.println("\tUtilities: "+listCheck.get(7));
+            System.out.println(listCheck.get(2));
+            System.out.println(listCheck.get(3));
+            System.out.println(listCheck.get(4));
+            System.out.println(listCheck.get(5));
+            System.out.println(listCheck.get(6));
         } else {
-            System.out.println("[NOT FOUND] Location not update yet !!! ");
+            System.out.println("Nhập lại đi bé ơi !!!");
         }
+
     }
 
     public List<Object> checkLocation_Valid(String location) {
@@ -64,6 +70,7 @@ public class SearchHotelController {
             int rooms = jsonObject.get("room").getAsInt();
             String evaluations = jsonObject.get("ev").getAsString();
             String utilities = jsonObject.get("uti").getAsString();
+            
             list.add(names);
             list.add(addresses);
             list.add(locations);
@@ -120,49 +127,6 @@ public class SearchHotelController {
         }
         return list;
     }
-
-    public List<Object> checkLocationHotel_Valid(String location) {
-        List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = hotels.getMemory();
-        int index = 0;
-        index = Hotel.getHotels().searchAddressHotel("loca", location);
-        if (index != -1) {
-            list.add(false);
-            list.add("[FOUND OUT] hotel infomation:");
-            JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            String names = jsonObject.get("na").getAsString();
-            String addresses = jsonObject.get("add").getAsString();
-            String locations = jsonObject.get("loca").getAsString();
-            int rooms = jsonObject.get("room").getAsInt();
-            if (jsonObject.get("ev").isJsonArray()) {
-                JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
-                String str = "";
-                for (int j = 0; j < jsonArray.size(); j++) {
-                    JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
-                    if (!jsonObject2.get("1").getAsString().equals("")) {
-                        if (str.equals("")) {
-                            str += jsonObject2.get("1").getAsString();
-                        } else {
-                            str += ", " + jsonObject2.get("1").getAsString();
-                        }
-                    }
-                }
-                list.add(names);
-                list.add(addresses);
-                list.add(locations);
-                list.add(rooms);
-                list.add(str);
-            }
-            String utilities = jsonObject.get("uti").getAsString();
-            list.add(utilities);
-            return list;
-        } else {
-            list.add(true);
-            list.add("[NOT FOUND OUT] hotel do not exist");
-        }
-        return list;
-    }
-
 
     public void viewHotel() {
         JsonArray tempMemory = hotels.getMemory();
