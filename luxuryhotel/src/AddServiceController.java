@@ -72,7 +72,9 @@ public class AddServiceController {
             } else{
                 price = (prices * diffDays) + pricesBill;
             }            
+
             billArray.remove(billArray.get(index));
+
             try {
                 Bill.getStoredFilesBill().update(id, idRoom, username, phoneNumber, email, BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout), service, price);
             } catch (ParseException e) {
