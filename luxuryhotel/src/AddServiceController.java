@@ -43,12 +43,12 @@ public class AddServiceController {
             JsonArray service = billObject.get("service").getAsJsonArray();
             String datein = billObject.get("date in").getAsString();
             String dateout = billObject.get("date out").getAsString();
-            //
+            
             String id = billObject.get("id").getAsString();
             String username = billObject.get("un").getAsString();
             Integer phoneNumber = billObject.get("phone").getAsInt();
             String email = billObject.get("email").getAsString();
-            //
+            
             int diffDays = 0;
             try {
                 diffDays = (int)calculate_the_date_of_use(BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout));
@@ -74,7 +74,9 @@ public class AddServiceController {
             } else{
                 price = (prices * diffDays) + pricesBill;
             }            
+
             billArray.remove(billArray.get(index));
+
             try {
                 Bill.getStoredFilesBill().update(id, idRoom, username, phoneNumber, email, BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout), service, price);
             } catch (ParseException e) {

@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class BookedRoom {
     // private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
-    private static StorefliesBookedRoom bookedRoom;
+    private static StorefliesBookedRoom bookedRoom; 
     
     private String nameCustomer;
     private int phoneNumber;
