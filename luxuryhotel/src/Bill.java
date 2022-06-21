@@ -6,9 +6,14 @@ public class Bill {
     private double price;
     private JsonArray service;
     private boolean state_bill;
-    private static StoredFilesBill storedFilesBill = new StoredFilesBill("bills.json");
+    // private static StoredFilesBill storedFilesBill = new StoredFilesBill("bills.json");
+    private static StoredFilesBill storedFilesBill;
 
     public Bill() {
+    }
+
+    public Bill(String nameFile) {
+        Bill.storedFilesBill = new StoredFilesBill(nameFile);
     }
 
     public Bill(String username, int id, double price) {
