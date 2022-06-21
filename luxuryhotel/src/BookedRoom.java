@@ -1,8 +1,7 @@
 import java.util.Date;
 
 public class BookedRoom {
-    // private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
-    private static StorefliesBookedRoom bookedRoom;
+    private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
     
     private String nameCustomer;
     private int phoneNumber;
@@ -18,10 +17,6 @@ public class BookedRoom {
         this.idRoom = 0;
         this.checkin_date = null;
         this.checkout_date = null;
-    }
-
-    public BookedRoom(String nameFile) {
-        BookedRoom.bookedRoom = new StorefliesBookedRoom(nameFile);
     }
 
     public BookedRoom(String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
@@ -41,7 +36,7 @@ public class BookedRoom {
     }
 
     public static StorefliesBookedRoom getBookedRoom(){
-        return bookedRoom;
+        return bookRoom;
     }
 
     public Date getCheckin_date() {
