@@ -1,7 +1,5 @@
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -11,7 +9,6 @@ import com.google.gson.JsonParser;
 public class StoredFilesBill{
     private JsonArray memory;
     private String storeFile;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public StoredFilesBill( String storeFile) {
         this.storeFile = storeFile;
@@ -78,23 +75,6 @@ public class StoredFilesBill{
         }
 
         return jsonArray;
-    }
-
-    public void update(String id, Integer idRoom, String username, Integer phoneNumber, 
-    String email , Date check_in, Date check_out,JsonArray service, double price) {
-        JsonObject jsonObject = new JsonObject();
-
-        jsonObject.addProperty("id", id);
-        jsonObject.addProperty("id room", idRoom);
-        jsonObject.addProperty("un", username);
-        jsonObject.addProperty("phone", phoneNumber);
-        jsonObject.addProperty("email", email);
-        jsonObject.addProperty("date in", dateFormat.format(check_in));
-        jsonObject.addProperty("date out", dateFormat.format(check_out));
-        jsonObject.add("service", service);
-        jsonObject.addProperty("price", price);
-        
-        this.memory.add(jsonObject);
     }
 
     public void write() {

@@ -9,11 +9,11 @@ public enum Actions {
     HANOI, HCM, DANANG,
     //name Hotel
     REXIMOND, SIXSENSE, GALLICI,
-    // Bookedroom , print bill , add service 
+    
     BR, PB, AS,
     //canel bill
     CB,
-    // evaluation
-    EV
+    //Evaluate
+    EV,
 
 }

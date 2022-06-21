@@ -6,17 +6,11 @@ public class Hotel {
     private int room_quantity;
     private JsonArray evaluation;
     private String utilities;
-    private boolean opening;
     private static StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
-    // private static StorefilesHotelController hotels;
     
     public Hotel(){
 
     }
-
-    // public Hotel(String nameFile){
-    //     Hotel.hotels = new StorefilesHotelController(nameFile);
-    // }
 
     public Hotel(String name, String address,int room_quantity, JsonArray evaluation, String utilities) {
         this.name = name;
@@ -25,28 +19,14 @@ public class Hotel {
         this.evaluation = evaluation;
         this.utilities = utilities;
     }
-
-    public void setHotel(String name, JsonArray evaluation){
+    public void setHotel(String name, JsonArray evaluation) {
         this.name = name;
-        this.evaluation = evaluation;
+                this.evaluation = evaluation;
+       
     }
-
-    public void setHotel(String name, String address,int room_quantity, JsonArray evaluation, String utilities) {
-        this.name = name;
-        this.address = address;
-        this.room_quantity = room_quantity;
-        this.evaluation = evaluation;
-        this.utilities = utilities;
-        this.opening = true;
-    }
-   
 
     public static StorefilesHotelController getHotels() {
         return hotels;
-    }
-
-    public boolean check_opening(){
-        return this.opening;
     }
     
     public String getName() {

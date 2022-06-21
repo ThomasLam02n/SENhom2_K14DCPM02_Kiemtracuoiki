@@ -23,32 +23,28 @@ public class AddServiceController {
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.printf("%-10s %-10s\n" , jsonObject.get("service").getAsString(), jsonObject.get("price").getAsDouble());
+            // System.out.print(jsonObject.get("service").getAsString());
+            // System.out.println("  \t\t  "+ jsonObject.get("price").getAsDouble());
         }
     }
 
-    public void addService(int idRoom, String nameService) {
+    public void addService(int id, String nameService) {
         List<Object> listCheck;
         int index = 0;
         int index2 = 0;
-        listCheck = service_valid(idRoom, nameService);
+        listCheck = service_valid(id, nameService);
         if (!(boolean) listCheck.get(0)) {
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.get(i));
             }
         } else {
-            index = Bill.getStoredFilesBill().searchInt("id room", idRoom);
+            index = Bill.getStoredFilesBill().searchInt("id room", id);
             index2 = Service.getService().searchString("service", nameService);
             JsonArray billArray = Bill.getStoredFilesBill().getMemory();
             JsonObject billObject = billArray.get(index).getAsJsonObject();
             JsonArray service = billObject.get("service").getAsJsonArray();
             String datein = billObject.get("date in").getAsString();
             String dateout = billObject.get("date out").getAsString();
-            //
-            String id = billObject.get("id").getAsString();
-            String username = billObject.get("un").getAsString();
-            Integer phoneNumber = billObject.get("phone").getAsInt();
-            String email = billObject.get("email").getAsString();
-            //
             int diffDays = 0;
             try {
                 diffDays = (int)calculate_the_date_of_use(BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout));
@@ -70,17 +66,11 @@ public class AddServiceController {
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("Enter the number of clothes: ");
                 int number = scanner.nextInt();
-                price = ((prices * number) + pricesBill);
-            } else{
+                price = (prices * number) + pricesBill;
+            } else {
                 price = (prices * diffDays) + pricesBill;
             }            
-            billArray.remove(billArray.get(index));
-            try {
-                Bill.getStoredFilesBill().update(id, idRoom, username, phoneNumber, email, BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout), service, price);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            // this.bill.setBill(idRoom, service, price);
+            this.bill.setBill(id, service, price);
             Bill.getStoredFilesBill().write();
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.get(i));

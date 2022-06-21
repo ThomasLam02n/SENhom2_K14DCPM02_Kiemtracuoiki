@@ -6,15 +6,12 @@ import com.google.gson.JsonObject;
 
 public class SearchRoomController {
     private Room roomObject;
-    private static StoredFilesRoom rooms;
-    // private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json"); 
+    private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json"); 
 
-    public SearchRoomController() {
+    public SearchRoomController(Room room){
+        this.roomObject = room;
     }
 
-    public SearchRoomController(String nameFile) {
-        SearchRoomController.rooms = new StoredFilesRoom(nameFile);
-    }
     public void searchRoom(int aop) { 
         List<Object> listCheck;
         
