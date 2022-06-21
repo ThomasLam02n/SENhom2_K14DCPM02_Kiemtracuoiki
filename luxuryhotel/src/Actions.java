@@ -2,9 +2,9 @@ public enum Actions {
     //Create Account , Login Account, Logout
     CA, LO, LA,
     //check BookedRoom
-    SI,
+    SI, CF,
     //Search
-    SR, SH,
+    SR, SH, 
     //Locations
     HANOI, HCM, DANANG,
     //name Hotel

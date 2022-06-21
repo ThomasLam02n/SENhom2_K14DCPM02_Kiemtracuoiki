@@ -26,6 +26,7 @@ public class StoredFilesHotel {
         jsonObject.addProperty("RoomQuantity", room_quantity);
         jsonObject.addProperty("Evaluation", evaluation);
         jsonObject.addProperty("utilities", utilities);
+        
         this.memory.add(jsonObject);
     }
     public JsonArray read(String storeFile) {

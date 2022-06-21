@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class SearchHotelController {
-
     private Hotel hotelobject;
     private StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
 
@@ -31,8 +30,7 @@ public class SearchHotelController {
             System.out.print("\tRooms: "+listCheck.get(5));
             System.out.print("\tEvaluations: "+listCheck.get(6));
             System.out.println("\tUtilities: "+listCheck.get(7));
-            this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), (int)listCheck.get(5),
-             listCheck.get(6).toString(), listCheck.get(7).toString());
+            this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), (int)listCheck.get(5), listCheck.get(7).toString());
         } else {
             System.out.println("[NOT FOUND OUT] name hotel wrong baby !");
         }
@@ -68,9 +66,8 @@ public class SearchHotelController {
             String addresses = jsonObject.get("add").getAsString();
             String locations = jsonObject.get("loca").getAsString();
             int rooms = jsonObject.get("room").getAsInt();
-            String evaluations = jsonObject.get("ev").getAsString();
+            JsonArray evaluations = jsonObject.get("ev").getAsJsonArray();
             String utilities = jsonObject.get("uti").getAsString();
-            
             list.add(names);
             list.add(addresses);
             list.add(locations);
