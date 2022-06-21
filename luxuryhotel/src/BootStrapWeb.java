@@ -95,33 +95,6 @@ public class BootStrapWeb {
     
         }
 
-        /*
-         * while (true){
-         * Thread.sleep(1000);
-         * displayOption(newAccountController);
-         * String prompt = getPromt(newAccountController);
-         * System.out.print(prompt);
-         * // chon
-         * // command
-         * String rep = scanner.nextLine();
-         * // LI
-         * String resCMD;
-         * if (rep.toUpperCase().equals(Actions.CA.toString())) {
-         * resCMD = newAccountUI.handleCommands(rep);
-         * System.out.println(resCMD);
-         * 
-         * if (resCMD != null && !resCMD.equals("Unkown command.")) {
-         * newAccountUI.handleInputs();
-         * }
-         * } else if (rep.toUpperCase().equals(Actions.LA.toString())
-         * || rep.toUpperCase().equals(Actions.LO.toString())) {
-         * resCMD = loginAccountUI.handleCommands(rep);
-         * if (resCMD != null && !resCMD.equals("Unkown command.")) {
-         * loginAccountUI.handleInputs();
-         * }
-         * }
-         * }
-         */
     }
 
     public static void displayOption(SearchHotelController searchHotelController) {
