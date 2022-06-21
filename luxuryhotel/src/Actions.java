@@ -13,5 +13,7 @@ public enum Actions {
     BR, PB, AS,
     //canel bill
     CB,
+    //Evaluate
+    EV,
 
 }
