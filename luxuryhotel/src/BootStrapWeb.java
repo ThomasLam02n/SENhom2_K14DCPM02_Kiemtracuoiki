@@ -31,6 +31,7 @@ public class BootStrapWeb {
         BookingRoomUI bookingRoomUI = new BookingRoomUI(bookingRoomController);
 
         System.out.println("Welcom to the LuxuryHotel System");
+        System.out.println("OLALA");
 
         while (true) {
             displayOption();
