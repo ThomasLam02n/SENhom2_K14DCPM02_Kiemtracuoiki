@@ -19,7 +19,7 @@ public class PrintBillController {
     public void printBill(String id) {
         List<Object> listCheck;
         
-        listCheck = bill_valid(id);
+        listCheck = billValid(id);
         int index = 0;
         if (!(boolean) listCheck.get(0)) {
             for (int i = 1; i < listCheck.size(); i++) {
@@ -44,7 +44,7 @@ public class PrintBillController {
         }
     }
     
-    public List<Object> bill_valid(String id) {
+    public List<Object> billValid(String id) {
         List<Object> list =  new ArrayList<>();
         int index = 0;
         index = Bill.getStoredFilesBill().searchString("id", id);

@@ -6,7 +6,6 @@ public class Bill {
     private double price;
     private JsonArray service;
     private boolean state_bill;
-    // private static StoredFilesBill storedFilesBill = new StoredFilesBill("bills.json");
     private static StoredFilesBill storedFilesBill;
 
     public Bill() {
@@ -52,7 +51,7 @@ public class Bill {
         return username;
     }
 
-    public boolean check_bill() {
+    public boolean checkBill() {
         return state_bill;
     }
 }

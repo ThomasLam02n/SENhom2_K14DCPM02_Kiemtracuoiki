@@ -56,7 +56,7 @@ public class BootStrapReception {
         System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
         // check
         String str = "";
-        if(checkBookedRoomController.getBookedRoom().check_booked()){
+        if(checkBookedRoomController.getBookedRoom().checkBooked()){
             str = "Enter on of the conmand in brackets: \n"+
             "[CF] Confirm BookedRoom";
             System.out.println(str);

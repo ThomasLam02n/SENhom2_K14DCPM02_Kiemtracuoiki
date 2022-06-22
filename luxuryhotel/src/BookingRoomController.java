@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -39,8 +38,8 @@ public class BookingRoomController {
     public void bookingRoom(int idRoom , Date check_in , Date check_out){
         List<Object> listCheck;
         List<Object> listCheck2;
-        listCheck = checkBookedRoom_valid(idRoom, check_in, check_out);
-        listCheck2 = check_date_valid(check_in, check_out);
+        listCheck = checkBookedRoomValid(idRoom, check_in, check_out);
+        listCheck2 = checkDateValid(check_in, check_out);
         if(!(boolean) listCheck.get(0)){
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.toString());
@@ -76,7 +75,7 @@ public class BookingRoomController {
             JsonObject accObject = accArray.get(index3).getAsJsonObject();
             Integer phoneNumber = accObject.get("phone").getAsInt();
             String email =  accObject.get("email").getAsString();
-            int diffDays = (int)calculate_the_date_of_use(check_in, check_out);
+            int diffDays = (int)calculateTheDateOfUse(check_in, check_out);
             prices = prices * diffDays;
             String id = createID(idRoom);
             BookedRoom.getBookedRoom().update(id, idRoom, nameCustomer, phoneNumber, email, check_in, check_out, prices);
@@ -85,7 +84,7 @@ public class BookingRoomController {
         } 
     }
     
-    public List<Object> checkBookedRoom_valid(int idRoom , Date check_in , Date check_out){
+    public List<Object> checkBookedRoomValid(int idRoom , Date check_in , Date check_out){
         List<Object> list = new ArrayList<>();
         int index = 0;
         int index2 = 0;
@@ -101,7 +100,7 @@ public class BookingRoomController {
                 String dateout = bookedroomObject.get("date out").getAsString();
                 
                 try {
-                    list3 = check_date_valid(dateFormat.parse(dateout), check_in);
+                    list3 = checkDateValid(dateFormat.parse(dateout), check_in);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 } 
@@ -134,7 +133,7 @@ public class BookingRoomController {
         return list;
     }
 
-    public List<Object> check_date_valid(Date check_in , Date check_out){
+    public List<Object> checkDateValid(Date check_in , Date check_out){
         List<Object> list = new ArrayList<>();
         Date date = new Date();
         boolean checkint = check(date, check_in);
@@ -173,7 +172,7 @@ public class BookingRoomController {
         return id;
     }
 
-    public List<Object> checkBookedRoom_valid(String username) {
+    public List<Object> checkBookedRoomValid(String username) {
         List<Object> list = new ArrayList<>();
         int index = 0;
         index = BookedRoom.getBookedRoom().searchString("un", username);
@@ -219,7 +218,7 @@ public class BookingRoomController {
         return false;
     }  
     
-    public long calculate_the_date_of_use(Date dateint, Date dateout) {
+    public long calculateTheDateOfUse(Date dateint, Date dateout) {
         long diffDays;
         long diff = dateout.getTime() - dateint.getTime();
         diffDays = (diff / 3600000)/24;

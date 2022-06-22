@@ -135,7 +135,7 @@ public class BootStrapWeb {
         System.out.println("================ Room Menu ================");
         searchRoomController.viewRoom();
         String str = "";
-        if (!searchRoomController.getRooms().check_booked()) {
+        if (!searchRoomController.getRooms().checkBooked()) {
             str = "Enter one of the commands in the brackets:\n" +
                     "[SR] Search Room";
             System.out.println(str);

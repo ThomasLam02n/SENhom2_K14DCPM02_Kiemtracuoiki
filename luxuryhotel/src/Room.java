@@ -1,5 +1,4 @@
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 public class Room {
     private int id;
@@ -9,7 +8,6 @@ public class Room {
     private int amounOfPeople;
     private boolean booked;
     private static StoredFilesRoom rooms ;
-    // private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json");
 
     public Room() {
     }
@@ -31,7 +29,7 @@ public class Room {
         return rooms;
     }
 
-    public boolean check_booked() {
+    public boolean checkBooked() {
         return booked;
     }
 
@@ -54,8 +52,6 @@ public class Room {
 
     public int getId() {
         return id;
-    }
-
-   
+    }  
     
 }

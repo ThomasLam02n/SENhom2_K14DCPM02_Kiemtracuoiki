@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -30,7 +29,7 @@ public class AddServiceController {
         List<Object> listCheck;
         int index = 0;
         int index2 = 0;
-        listCheck = service_valid(idRoom, nameService);
+        listCheck = serviceValid(idRoom, nameService);
         if (!(boolean) listCheck.get(0)) {
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.get(i));
@@ -48,8 +47,9 @@ public class AddServiceController {
             Integer phoneNumber = billObject.get("phone").getAsInt();
             String email = billObject.get("email").getAsString();
             int diffDays = 0;
+
             try {
-                diffDays = (int)calculate_the_date_of_use(BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout));
+                diffDays = (int)calculateTheDateOfUse(BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -64,6 +64,7 @@ public class AddServiceController {
             service.add(jsonObject);
             double pricesBill = billObject.get("price").getAsDouble();
             double price;
+
             if (nameService.equalsIgnoreCase("Laundry")) {
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("Enter the number of clothes: ");
@@ -82,13 +83,14 @@ public class AddServiceController {
             }
             // this.bill.setBill(idRoom, service, price);
             Bill.getStoredFilesBill().write();
+            
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.get(i));
             }
         }
     }
 
-    public List<Object> service_valid(int id, String nameService) {
+    public List<Object> serviceValid(int id, String nameService) {
         List<Object> list = new ArrayList<>();
         int index = 0;
         int index2 = 0;
@@ -110,7 +112,7 @@ public class AddServiceController {
         return list;
     }
     
-    public long calculate_the_date_of_use(Date dateint, Date dateout) {
+    public long calculateTheDateOfUse(Date dateint, Date dateout) {
         long diffDays;
         long diff = dateout.getTime() - dateint.getTime();
         diffDays = (diff / 3600000)/24;

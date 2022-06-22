@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class SearchRoomController {
     private Room roomObject;
-    private static StoredFilesRoom rooms;
-    // private static StoredFilesRoom rooms = new StoredFilesRoom("rooms.json"); 
+    private static StoredFilesRoom rooms;; 
 
     public SearchRoomController() {
     }
@@ -19,7 +17,7 @@ public class SearchRoomController {
     public void searchRoom(int aop) { 
         List<Object> listCheck;
         
-        listCheck = check_room_valid(aop);
+        listCheck = checkRoomValid(aop);
         if (!(boolean) listCheck.get(0)) {
             for (int index = 1; index < listCheck.size(); index++) {
                 System.out.println(listCheck.get(index));
@@ -61,7 +59,7 @@ public class SearchRoomController {
         }
     }
 
-    public List<Object> check_room_valid(int aop) {
+    public List<Object> checkRoomValid(int aop) {
         List<Object> list = new ArrayList<>();
         JsonArray tempMemory = rooms.getMemory();
         int index = 0;
