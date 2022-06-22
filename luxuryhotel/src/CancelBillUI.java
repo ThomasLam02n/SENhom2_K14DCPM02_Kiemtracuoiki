@@ -18,7 +18,9 @@ public class CancelBillUI extends UITerminal {
         // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
-        if (this.command.equals(Actions.SI)) {
+
+        if (this.command.equals(Actions.CB)) {
+
             return "Enter the request you want to find.";
         } else {
             return "Unkown command.";
@@ -28,7 +30,7 @@ public class CancelBillUI extends UITerminal {
     @Override
     public void handleInputs() {
         // TODO Auto-generated method stub
-        if (this.command.equals(Actions.SI)) {
+        if (this.command.equals(Actions.CB)) {
             List<Object> list =  CancelBill();
             checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
         }

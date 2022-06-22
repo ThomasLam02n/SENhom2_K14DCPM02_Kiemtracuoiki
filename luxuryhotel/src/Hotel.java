@@ -21,7 +21,7 @@ public class Hotel {
         this.evaluation = evaluation;
         this.utilities = utilities;
     }
-
+    
     public void setHotel(String name, JsonArray evaluation){
         this.name = name;
         this.evaluation = evaluation;
