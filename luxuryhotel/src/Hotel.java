@@ -7,7 +7,7 @@ public class Hotel {
     private JsonArray evaluation;
     private String utilities;
     private boolean opening;
-    private static StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
+    private static StorefilesHotelController hotels = new StorefilesHotelController("Hotels.json");
     // private static StorefilesHotelController hotels;
     
     public Hotel(){

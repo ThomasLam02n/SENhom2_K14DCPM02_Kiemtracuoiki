@@ -43,16 +43,7 @@ public class Room {
         this.amounOfPeople = amounOfPeople;
         this.booked = true;
     }
-    // ? thạch
-    public void CancelBill(){
-        this.id = id;
-        this.area = area;
-        this.price = price;
-        this.utilities = utilities;
-        this.amounOfPeople = amounOfPeople;
-        this.booked = false;
-    }
-
+    
     public boolean isBooked() {
         return booked;
     }
