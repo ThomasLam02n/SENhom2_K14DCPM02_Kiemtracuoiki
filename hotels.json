@@ -12,34 +12,14 @@
                 "1": "Very good"
             }
         ],
-
-        "uti":"five stars",
-        "op":true
-
+        "uti": "five stars"
     },
     {
-        "na": "REXIMOND",
+        "na": "GALLICI",
         "add": "12/1, HaiBaChung, District 1",
-        "loca": "HCM",
-        "room": 25,
+        "loca": "HANOI",
+        "room": 28,
         "ev": [
-            {
-                "1": "Good"
-            },
-            {
-                "1": "Very good"
-            }
-        ],
-      
-        "uti":"five stars",
-        "op":true
-
-    },
-    {
-        "name": "GALLICI",
-        "address": "12/1, HaiBaChung, District 1",
-        "RoomQuantity": 28,
-        "Evaluation": [
             {
                 "1": "Good"
             },
@@ -50,9 +30,28 @@
                 "1": "Good"
             }
         ],
-
-        "uti":"five stars",
-        "op":true
-
+        "uti": "five stars",
+        "op": true
+    },
+    {
+        "na": "reximond",
+        "add": "12/1, HaiBaChung, District 1",
+        "loca": "HANOI",
+        "room": 25,
+        "ev": [
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Very good"
+            },
+            {
+                "1": "nice"
+            },
+            {
+                "1": "bad"
+            }
+        ],
+        "uti": "five stars"
     }
 ]

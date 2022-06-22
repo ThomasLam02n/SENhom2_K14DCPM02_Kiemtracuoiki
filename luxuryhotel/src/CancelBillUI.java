@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CancelBillUI extends UITerminal {
     private Actions command;
-    private CheckBookedRoomController checkBookedRoomController;
+    private CancelBillController cancelBillController = new CancelBillController();
     Scanner scanner = new Scanner(System.in);
 
 
@@ -32,7 +32,7 @@ public class CancelBillUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.CB)) {
             List<Object> list =  CancelBill();
-            checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
+            cancelBillController.RemoveBill(list.get(0).toString());
         }
     }
 

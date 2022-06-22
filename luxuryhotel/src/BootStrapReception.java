@@ -13,6 +13,7 @@ public class BootStrapReception {
     private static ConfirmController confirmController = new ConfirmController(bookedRoom, bill);
     private static ConfirmUI confirmUI = new ConfirmUI(confirmController); 
 
+
     public static void main(String[] args) throws InterruptedException {
 
         System.out.println("Front desk system");
@@ -40,6 +41,7 @@ public class BootStrapReception {
                 } else {
                     System.out.println("[ERROR] UnKown command.");
                 } 
+                
             } else if(rep.toUpperCase().equals(Actions.CF.toString())){
                 rescmd = confirmUI.handleCommand(rep);
                 System.out.println(rescmd);
@@ -48,7 +50,22 @@ public class BootStrapReception {
                 } else {
                     System.out.println("[ERROR] Unkown command.");
                 }
-            } 
+
+            }  else if (rep.toUpperCase().equals(Actions.AS.toString())) {
+                Hotel hotel = new Hotel();
+                String fileBill = hotel.getName() + "BILLS.json";
+                Bill bill = new Bill(fileBill);
+                AddServiceController addServiceController = new AddServiceController(bill);
+                AddServicesUI addServicesUI = new AddServicesUI(addServiceController);
+                rescmd = addServicesUI.handleCommand(rep);
+                System.out.println(rescmd);
+                if (rescmd != null && !rescmd.equals("Unkown command.")) {
+                    addServicesUI.handleInputs();
+                    // displayOptionSearchRoom(searchRoomController);
+                } else {
+                    System.out.println("[ERRO] Unknown command");
+                }
+            }
         }
     }
     
@@ -63,7 +80,8 @@ public class BootStrapReception {
         } else {
               
             str = "Enter one of the command in the brakets:\n" + 
-                      "[SI] check booked room \n"
+                      "[SI] check booked room \n"+
+                      "[AS] Add Services \n"
                       +"[PB] print bill";
             System.out.println(str);
         }

@@ -33,7 +33,7 @@ public class SearchHotelController {
             System.out.print("\tRooms: "+listCheck.get(5));
             System.out.print("\tEvaluations: "+listCheck.get(6));
             System.out.println("\tUtilities: "+listCheck.get(7));
-            this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), (int)listCheck.get(5), listCheck.get(7).toString());
+            this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), listCheck.get(4).toString(), (int)listCheck.get(5), listCheck.get(7).toString());
         } else {
             System.out.println("[NOT FOUND OUT] name hotel wrong baby !");
         }

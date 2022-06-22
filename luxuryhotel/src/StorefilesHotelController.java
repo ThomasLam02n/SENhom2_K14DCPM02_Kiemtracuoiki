@@ -21,15 +21,16 @@ public class StorefilesHotelController {
         return memory;
     }
 
-    public void update(String name, String address,int room_quantity, JsonArray evaluation, String utilities){
+    public void update(String name, String address, String location,int room_quantity, JsonArray evaluation, String utilities){
 
         JsonObject jsonObject = new JsonObject();
 
-        jsonObject.addProperty("name", name);
-        jsonObject.addProperty("address", address);
-        jsonObject.addProperty("RoomQuantity", room_quantity);
-        jsonObject.add("Evaluation", evaluation);
-        jsonObject.addProperty("utilities", utilities);
+        jsonObject.addProperty("na", name);
+        jsonObject.addProperty("add", address);
+        jsonObject.addProperty("loca", location);
+        jsonObject.addProperty("room", room_quantity);
+        jsonObject.add("ev", evaluation);
+        jsonObject.addProperty("uti", utilities);
         this.memory.add(jsonObject);
     }
     public int search(String key, String value) {
