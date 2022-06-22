@@ -57,13 +57,14 @@ public class CheckBookedRoomController {
             Boolean check = true;
             list.add(true);
             list.add(ids);
+            list.add(idr);
             list.add(nameCusomer);
             list.add(phone);
             list.add(email);
             list.add(datei);
             list.add(dateo);
             try {
-                this.bookedRoom.setBookedRoom(nameCusomer, phone, email, idr, dateFormat.parse(datei), dateFormat.parse(dateo), check);
+                this.bookedRoom.setBookedRoom(idr, nameCusomer, phone, email, dateFormat.parse(datei), dateFormat.parse(dateo), check);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -77,5 +78,5 @@ public class CheckBookedRoomController {
         List<BookedRoom> cf = new ArrayList<>();
         cf.add(check_bill_valid(id));
     } */
-    }
+}
 

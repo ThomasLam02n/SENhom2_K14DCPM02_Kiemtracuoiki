@@ -61,6 +61,7 @@ public class BookingRoomController {
             double prices = jsonObject.get("price").getAsDouble();
             JsonArray utilitiess = jsonObject.get("utilities").getAsJsonArray();
             int aop = jsonObject.get("amount of people").getAsInt();
+            
             try {
                 BookingRoomController.room.setRoom(idRoom, areas, prices, utilitiess, aop);
             } catch (NullPointerException e) {

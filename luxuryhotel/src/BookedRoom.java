@@ -43,14 +43,14 @@ public class BookedRoom {
         this.checkout_date = checkout_date;
     }
 
-    public void setBookedRoom(String name, int phonr, String  email, int idRoom, Date checkdi, Date checkdo, boolean check_booked){
-        this.nameCustomer = name;
+    public void setBookedRoom(int idRoom, String name, int phonr, String  email,  Date checkdi, Date checkdo, boolean check_booked){
         this.idRoom = idRoom;
-        this.email = email;
+        this.nameCustomer = name;
         this.phoneNumber = phonr;
+        this.email = email;
         this.checkin_date = checkdi;
         this.checkout_date = checkdo;
-        this.checkBookedRoom = true;
+        this.checkBookedRoom = check_booked;
     }
 
     public static StorefliesBookedRoom getBookedRoom(){
