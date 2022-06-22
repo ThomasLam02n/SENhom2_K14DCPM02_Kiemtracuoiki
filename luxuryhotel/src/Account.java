@@ -1,5 +1,5 @@
 public class Account {
-    private static StoreFilesAccount accounts = new StoreFilesAccount("accounts.json");
+    private static StoreFilesAccount accounts = new StoreFilesAccount("Accounts.json");
 
     private String username;
     private Integer password;

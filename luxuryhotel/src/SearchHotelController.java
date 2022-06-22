@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 public class SearchHotelController {
     private Hotel hotelobject;
-    private StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
+    private StorefilesHotelController hotels = new StorefilesHotelController("Hotels.json");
 
     public Hotel getHotel(){
         return hotelobject;
