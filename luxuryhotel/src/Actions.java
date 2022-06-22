@@ -14,6 +14,8 @@ public enum Actions {
     //canel bill
     CB,
     // evaluation
-    EV
+    EV,
+    //Exit
+    EX
 
 }

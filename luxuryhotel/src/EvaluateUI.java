@@ -30,10 +30,12 @@ public class EvaluateUI extends UITerminal {
         if (this.command.equals(Actions.EV)) {
             // addServiceController.viewService();
             while (true) {
-                // List<Object> list =  addServiceInput();
+                List<Object> list =  addEvaluateInput();
                 // addServiceController.addService((int)list.get(0), list.get(1).toString());
-                System.out.print("Do you want to continue adding services?(Y/N): ");
-                if (input.nextLine().equalsIgnoreCase("N")) {
+                evaluateController.Evaluate(list.get(0).toString(), list.get(1).toString());
+                System.out.print("Do you want to rate more?(Y/N): ");
+                String n = input.nextLine();
+                if (n.equalsIgnoreCase("N")) {
                     break;
                 }
             }
@@ -41,13 +43,16 @@ public class EvaluateUI extends UITerminal {
         }
         
     }
-    public List<Object> addServiceInput() {
+    public List<Object> addEvaluateInput() {
         List<Object> list = new ArrayList<>();
         System.out.print("Name Hotel: ");
         String name = input.nextLine();
-        input.nextLine();
+        // input.nextLine();
+        System.out.println("Input Evalute");
+        String i = input.nextLine();
         // System.out.println("");
         list.add(name);
+        list.add(i);
         // list.add(nameSv);
         return list;
     }

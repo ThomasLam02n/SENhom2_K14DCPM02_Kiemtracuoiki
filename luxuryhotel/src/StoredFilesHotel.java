@@ -29,6 +29,14 @@ public class StoredFilesHotel {
         
         this.memory.add(jsonObject);
     }
+    // public void ssearch(String name, String evaluation){
+    //     JsonObject jsonObject = new JsonObject();
+    //     jsonObject.addProperty("name", name);
+    //     jsonObject.addProperty("Evaluation", evaluation);
+        
+        
+    //     this.memory.add(jsonObject);
+    // }
     public JsonArray read(String storeFile) {
         JsonArray jsonArray = null;
            
