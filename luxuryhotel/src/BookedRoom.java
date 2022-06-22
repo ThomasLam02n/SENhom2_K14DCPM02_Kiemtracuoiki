@@ -1,9 +1,7 @@
 import java.util.Date;
 
 public class BookedRoom {
-    // private static StorefliesBookedRoom bookRoom = new StorefliesBookedRoom("bookedrooms.json");
-    private static StorefliesBookedRoom bookedRoom; 
-    
+    private static StorefliesBookedRoom bookedRoom;     
     private String nameCustomer;
     private int phoneNumber;
     private String email;
@@ -57,7 +55,7 @@ public class BookedRoom {
         return bookedRoom;
     }
 
-    public Date getCheckin_date() {
+    public Date getCheckinDate() {
         return checkin_date;
     }
 
@@ -72,7 +70,7 @@ public class BookedRoom {
     public void setIdRoom(int idRoom) {
         this.idRoom = idRoom;
     } 
-    public boolean check_booked() {
+    public boolean checkBooked() {
         return checkBookedRoom;
     }
 }
