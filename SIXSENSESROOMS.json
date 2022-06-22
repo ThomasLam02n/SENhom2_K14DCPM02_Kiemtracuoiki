@@ -2,7 +2,7 @@
     {
         "id": 101,
         "area": 40,
-        "price": 4000000,
+        "price": 5000000,
         "utilities": [ 
             {
                 "1": "Double bed"

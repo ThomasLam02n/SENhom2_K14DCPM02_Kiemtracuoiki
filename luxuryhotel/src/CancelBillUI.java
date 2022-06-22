@@ -18,7 +18,6 @@ public class CancelBillUI extends UITerminal {
         // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
-
         if (this.command.equals(Actions.SI)) {
             return "Enter the request you want to find.";
         } else {
