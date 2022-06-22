@@ -20,6 +20,7 @@ public class CancelBillUI extends UITerminal {
         this.command = Actions.valueOf(cmd);
 
         if (this.command.equals(Actions.CB)) {
+
             return "Enter the request you want to find.";
         } else {
             return "Unkown command.";

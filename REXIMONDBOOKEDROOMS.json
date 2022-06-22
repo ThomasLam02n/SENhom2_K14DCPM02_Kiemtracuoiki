@@ -17,7 +17,7 @@
         "email": "thai@",
         "date in": "30/06/2022",
         "date out": "01/07/2022",
-        "price": 4000000.0 
+        "price": 4000000.0
     },
     {
         "id": "103259462757",
@@ -27,6 +27,26 @@
         "email": "Pji@jd",
         "date in": "22/06/2022",
         "date out": "24/06/2022",
+        "price": 8000000.0
+    },
+    {
+        "id": "104409174133",
+        "id room": 104,
+        "un": "tung",
+        "phone": 126236,
+        "email": "tung@gmail.com",
+        "date in": "23/06/2022",
+        "date out": "25/06/2022",
+        "price": 8000000.0
+    },
+    {
+        "id": "104322158018",
+        "id room": 104,
+        "un": "tong",
+        "phone": 777888999,
+        "email": "tong@gmail.com",
+        "date in": "26/06/2022",
+        "date out": "28/06/2022",
         "price": 8000000.0
     }
 ]

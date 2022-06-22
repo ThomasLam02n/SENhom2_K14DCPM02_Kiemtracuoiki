@@ -12,8 +12,10 @@
                 "1": "Very good"
             }
         ],
-        "uti": "five star",
-        "op": true
+
+        "uti":"five stars",
+        "op":true
+
     },
     {
         "na": "REXIMOND",
@@ -28,8 +30,10 @@
                 "1": "Very good"
             }
         ],
-        "uti": "five star",
-        "op": true
+      
+        "uti":"five stars",
+        "op":true
+
     },
     {
         "name": "GALLICI",
@@ -46,6 +50,9 @@
                 "1": "Good"
             }
         ],
-        "utilities": "five star"
+
+        "uti":"five stars",
+        "op":true
+
     }
 ]
