@@ -25,10 +25,9 @@ public class CheckBookedRoomUI extends UITerminal {
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
-        if (this.command.equals(Actions.CB)) {
-            return " Confirm";
-        } else if (this.command.equals(Actions.CF)) {
-            return "Enter the request you want to find.";
+        if (this.command.equals(Actions.SI)) {
+            return " Enter the request you want to find.";
+        
         }else {
             return "Unkown command.";
         }
