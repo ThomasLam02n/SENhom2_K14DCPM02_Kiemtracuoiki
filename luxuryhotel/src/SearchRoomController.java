@@ -16,17 +16,12 @@ public class SearchRoomController {
     
     public void searchRoom(int aop) { 
         List<Object> listCheck;
-        
+        System.out.printf("%-10s %-10s %-20s %-20s %-20s\n", "ID:", "EREA:", "PRICE:", "UTILIES:", "AMOUNT OF PEOPLE:");
         listCheck = checkRoomValid(aop);
+        
         if (!(boolean) listCheck.get(0)) {
-            for (int index = 1; index < listCheck.size(); index++) {
-                System.out.println(listCheck.get(index));
-            }
-        } else {
-            for (int index = 0; index < listCheck.size(); index++) {
-                System.out.println(listCheck.get(index));
-            }
-        }
+            System.out.println(listCheck.get(1));
+        } 
     }
 
     public void viewRoom() {
@@ -92,7 +87,7 @@ public class SearchRoomController {
                 } else {
                     utilitiess = jsonObject.get("utilities").getAsString();
                 }
-                
+                System.out.printf("%-10d %-10d %-20.2f %-20s %-10d\n", ids, areas, prices, utilitiess, aops);
                 list.add(true);
                 list.add(ids);
                 list.add("\t" + areas);
