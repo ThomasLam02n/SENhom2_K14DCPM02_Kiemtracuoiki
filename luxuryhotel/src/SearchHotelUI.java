@@ -32,7 +32,9 @@ public class SearchHotelUI extends UITerminal{
     @Override
     public void handleInputs() {
        if(this.command.equals(Actions.SH)){
+        this.searchHotelControllerObj.viewHotel();
         List<Object> list = searchHotelInput();
+        
         this.searchHotelControllerObj.searchHotelName(list.get(0).toString());
        }
     }

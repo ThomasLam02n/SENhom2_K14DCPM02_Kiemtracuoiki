@@ -14,11 +14,16 @@ public class BootStrapReception {
     private static ConfirmUI confirmUI = new ConfirmUI(confirmController); 
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 
         System.out.println("Front desk system");
         while(true){
-            Thread.sleep(1000);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             displayOption();
             //chon
             //command
@@ -53,8 +58,8 @@ public class BootStrapReception {
 
             }  else if (rep.toUpperCase().equals(Actions.AS.toString())) {
                 Hotel hotel = new Hotel();
-                String fileBill = hotel.getName() + "BILLS.json";
-                Bill bill = new Bill(fileBill);
+                // String fileBill = hotel.getName() + "BILLS.json";
+                // Bill bill = new Bill(fileBill);
                 AddServiceController addServiceController = new AddServiceController(bill);
                 AddServicesUI addServicesUI = new AddServicesUI(addServiceController);
                 rescmd = addServicesUI.handleCommand(rep);

@@ -29,6 +29,7 @@ public class EvaluateController {
             index = Hotel.getHotels().search("na", name);
             JsonArray tenmArray = Hotel.getHotels().getMemory();
             JsonObject jsonObject = tenmArray.get(index).getAsJsonObject();
+            String names = jsonObject.get("na").getAsString();
             JsonArray temArray1 = jsonObject.get("ev").getAsJsonArray();
             String address = jsonObject.get("add").getAsString();
             String locations = jsonObject.get("loca").getAsString();
@@ -47,7 +48,7 @@ public class EvaluateController {
             System.out.println(jsonObject.toString());
             tenmArray.remove(tenmArray.get(index));
             
-            Hotel.getHotels().update(name, address, locations, room_quantity, temArray1, utilities);
+            Hotel.getHotels().update(names, address, locations, room_quantity, temArray1, utilities);
             Hotel.getHotels().write();
            
             

@@ -11,8 +11,27 @@ public class CancelBillController {
     private Account account;
     private Bill bill;
 
-    public void RemoveBill(String id){
-        List<Object> listcheck = check_Bill_vail(id);
+    
+    public CancelBillController() {
+    }
+
+    
+
+    public CancelBillController(BookedRoom bookedRoom, Account account) {
+        this.bookedRoom = bookedRoom;
+        this.account = account;
+    }
+
+
+
+    public CancelBillController(BookedRoom bookedRoom) {
+        this.bookedRoom = bookedRoom;
+    }
+
+
+
+    public void RemoveBill(String id, String name){
+        List<Object> listcheck = check_Bill_vail(id, name);
        
 
         //     if(!(boolean) listcheck.get(0)){
@@ -31,9 +50,12 @@ public class CancelBillController {
         int index =0;
         index = BookedRoom.getBookedRoom().searchString("id", id);
         if(index != -1){
-            tem.remove(tem.get(index));
-            BookedRoom.getBookedRoom().write();
-            
+            JsonObject jObject = tem.get(index).getAsJsonObject();
+            String name2 = jObject.get("un").getAsString();
+            if(name2.equals(name)){
+                tem.remove(tem.get(index));
+                BookedRoom.getBookedRoom().write();
+            }
             System.out.println(listcheck.get(1));
         }else{
             System.out.println(listcheck.get(1));
@@ -42,20 +64,29 @@ public class CancelBillController {
        
         }    
 
-    public List<Object> check_Bill_vail(String id){
+    public List<Object> check_Bill_vail(String id, String name){
         List<Object> list = new ArrayList<>();
         JsonArray tempArray = BookedRoom.getBookedRoom().getAll();
         int index = 0;
-        
-        index = bookedRoom.getBookedRoom().searchString("id", id);
-        if(index == -1){
+        // int index2 = 0;
+        // JsonArray accArray = Account.getAccounts().getAll();
+        index = BookedRoom.getBookedRoom().searchString("id", id);
+        JsonObject tempoObject = tempArray.get(index).getAsJsonObject();
+        String name2 = tempoObject.get("un").getAsString();
+      
+        if(index != -1){
+            if(name2.equals(name)){
+                list.add(true);
+                list.add("You do successful");
+            }else{
+                list.add(false);
+                list.add("This is id of account dosen't exits");
+            }
+        }else{
             list.add(false);
             list.add("This is id dosen't exits");
         }
-        if(index != -1){
-            list.add(true);
-            list.add("You do successful");
-        }
+        
         return list;
         // List<Object> list = new ArrayList<>();
         // JsonArray tempMemory = BookedRoom.getBookedRoom().getAll();

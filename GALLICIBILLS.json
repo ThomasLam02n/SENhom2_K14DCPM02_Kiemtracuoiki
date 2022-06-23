@@ -36,7 +36,26 @@
         "email": "tung@gmail.com",
         "date in": "25/06/2022",
         "date out": "27/07/2022",
-        "service": [],
-        "price": 1.28E8
+        "service": [
+            {
+                "1": "wifi"
+            },
+            {
+                "1": "laundry"
+            },
+            {
+                "1": "laundry"
+            },
+            {
+                "1": "laundry"
+            },
+            {
+                "1": "laundry"
+            },
+            {
+                "1": "laundry"
+            }
+        ],
+        "price": 1.2913E8
     }
 ]

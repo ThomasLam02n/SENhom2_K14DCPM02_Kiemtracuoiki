@@ -48,14 +48,14 @@ public class AddServicesUI extends UITerminal {
             String nameSv = scanner.nextLine();
             
             list.add(nameSv);
-            // System.out.print("Do you want to continue adding services?(Y/N): ");
-            // if (scanner.nextLine().equalsIgnoreCase("n")) {
-            //     break;
-            // }
-            
-            if (nameSv.equals("")) {
+            System.out.print("Do you want to continue adding services?(Y/N): ");
+            if (scanner.nextLine().equalsIgnoreCase("n")) {
                 break;
             }
+            
+            // if (nameSv.equals("")) {
+            //     break;
+            // }
         }
         
         return list;

@@ -9,7 +9,26 @@ public class CancelBillUI extends UITerminal {
     private Actions command;
     private CancelBillController cancelBillController = new CancelBillController();
     Scanner scanner = new Scanner(System.in);
+    private Account account;
 
+    
+
+
+    public CancelBillUI(CancelBillController cancelBillController, Account account) {
+        this.cancelBillController = cancelBillController;
+        this.account = account;
+    }
+
+
+
+    public CancelBillUI() {
+    }
+
+    
+
+    public CancelBillUI(CancelBillController cancelBillController) {
+        this.cancelBillController = cancelBillController;
+    }
 
 
 
@@ -32,7 +51,9 @@ public class CancelBillUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.CB)) {
             List<Object> list =  CancelBill();
-            cancelBillController.RemoveBill(list.get(0).toString());
+            this.account.checkLoggedIn();
+            String name = this.account.getUsername();
+            cancelBillController.RemoveBill(list.get(0).toString(), name);
         }
     }
 

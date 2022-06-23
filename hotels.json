@@ -1,42 +1,8 @@
 [
     {
-        "na": "SIXSENSES",
+        "na": "REXIMOND",
         "add": "12/1, HaiBaChung, District 1",
-        "loca": "HANOI",
-        "room": 24,
-        "ev": [
-            {
-                "1": "Good"
-            },
-            {
-                "1": "Very good"
-            }
-        ],
-        "uti": "five stars"
-    },
-    {
-        "na": "GALLICI",
-        "add": "12/1, HaiBaChung, District 1",
-        "loca": "HANOI",
-        "room": 28,
-        "ev": [
-            {
-                "1": "Good"
-            },
-            {
-                "1": "Very very very very very good "
-            },
-            {
-                "1": "Good"
-            }
-        ],
-        "uti": "five stars",
-        "op": true
-    },
-    {
-        "na": "reximond",
-        "add": "12/1, HaiBaChung, District 1",
-        "loca": "HANOI",
+        "loca": "HCM",
         "room": 25,
         "ev": [
             {
@@ -50,6 +16,45 @@
             },
             {
                 "1": "bad"
+            }
+        ],
+        "uti": "five stars"
+    },
+    {
+        "na": "GALLICI",
+        "add": "12/1, HaiBaChung, District 1",
+        "loca": "DANANG",
+        "room": 28,
+        "ev": [
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Good"
+            },
+            {
+                "1": "nice"
+            }
+        ],
+        "uti": "five stars"
+    },
+    {
+        "na": "SIXSENSES",
+        "add": "12/1, HaiBaChung, District 1",
+        "loca": "HANOI",
+        "room": 24,
+        "ev": [
+            {
+                "1": "Good"
+            },
+            {
+                "1": "Very good"
+            },
+            {
+                "1": "oh yeah"
+            },
+            {
+                "1": "very bad"
             }
         ],
         "uti": "five stars"
