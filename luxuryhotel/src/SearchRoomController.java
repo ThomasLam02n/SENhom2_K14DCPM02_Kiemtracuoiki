@@ -16,11 +16,9 @@ public class SearchRoomController {
     
     public void searchRoom(int aop) { 
         List<Object> listCheck;
-        
         listCheck = checkRoomValid(aop);
         if ((boolean) listCheck.get(0)) {
             JsonArray tempMemory = rooms.getMemory();
-            int index = 0;
             String str = "";
             for (int i = 0; i < tempMemory.size(); i++) {
                 JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
@@ -28,7 +26,6 @@ public class SearchRoomController {
                 int aops = jsonObject.get("amount of people").getAsInt();
 
                 if (aop == aops) {
-                    index ++;
                     int ids = jsonObject.get("id").getAsInt();
                     int areas = jsonObject.get("area").getAsInt();
                     double prices = jsonObject.get("price").getAsDouble();
