@@ -18,12 +18,41 @@ public class SearchRoomController {
         List<Object> listCheck;
         
         listCheck = checkRoomValid(aop);
-        if (!(boolean) listCheck.get(0)) {
-            for (int index = 1; index < listCheck.size(); index++) {
-                System.out.println(listCheck.get(index));
+        if ((boolean) listCheck.get(0)) {
+            JsonArray tempMemory = rooms.getMemory();
+            int index = 0;
+            String str = "";
+            for (int i = 0; i < tempMemory.size(); i++) {
+                JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
+                
+                int aops = jsonObject.get("amount of people").getAsInt();
+
+                if (aop == aops) {
+                    index ++;
+                    int ids = jsonObject.get("id").getAsInt();
+                    int areas = jsonObject.get("area").getAsInt();
+                    double prices = jsonObject.get("price").getAsDouble();
+                    String utilitiess = "";
+                    JsonArray jsonArray = jsonObject.get("utilities").getAsJsonArray();
+                    for (int j = 0; j < jsonArray.size(); j++) {
+                        JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
+                        String utilities1 = "";
+                        for (int k = 0; k < jsonObject2.size(); k++) {
+                            utilities1 += jsonObject2.get("1").getAsString();
+                        }
+                        if (utilitiess.equals("")) {
+                            utilitiess += utilities1;
+                        } else {
+                            utilitiess += ", " + utilities1;
+                        }
+                    }                     
+                    str += String.format("%-10d %-10d %-20.2f %-20s %-10d\n", ids, areas, prices, utilitiess, aops);
+                }
             }
+            System.out.printf("%-10s %-10s %-20s %-20s %-20s\n", "ID:", "AREA:", "PRICEC:", "UTILITIES:", "AMOUNT OF PEOPLE:");
+            System.out.println(str.toString());            
         } else {
-            for (int index = 0; index < listCheck.size(); index++) {
+            for (int index = 1; index < listCheck.size(); index++) {
                 System.out.println(listCheck.get(index));
             }
         }
@@ -61,49 +90,13 @@ public class SearchRoomController {
 
     public List<Object> checkRoomValid(int aop) {
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = rooms.getMemory();
         int index = 0;
-        
-        for (int i = 0; i < tempMemory.size(); i++) {
-            JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
-            
-            int aops = jsonObject.get("amount of people").getAsInt();
-
-            if (aop == aops) {
-                index ++;
-                int ids = jsonObject.get("id").getAsInt();
-                int areas = jsonObject.get("area").getAsInt();
-                double prices = jsonObject.get("price").getAsDouble();
-                String utilitiess = "";
-                if (jsonObject.get("utilities").isJsonArray()) {
-                    JsonArray jsonArray = jsonObject.get("utilities").getAsJsonArray();
-                    for (int j = 0; j < jsonArray.size(); j++) {
-                        JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
-                        String utilities1 = "";
-                        for (int k = 0; k < jsonObject2.size(); k++) {
-                            utilities1 += jsonObject2.get("1").getAsString();
-                        }
-                        if (utilitiess.equals("")) {
-                            utilitiess += utilities1;
-                        } else {
-                            utilitiess += ", " + utilities1;
-                        }
-                    }
-                } else {
-                    utilitiess = jsonObject.get("utilities").getAsString();
-                }
-                
-                list.add(true);
-                list.add(ids);
-                list.add("\t" + areas);
-                list.add("\t" + prices);
-                list.add("\t" + utilitiess);
-                list.add("\t" + aops);
-            }
-        }
-        if (index == 0) {
+        index = Room.getRooms().searchInt("amount of people", aop);
+        if (index == -1) {
             list.add(false);
             list.add("There is no matching number of people.");
+        } else{
+            list.add(true);
         }
         return list;
     }
