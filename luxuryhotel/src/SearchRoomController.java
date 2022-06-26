@@ -43,10 +43,10 @@ public class SearchRoomController {
                             utilitiess += ", " + utilities1;
                         }
                     }                     
-                    str += String.format("%-10d %-10d %-20.2f %-20s %-10d\n", ids, areas, prices, utilitiess, aops);
+                    str += String.format("%-10d %-10d %-20.2f %-20d %-20s\n", ids, areas, prices, aops, utilitiess);
                 }
             }
-            System.out.printf("%-10s %-10s %-20s %-20s %-20s\n", "ID:", "AREA:", "PRICEC:", "UTILITIES:", "AMOUNT OF PEOPLE:");
+            System.out.printf("%-10s %-10s %-20s %-20s %-20s\n", "ID:", "AREA:", "PRICEC:", "AMOUNT OF PEOPLE:", "UTILITIES:");
             System.out.println(str.toString());            
         } else {
             for (int index = 1; index < listCheck.size(); index++) {
@@ -58,30 +58,26 @@ public class SearchRoomController {
     public void viewRoom() {
         JsonArray tempMemory = rooms.getMemory();
         
-        System.out.println("ID: \t EREA: \t PRICE: \t UTILITIES: \t\t AMOUNT OF PEOPLE:");
+        System.out.println("ID: \t EREA: \t PRICE: \t AMOUNT OF PEOPLE: \t UTILITIES:");
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.print(jsonObject.get("id").getAsInt());
             System.out.print(" \t "+ jsonObject.get("area").getAsInt());
             System.out.print(" \t "+ jsonObject.get("price").getAsDouble());
-            if (jsonObject.get("utilities").isJsonArray()) {
-                JsonArray jsonArray = jsonObject.get("utilities").getAsJsonArray();
-                String str = "";
-                for (int j = 0; j < jsonArray.size(); j++) {
-                    JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();                    
-                    if (!jsonObject2.get("1").getAsString().equals("")) {
-                        if (str.equals("")) {
-                            str += jsonObject2.get("1").getAsString();
-                        } else {
-                            str +=", " + jsonObject2.get("1").getAsString();
-                        } 
-                    }
+            System.out.print("\t "+ jsonObject.get("amount of people").getAsInt());
+            JsonArray jsonArray = jsonObject.get("utilities").getAsJsonArray();
+            String str = "";
+            for (int j = 0; j < jsonArray.size(); j++) {
+                JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();                    
+                if (!jsonObject2.get("1").getAsString().equals("")) {
+                    if (str.equals("")) {
+                        str += jsonObject2.get("1").getAsString();
+                    } else {
+                        str +=", " + jsonObject2.get("1").getAsString();
+                    } 
                 }
-                System.out.print("\t " + str);
-            } else { 
-                System.out.print("\t "+ jsonObject.get("utilities").getAsString());
             }
-            System.out.println("\t\t "+ jsonObject.get("amount of people").getAsInt());
+            System.out.println("\t\t\t " + str);
         }
     }
 

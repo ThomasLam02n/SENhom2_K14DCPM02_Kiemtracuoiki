@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class BookedRoom {
-    private static StorefliesBookedRoom bookedRoom;     
+    private static StoredFilesBookedRoom bookedRoom;     
     private String nameCustomer;
     private int phoneNumber;
     private String email;
@@ -21,7 +21,7 @@ public class BookedRoom {
     }
 
     public BookedRoom(String nameFile) {
-        BookedRoom.bookedRoom = new StorefliesBookedRoom(nameFile);
+        BookedRoom.bookedRoom = new StoredFilesBookedRoom(nameFile);
     }
 
     public BookedRoom(String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
@@ -51,7 +51,7 @@ public class BookedRoom {
         this.checkBookedRoom = check_booked;
     }
 
-    public static StorefliesBookedRoom getBookedRoom(){
+    public static StoredFilesBookedRoom getBookedRoom(){
         return bookedRoom;
     }
 

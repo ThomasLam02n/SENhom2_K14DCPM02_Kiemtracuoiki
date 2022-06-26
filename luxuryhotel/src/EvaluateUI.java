@@ -29,16 +29,16 @@ public class EvaluateUI extends UITerminal {
         // TODO Auto-generated method stub
         if (this.command.equals(Actions.EV)) {
             // addServiceController.viewService();
-            while (true) {
+            // while (true) {
                 List<Object> list =  addEvaluateInput();
                 // addServiceController.addService((int)list.get(0), list.get(1).toString());
-                evaluateController.Evaluate(list.get(0).toString(), list.get(1).toString());
-                System.out.print("Do you want to rate more?(Y/N): ");
-                String n = input.nextLine();
-                if (n.equalsIgnoreCase("N")) {
-                    break;
-                }
-            }
+                evaluateController.Evaluate(list.get(0).toString(), list.get(1).toString(), list.get(2).toString());
+                // System.out.print("Do you want to rate more?(Y/N): ");
+                // String n = input.nextLine();
+            //     if (n.equalsIgnoreCase("N")) {
+            //         break;
+            //     }
+            // }
             
         }
         
@@ -47,12 +47,14 @@ public class EvaluateUI extends UITerminal {
         List<Object> list = new ArrayList<>();
         System.out.print("Name Hotel: ");
         String name = input.nextLine();
-        // input.nextLine();
-        System.out.println("Input Evalute");
-        String i = input.nextLine();
+        System.out.print("Vote (good, normal, bad): ");
+        String vote = input.nextLine();
+        System.out.print("Input Evalute: ");
+        String ev = input.nextLine();
         // System.out.println("");
         list.add(name);
-        list.add(i);
+        list.add(vote);
+        list.add(ev);
         // list.add(nameSv);
         return list;
     }

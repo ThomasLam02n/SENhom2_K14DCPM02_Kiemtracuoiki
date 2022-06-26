@@ -11,22 +11,16 @@ public class EvaluateController {
     
     public EvaluateController() {
     }
-   
-    
-    // public EvaluateController(String name) {
-    //     // this.hotel = hotel;
-    //     // this.hotel = new 
-    // }
     
 
-    public void Evaluate(String name, String evaluate){
+    public void Evaluate(String nameHotel, String vote, String evaluate){
         List<Object> listcheck  ;
         // List<Object> listcheck2;
-        listcheck = checkName_vail(name);
+        listcheck = checkName_vail(nameHotel);
         // listcheck2 = checkAddress_valid(address);
         if((boolean) listcheck.get(0)){
             int index = 0;
-            index = Hotel.getHotels().search("na", name);
+            index = Hotel.getHotels().search("na", nameHotel);
             JsonArray tenmArray = Hotel.getHotels().getMemory();
             JsonObject jsonObject = tenmArray.get(index).getAsJsonObject();
             String names = jsonObject.get("na").getAsString();
@@ -36,7 +30,7 @@ public class EvaluateController {
             int room_quantity = jsonObject.get("room").getAsInt();
             String utilities = jsonObject.get("uti").getAsString();
             JsonObject jsonObject2 = new JsonObject();
-            jsonObject2.addProperty("1", evaluate);
+            jsonObject2.addProperty(vote, evaluate);
             temArray1.add(jsonObject2);
             
             // this.hotel.setHotel(name, temArray1);
@@ -53,13 +47,14 @@ public class EvaluateController {
            
             
 
-        }
-        // else if(!(boolean) listcheck2.get(0)){
-        //     System.out.println(listcheck2.toString());
         // }
-        else {
-             name = this.hotel.getName();
+        // // else if(!(boolean) listcheck2.get(0)){
+        // //     System.out.println(listcheck2.toString());
+        // // }
+        }else {
+            //  name = this.hotel.getName();
             //  address = this.hotel.getAddress();
+            System.out.println(listcheck.get(1).toString());
             
            
         }

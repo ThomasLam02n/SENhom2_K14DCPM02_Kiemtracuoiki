@@ -7,12 +7,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class StorefilesHotelController {
+public class StoredFilesHotelController {
     private static final Hotel[] JsonArray = null;
     private JsonArray memory;
     private String storedFile;
 
-    public StorefilesHotelController(String storedFile) {
+    public StoredFilesHotelController(String storedFile) {
         this.storedFile = storedFile;
         this.memory = read();
     }
@@ -29,8 +29,8 @@ public class StorefilesHotelController {
         jsonObject.addProperty("add", address);
         jsonObject.addProperty("loca", location);
         jsonObject.addProperty("room", room_quantity);
-        jsonObject.add("ev", evaluation);
         jsonObject.addProperty("uti", utilities);
+        jsonObject.add("ev", evaluation);
         this.memory.add(jsonObject);
     }
     public int search(String key, String value) {

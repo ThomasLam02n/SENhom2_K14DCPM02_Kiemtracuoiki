@@ -6,10 +6,8 @@ import com.google.gson.JsonObject;
 
 public class SearchHotelController {
     private Hotel hotelobject;
-
-    
-    private StorefilesHotelController hotels = new StorefilesHotelController("hotels.json");
-
+    private SearchRoomController searchRoomController;    
+    private StoredFilesHotelController hotels = new StoredFilesHotelController("hotels.json");
 
     public Hotel getHotel(){
         return hotelobject;
@@ -31,59 +29,16 @@ public class SearchHotelController {
             System.out.print("\tAddress: "+listCheck.get(3));
             System.out.print("\tLocation: "+listCheck.get(4));
             System.out.print("\tRooms: "+listCheck.get(5));
-            System.out.print("\tEvaluations: "+listCheck.get(6));
-            System.out.println("\tUtilities: "+listCheck.get(7));
+            System.out.print("\tUtilities: "+listCheck.get(6));
+            System.out.println("\tEvaluations: "+listCheck.get(7));
             this.hotelobject.setHotel(listCheck.get(2).toString(), listCheck.get(3).toString(), listCheck.get(4).toString(), (int)listCheck.get(5), listCheck.get(7).toString());
+            
+            String fileRoom = hotelobject.getName() + "ROOMS.json";
+            SearchRoomController searchRoomController2 = new SearchRoomController(fileRoom);
+            searchRoomController2.viewRoom();
         } else {
-            System.out.println("[NOT FOUND OUT] name hotel wrong baby !");
+            System.out.println("[NOT FOUND OUT] Name hotel wrong baby !");
         }
-
-    }
-
-    public void searchLocation(String location) {
-        List<Object> listCheck;
-        listCheck = checkLocation_Valid(location);
-        if (!(boolean) listCheck.get(0)) {
-            System.out.println(listCheck.get(1));
-            System.out.println(listCheck.get(2));
-            System.out.println(listCheck.get(3));
-            System.out.println(listCheck.get(4));
-            System.out.println(listCheck.get(5));
-            System.out.println(listCheck.get(6));
-        } else {
-            System.out.println("Nhập lại đi bé ơi !!!");
-        }
-
-    }
-
-    public List<Object> checkLocation_Valid(String location) {
-        List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = hotels.getMemory();
-        int index = 0;
-        index = Hotel.getHotels().searchAddressHotel("loca", location);
-        if (index != -1) {
-            list.add(false);
-            list.add("[FOUND OUT] hotel infomation:");
-            JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
-            String names = jsonObject.get("na").getAsString();
-            String addresses = jsonObject.get("add").getAsString();
-            String locations = jsonObject.get("loca").getAsString();
-            int rooms = jsonObject.get("room").getAsInt();
-            JsonArray evaluations = jsonObject.get("ev").getAsJsonArray();
-            String utilities = jsonObject.get("uti").getAsString();
-            list.add(names);
-            list.add(addresses);
-            list.add(locations);
-            list.add(rooms);
-            list.add(evaluations);
-            list.add(utilities);
-            return list;
-        } else {
-            list.add(true);
-            list.add("[NOT FOUND OUT] hotel do not exist");
-        }
-        return list;
-
     }
 
     public List<Object> checkHotel_Valid(String name) {
@@ -99,27 +54,38 @@ public class SearchHotelController {
             String addresses = jsonObject.get("add").getAsString();
             String locations = jsonObject.get("loca").getAsString();
             int rooms = jsonObject.get("room").getAsInt();
-            if (jsonObject.get("ev").isJsonArray()) {
-                JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
-                String str = "";
-                for (int j = 0; j < jsonArray.size(); j++) {
-                    JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
-                    if (!jsonObject2.get("1").getAsString().equals("")) {
-                        if (str.equals("")) {
-                            str += jsonObject2.get("1").getAsString();
-                        } else {
-                            str += ", " + jsonObject2.get("1").getAsString();
-                        }
+            String utilities = jsonObject.get("uti").getAsString();
+            JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
+            String evaluate = "";
+            for (int j = 0; j < jsonArray.size(); j++) {
+                JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
+                if (jsonObject2.get("good") != null) {
+                    if (evaluate.equals("")) {
+                        evaluate += jsonObject2.get("good").getAsString();
+                    } else {
+                        evaluate += ", " + jsonObject2.get("good").getAsString();
+                    }
+                } else if (jsonObject2.get("normal") != null) {
+                    if (evaluate.equals("")) {
+                        evaluate += jsonObject2.get("normal").getAsString();
+                    } else {
+                        evaluate += ", " + jsonObject2.get("normal").getAsString();
+                    }
+                } else if (jsonObject2.get("bad") != null) {
+                    if (evaluate.equals("")) {
+                        evaluate += jsonObject2.get("bad").getAsString();
+                    } else {
+                        evaluate += ", " + jsonObject2.get("bad").getAsString();
                     }
                 }
-                list.add(names);
-                list.add(addresses);
-                list.add(locations);
-                list.add(rooms);
-                list.add(str);
             }
-            String utilities = jsonObject.get("uti").getAsString();
+            list.add(names);
+            list.add(addresses);
+            list.add(locations);
+            list.add(rooms);
             list.add(utilities);
+            list.add(evaluate);            
+            
             return list;
         } else {
             list.add(true);
@@ -130,31 +96,39 @@ public class SearchHotelController {
 
     public void viewHotel() {
         JsonArray tempMemory = hotels.getMemory();
-        System.out.println("Name: \t\t Address: \t\t\t Location: \tRooms: \t Evaluations:  \t\t Utilities:");
+        System.out.println("Name: \t\t Address: \t\t\t Location: \tRooms: \t Utilities: \t Evaluations: ");
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.print(jsonObject.get("na").getAsString());
             System.out.print(" \t " + jsonObject.get("add").getAsString());
             System.out.print("\t " + jsonObject.get("loca").getAsString());
             System.out.print("\t\t" + jsonObject.get("room").getAsInt());
-            if (jsonObject.get("ev").isJsonArray()) {
-                JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
-                String str = "";
-                for (int j = 0; j < jsonArray.size(); j++) {
-                    JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
-                    if (!jsonObject2.get("1").getAsString().equals("")) {
-                        if (str.equals("")) {
-                            str += jsonObject2.get("1").getAsString();
-                        } else {
-                            str += ", " + jsonObject2.get("1").getAsString();
-                        }
+            System.out.print("\t " + jsonObject.get("uti").getAsString());
+            JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
+            String str = "";
+            for (int j = 0; j < jsonArray.size(); j++) {
+                JsonObject jsonObject2 = jsonArray.get(j).getAsJsonObject();
+                if (jsonObject2.get("good") != null) {
+                    if (str.equals("")) {
+                        str += jsonObject2.get("good").getAsString();
+                    } else {
+                        str += ", " + jsonObject2.get("good").getAsString();
+                    }
+                } else if (jsonObject2.get("normal") != null) {
+                    if (str.equals("")) {
+                        str += jsonObject2.get("normal").getAsString();
+                    } else {
+                        str += ", " + jsonObject2.get("normal").getAsString();
+                    }
+                } else if (jsonObject2.get("bad") != null) {
+                    if (str.equals("")) {
+                        str += jsonObject2.get("bad").getAsString();
+                    } else {
+                        str += ", " + jsonObject2.get("bad").getAsString();
                     }
                 }
-                System.out.print("\t " + str);
-            } else {
-                System.out.print("\t " + jsonObject.get("ev").getAsString());
             }
-            System.out.println("\t " + jsonObject.get("uti").getAsString());
+            System.out.println("\t " + str);
         }
     }
 

@@ -6,13 +6,5 @@
     {
         "service": "Laundry",
         "price": 10000
-    },
-    {
-        "service": "103",
-        "price": 4000000
-    },
-    {
-        "service": "104",
-        "price": 4000000
     } 
 ]

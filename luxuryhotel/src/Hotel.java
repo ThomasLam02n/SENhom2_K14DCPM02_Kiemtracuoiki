@@ -8,7 +8,7 @@ public class Hotel {
     private JsonArray evaluation;
     private String utilities;
     private boolean opening;
-    private static StorefilesHotelController hotels = new StorefilesHotelController("Hotels.json");
+    private static StoredFilesHotelController hotels = new StoredFilesHotelController("Hotels.json");
     // private static StorefilesHotelController hotels;
     
     public Hotel(){
@@ -38,7 +38,7 @@ public class Hotel {
         this.opening = true;
     }
    
-    public static StorefilesHotelController getHotels() {
+    public static StoredFilesHotelController getHotels() {
         return hotels;
     }
 
