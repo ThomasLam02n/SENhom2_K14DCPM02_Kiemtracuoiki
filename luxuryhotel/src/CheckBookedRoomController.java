@@ -38,13 +38,10 @@ public class CheckBookedRoomController {
 
     public List<Object> check_bill_valid(String id){
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = bookedRoom.getBookedRoom().getAll();
+        JsonArray tempMemory = BookedRoom.getBookedRoom().getAll();
         int index = 0;
-        index = bookedRoom.getBookedRoom().searchString("id", id);
-        if(index == -1){
-            list.add(false);
-            list.add("This room id doesn't exist");
-        }
+        index = BookedRoom.getBookedRoom().searchString("id", id);
+        
         if(index != -1){
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
             String ids = jsonObject.get("id").getAsString();
@@ -69,14 +66,11 @@ public class CheckBookedRoomController {
                 e.printStackTrace();
             }
             return list;
+        } else{
+            list.add(false);
+            list.add("This room id doesn't exist");
         }
         return list;
     }
-
-    
-   /*  public void Confirm(){
-        List<BookedRoom> cf = new ArrayList<>();
-        cf.add(check_bill_valid(id));
-    } */
 }
 

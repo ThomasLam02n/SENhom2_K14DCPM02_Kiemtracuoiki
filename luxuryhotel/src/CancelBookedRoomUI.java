@@ -5,36 +5,35 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class CancelBillUI extends UITerminal {
+public class CancelBookedRoomUI extends UITerminal {
     private Actions command;
-    private CancelBillController cancelBillController = new CancelBillController();
+    private CancelBookedRoomController cancelBookedRoomController = new CancelBookedRoomController();
     Scanner scanner = new Scanner(System.in);
     private Account account;
 
     
 
 
-    public CancelBillUI(CancelBillController cancelBillController, Account account) {
-        this.cancelBillController = cancelBillController;
+    public CancelBookedRoomUI(CancelBookedRoomController cancelBookedRoomController, Account account) {
+        this.cancelBookedRoomController = cancelBookedRoomController;
         this.account = account;
     }
 
 
 
-    public CancelBillUI() {
+    public CancelBookedRoomUI() {
     }
 
     
 
-    public CancelBillUI(CancelBillController cancelBillController) {
-        this.cancelBillController = cancelBillController;
+    public CancelBookedRoomUI(CancelBookedRoomController cancelBookedRoomController) {
+        this.cancelBookedRoomController = cancelBookedRoomController;
     }
 
 
 
     @Override
     public String handleCommand(String rep) {
-        // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
@@ -53,7 +52,7 @@ public class CancelBillUI extends UITerminal {
             List<Object> list =  CancelBill();
             this.account.checkLoggedIn();
             String name = this.account.getUsername();
-            cancelBillController.RemoveBill(list.get(0).toString(), name);
+            cancelBookedRoomController.RemoveBill(list.get(0).toString(), name);
         }
     }
 

@@ -19,9 +19,7 @@ public class BootStrapEvluate {
                 } else {
                     System.out.println("[ERRO] Unknown command");
                 }
-            } else if (rep.toUpperCase().equals(Actions.GALLICI.toString())) {
-                addServicesUI.handleInputs();
-            } else if (rep.toUpperCase().equals(Actions.EX.toString())) {
+            }else if (rep.toUpperCase().equals(Actions.EX.toString())) {
                 break;
             }
         }
@@ -29,23 +27,10 @@ public class BootStrapEvluate {
 
     public static void displayEvaluate(EvaluateController evaluateController) {
         System.out.println("=============== Evaluate Menu ====================");
-        // evaluateController.
         String str = "";
         str = "Enter one of the commands in the brackets:\n" +
-                "[EV] Evaluate";
-
-        System.out.println(str);
-    }
-
-    public static void displayAddService(AddServiceController addServiceController) {
-
-        System.out.println("=============== AddServiceController ====================");
-        // evaluateController.
-        String str = "";
-        str = "Enter one of the commands in the brackets:\n" +
-                "[GALLICI] Add Service \n" +
-                "[EX] Exit\n" +
-                "Please you choose: ";
+                "[EV] Evaluate\n"+
+                "[EX] Exit";
         System.out.println(str);
     }
 }

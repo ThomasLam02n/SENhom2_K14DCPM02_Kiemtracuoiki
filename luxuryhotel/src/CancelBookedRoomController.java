@@ -6,25 +6,25 @@ import java.util.Scanner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class CancelBillController {
+public class CancelBookedRoomController {
     private BookedRoom bookedRoom;
     private Account account;
     private Bill bill;
 
     
-    public CancelBillController() {
+    public CancelBookedRoomController() {
     }
 
     
 
-    public CancelBillController(BookedRoom bookedRoom, Account account) {
+    public CancelBookedRoomController(BookedRoom bookedRoom, Account account) {
         this.bookedRoom = bookedRoom;
         this.account = account;
     }
 
 
 
-    public CancelBillController(BookedRoom bookedRoom) {
+    public CancelBookedRoomController(BookedRoom bookedRoom) {
         this.bookedRoom = bookedRoom;
     }
 
@@ -71,10 +71,10 @@ public class CancelBillController {
         // int index2 = 0;
         // JsonArray accArray = Account.getAccounts().getAll();
         index = BookedRoom.getBookedRoom().searchString("id", id);
-        JsonObject tempoObject = tempArray.get(index).getAsJsonObject();
-        String name2 = tempoObject.get("un").getAsString();
-      
+        
         if(index != -1){
+            JsonObject tempoObject = tempArray.get(index).getAsJsonObject();
+            String name2 = tempoObject.get("un").getAsString();
             if(name2.equals(name)){
                 list.add(true);
                 list.add("You do successful");

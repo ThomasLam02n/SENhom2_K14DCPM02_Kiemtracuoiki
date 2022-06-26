@@ -120,11 +120,11 @@ public class BookingRoomController {
             }else if (index3 != -1) {
                 list.add(false);
                 list.add("The account has made a reservation before.");
-            } else {
+            } else {                   
                 list.add(true);
                 list.add("[BOOK ROOM SUCCESSFUL] You have successfully booked your room.");
                 return list;
-            }            
+            }           
         } else {
             list.add(false);
             list.add("Room ID does not exist.");

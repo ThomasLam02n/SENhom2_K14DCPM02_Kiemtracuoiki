@@ -9,12 +9,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public  class StorefliesBookedRoom {
+public  class StoredFilesBookedRoom {
     private JsonArray memory;
     private String storeFile ;
     SimpleDateFormat ngayVN = new SimpleDateFormat("dd/MM/yyyy");
 
-    public StorefliesBookedRoom( String storeFile) {
+    public StoredFilesBookedRoom( String storeFile) {
         this.storeFile = storeFile;
         this.memory = read();
     }

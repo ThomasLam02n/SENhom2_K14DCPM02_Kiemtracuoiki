@@ -1,5 +1,3 @@
-
-import java.util.Date;
 import java.util.Scanner;
 
 public class BootStrapWeb {
@@ -29,100 +27,17 @@ public class BootStrapWeb {
             
             displayOption(searchHotelController);
             displayOptionAccount(newAccountController);
+            System.out.println("[EX] Exit");
             
             String prompt = getPromt(newAccountController);
             System.out.print(prompt);
             String rep = scanner.nextLine();
             String resCMD;
 
-            if (rep.toUpperCase().equals(Actions.SH.toString()) || rep.toUpperCase().equals(Actions.SR.toString())) {
-               
+            if (rep.toUpperCase().equals(Actions.SH.toString()) && !hotel.check_opening()) {
                 resCMD = searchHotelUI.handleCommand(rep);
-               
-                if (rep.toUpperCase().equals(Actions.SH.toString()) && resCMD != null && !resCMD.equals("Unkown command.")) {
-                    System.out.println(resCMD);
-                    searchHotelUI.handleInputs();
-                    String fileRoom = hotel.getName() + "ROOMS.json";
-                    SearchRoomController searchRoomController2 = new SearchRoomController(fileRoom);
-                    searchRoomController2.viewRoom();
-                    if (account.checkLoggedIn()) {
-                       
-                        String rep2 = scanner.nextLine();
-                        if (rep2.toUpperCase().equals(Actions.BR.toString())) {
-                            String fileRoom2 = hotel.getName() + "ROOMS.json";
-                            String fileBookedroom = hotel.getName() + "BOOKEDROOMS.json";
-                            Room room = new Room(fileRoom2);
-                            BookedRoom bookedRoom = new BookedRoom(fileBookedroom);
-                            BookingRoomController bookingRoomController = new BookingRoomController(bookedRoom, room,account);
-                            BookingRoomUI bookingRoomUI = new BookingRoomUI(bookingRoomController);
-                            resCMD = bookingRoomUI.handleCommand(rep2);
-                            System.out.println(resCMD);
-                            if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                                bookingRoomUI.handleInputs();
-                                // displayOptionSearchRoom(searchRoomController);
-                            } else {
-                                System.out.println("[ERRO] Unknown command");
-                            }
-
-                        }else if(rep2.toUpperCase().equals(Actions.CB.toString())){
-                            String fileBookedroom = hotel.getName() + "BOOKEDROOMS.json";
-                            BookedRoom bookedRoom = new BookedRoom(fileBookedroom);
-                            CancelBillController cancelBillController = new CancelBillController(bookedRoom, account);
-                            CancelBillUI cancelBillUI = new CancelBillUI(cancelBillController, account);
-                            resCMD = cancelBillUI.handleCommand(rep2);
-                            System.out.println(resCMD);
-                            if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                                cancelBillUI.handleInputs();
-                                // displayOptionSearchRoom(searchRoomController);
-                            } else {
-                                System.out.println("[ERRO] Unknown command");
-                            }
-                        }else if(rep2.toUpperCase().equals(Actions.SR.toString())){
-                            String fileRoom2 = hotel.getName() + "ROOMS.json";
-                            Room room = new Room(fileRoom2);
-                            SearchRoomController searchRoomController = new SearchRoomController(fileRoom2);
-                            SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
-                            resCMD = searchRoomUI.handleCommand(rep2);
-                            System.out.println(resCMD);
-                            if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                                searchRoomUI.handleInputs();
-                                // displayOptionSearchRoom(searchRoomController);
-                            } else {
-                                System.out.println("[ERRO] Unknown command");
-                            }
-                        }
-                    }else if(rep.toUpperCase().equals(Actions.SR.toString())){
-                        String fileRoom2 = hotel.getName() + "ROOMS.json";
-                        Room room = new Room(fileRoom2);
-                        SearchRoomController searchRoomController = new SearchRoomController(fileRoom2);
-                        SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
-                        resCMD = searchRoomUI.handleCommand(rep);
-                        System.out.println(resCMD);
-                        if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                            searchRoomUI.handleInputs();
-                            // displayOptionSearchRoom(searchRoomController);
-                        } else {
-                            System.out.println("[ERRO] Unknown command");
-                        }
-                    }else{
-                        System.out.println("[ATENSION] Login account before booking room !!!");
-                    }
-                }else if(rep.toUpperCase().equals(Actions.SR.toString())){
-                    String fileRoom2 = hotel.getName() + "ROOMS.json";
-                    Room room = new Room(fileRoom2);
-                    SearchRoomController searchRoomController = new SearchRoomController(fileRoom2);
-                    SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
-                    resCMD = searchRoomUI.handleCommand(rep);
-                    System.out.println(resCMD);
-                    if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                        searchRoomUI.handleInputs();
-                        // displayOptionSearchRoom(searchRoomController);
-                    } else {
-                        System.out.println("[ERRO] Unknown command");
-                    }
-                }
-
-            } else if (rep.toUpperCase().equals(Actions.CA.toString())) {
+                searchHotelUI.handleInputs(); 
+            }else if (rep.toUpperCase().equals(Actions.CA.toString())) {
                 resCMD = newAccountUI.handleCommands(rep);
                 System.out.println(resCMD);
                 if (resCMD != null && !resCMD.equals("Unkown command.")) {
@@ -130,7 +45,7 @@ public class BootStrapWeb {
                 }
 
             } else if (rep.toUpperCase().equals(Actions.LA.toString())
-                    || rep.toUpperCase().equals(Actions.LO.toString())) {
+                    || (rep.toUpperCase().equals(Actions.LO.toString()) && account.checkLoggedIn())) {
                 resCMD = loginAccountUI.handleCommands(rep);
                 System.out.println(resCMD);
                 if (resCMD != null && !resCMD.equals("Unkown command.")) {
@@ -138,36 +53,9 @@ public class BootStrapWeb {
 
                 }
 
-            }/* else if(rep.toUpperCase().equals(Actions.CB.toString())){
-                String fileBookedroom1 =  "REXIMONDBOOKEDROOMS.json";
-                String fileBookedroom2 = "SIXSENSESBOOKEDROOMS.json";
-                String fileBookedroom3 = "GALLICIBOOKEDROOMS.json";
-                BookedRoom bookedRoom;
-                CancelBillController cancelBillController;
-                CancelBillUI cancelBillUI = new CancelBillUI();
-                for (int i = 1; i < 4; i++) {
-                    if (i == 1) {
-                        bookedRoom = new BookedRoom(fileBookedroom1);
-                    } else if (i == 2) {
-                        bookedRoom = new BookedRoom(fileBookedroom2);
-                    } else {
-                        bookedRoom = new BookedRoom(fileBookedroom3);   
-                    }
-                    cancelBillController = new CancelBillController(bookedRoom, account);
-                    cancelBillUI = new CancelBillUI(cancelBillController, account);
-                    // resCMD = cancelBillUI.handleCommand(rep);
-                    // System.out.println(resCMD);
-                    // if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                    //     cancelBillUI.handleInputs();
-                    // }
-                }
-                resCMD = cancelBillUI.handleCommand(rep);
-                System.out.println(resCMD);
-                if (resCMD != null && !resCMD.equals("Unkown command.")) {
-                    cancelBillUI.handleInputs();
-                } */
-
-            else if (rep.toUpperCase().equals(Actions.BR.toString())) {
+            }else if (rep.toUpperCase().equals(Actions.BR.toString()) && !account.checkLoggedIn()) {
+                System.out.println("[ATENSION] Login account before booking room !!!");
+            }else if (rep.toUpperCase().equals(Actions.BR.toString()) && account.checkLoggedIn() && hotel.check_opening()) {
                 String fileRoom2 = hotel.getName() + "ROOMS.json";
                 String fileBookedroom = hotel.getName() + "BOOKEDROOMS.json";
                 Room room = new Room(fileRoom2);
@@ -178,55 +66,75 @@ public class BootStrapWeb {
                 System.out.println(resCMD);
                 if (resCMD != null && !resCMD.equals("Unkown command.")) {
                     bookingRoomUI.handleInputs();
+                    // displayOptionSearchRoom(searchRoomController);
+                } else {
+                    System.out.println("[ERRO] Unknown command");
                 }
+
+            }else if(rep.toUpperCase().equals(Actions.CB.toString()) && account.checkLoggedIn()){
+                String fileBookedroom = hotel.getName() + "BOOKEDROOMS.json";
+                BookedRoom bookedRoom = new BookedRoom(fileBookedroom);
+                CancelBookedRoomController cancelBookedRoomController = new CancelBookedRoomController(bookedRoom, account);
+                CancelBookedRoomUI cancelBookedRoomUI = new CancelBookedRoomUI(cancelBookedRoomController, account);
+                resCMD = cancelBookedRoomUI.handleCommand(rep);
+                System.out.println(resCMD);
+                if (resCMD != null && !resCMD.equals("Unkown command.")) {
+                    cancelBookedRoomUI.handleInputs();
+                    // displayOptionSearchRoom(searchRoomController);
+                } else {
+                    System.out.println("[ERRO] Unknown command");
+                }
+            }else if(rep.toUpperCase().equals(Actions.SR.toString())){
+                String fileRoom2 = hotel.getName() + "ROOMS.json";
+                Room room = new Room(fileRoom2);
+                SearchRoomController searchRoomController = new SearchRoomController(fileRoom2);
+                SearchRoomUI searchRoomUI = new SearchRoomUI(searchRoomController);
+                resCMD = searchRoomUI.handleCommand(rep);
+                System.out.println(resCMD);
+                if (resCMD != null && !resCMD.equals("Unkown command.")) {
+                    searchRoomUI.handleInputs();
+                    // displayOptionSearchRoom(searchRoomController);
+                } else {
+                    System.out.println("[ERRO] Unknown command");
+                }
+            }else if (rep.toUpperCase().equals(Actions.EX.toString())) {
+                break;
             }
-            // else if (rep.toUpperCase().equals(Actions.AS.toString())) {
-            //     String fileBill = hotel.getName() + "BILLS.json";
-            //     Bill bill = new Bill(fileBill);
-            //     AddServiceController addServiceController = new AddServiceController(bill);
-            //     AddServicesUI addServicesUI = new AddServicesUI(addServiceController);
-            //     resCMD = addServicesUI.handleCommand(rep);
-            //     System.out.println(resCMD);
-            //     if (resCMD != null && !resCMD.equals("Unkown command.")) {
-            //         addServicesUI.handleInputs();
-            //         // displayOptionSearchRoom(searchRoomController);
-            //     } else {
-            //         System.out.println("[ERRO] Unknown command");
-            //     }
-            // }
         }
 
     }
     
     public static void displayOption(SearchHotelController searchHotelController) {
-        if(!hotel.check_opening()){
-        System.out.println("================ Hotel Menu ================");
         String str = "";
-        str = "Enter one of the commands in the brackets:\n" +
-                "[SH] Search Hotel";
-
-        System.out.println(str);
-        }else if(account.checkLoggedIn()){
-            System.out.println("[SR] Search Room");
-            System.out.println("[BR] Booking Room");
-            System.out.println("[CB] Cancle Bill");
+        if(!hotel.check_opening()){
+            System.out.println("================ Hotel Menu ================");
+            
+            str = "Enter one of the commands in the brackets:\n" +
+                    
+                    "[SH] Search Hotel";
+              
+            
+        } else if(account.checkLoggedIn()){
+            str += "[SR] Search Room\n"+
+            "[BR] Booking Room\n"+
+            "[CB] Cancle Bill";
         }else{
-            System.out.println("[SR] Search Room");
+            str += "[SR] Search Room";
         }
-        
+        System.out.println(str);
     }
 
     public static void displayOptionAccount(NewAccountController newAccountController) {
         // check
         String str = "";
         if (!newAccountController.getAccount().checkLoggedIn()) {
-            str = "[CA] Create Account\n" +
+            str =  
+                "[CA] Create Account\n" +                
                   "[LA] Login Account";
             System.out.println(str);
         } else {
-            System.out.println(
-                    
-                    "[LO] Logout");
+            System.out.println("[LO] Logout");
+                    // +"[EX] Exit\n";
         }
     }
 
@@ -235,7 +143,7 @@ public class BootStrapWeb {
             return "";
         }
 
-        return "LOGGED IN AS # " + newAccountController.getAccount().getUsername() + " ";
+        return "LOGGED IN AS # " + newAccountController.getAccount().getUsername() + "\n";
 
     }
 

@@ -4,59 +4,38 @@
         "add": "12/1, HaiBaChung, District 1",
         "loca": "HCM",
         "room": 25,
+        "uti": "five stars",
         "ev": [
             {
-                "1": "Good"
-            },
-            {
-                "1": "Very good"
-            },
-            {
-                "1": "nice"
-            },
-            {
-                "1": "bad"
+                "good": "neat and clean"
             }
-        ],
-        "uti": "five stars"
+        ]
     },
     {
         "na": "GALLICI",
         "add": "12/1, HaiBaChung, District 1",
         "loca": "DANANG",
         "room": 28,
+        "uti": "five stars",
         "ev": [
             {
-                "1": "Good"
-            },
-            {
-                "1": "Good"
-            },
-            {
-                "1": "nice"
+                "good": "neat and clean"
             }
-        ],
-        "uti": "five stars"
+        ]
     },
     {
         "na": "SIXSENSES",
         "add": "12/1, HaiBaChung, District 1",
         "loca": "HANOI",
         "room": 24,
+        "uti": "five stars",
         "ev": [
             {
-                "1": "Good"
+                "normal": "poor service attitude"
             },
             {
-                "1": "Very good"
-            },
-            {
-                "1": "oh yeah"
-            },
-            {
-                "1": "very bad"
+                "good": "neat and clean"
             }
-        ],
-        "uti": "five stars"
+        ]
     }
 ]

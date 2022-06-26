@@ -21,10 +21,10 @@ public class BootStrapReception {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             displayOption();
+            System.out.println("[EX] Exit");
             //chon
             //command
             String rep = scanner.nextLine();
@@ -70,6 +70,8 @@ public class BootStrapReception {
                 } else {
                     System.out.println("[ERRO] Unknown command");
                 }
+            }else if (rep.toUpperCase().equals(Actions.EX.toString())) {
+                break;
             }
         }
     }
