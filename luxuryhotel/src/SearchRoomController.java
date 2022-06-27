@@ -17,6 +17,7 @@ public class SearchRoomController {
     public void searchRoom(int aop) { 
         List<Object> listCheck;
         listCheck = checkRoomValid(aop);
+
         if ((boolean) listCheck.get(0)) {
             JsonArray tempMemory = rooms.getMemory();
             String str = "";
@@ -46,6 +47,7 @@ public class SearchRoomController {
                     str += String.format("%-10d %-10d %-20.2f %-20d %-20s\n", ids, areas, prices, aops, utilitiess);
                 }
             }
+
             System.out.printf("%-10s %-10s %-20s %-20s %-20s\n", "ID:", "AREA:", "PRICEC:", "AMOUNT OF PEOPLE:", "UTILITIES:");
             System.out.println(str.toString());            
         } else {
@@ -59,6 +61,7 @@ public class SearchRoomController {
         JsonArray tempMemory = rooms.getMemory();
         
         System.out.println("ID: \t EREA: \t PRICE: \t AMOUNT OF PEOPLE: \t UTILITIES:");
+
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.print(jsonObject.get("id").getAsInt());
@@ -85,6 +88,7 @@ public class SearchRoomController {
         List<Object> list = new ArrayList<>();
         int index = 0;
         index = Room.getRooms().searchInt("amount of people", aop);
+
         if (index == -1) {
             list.add(false);
             list.add("There is no matching number of people.");
@@ -92,9 +96,5 @@ public class SearchRoomController {
             list.add(true);
         }
         return list;
-    }
-
-    public Room getRooms() {
-        return roomObject;
     }
 }

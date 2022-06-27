@@ -11,22 +11,22 @@ import com.google.gson.JsonParser;
 
 public  class StoredFilesBookedRoom {
     private JsonArray memory;
-    private String storeFile ;
-    SimpleDateFormat ngayVN = new SimpleDateFormat("dd/MM/yyyy");
+    private String storedFile ;
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    public StoredFilesBookedRoom( String storeFile) {
-        this.storeFile = storeFile;
+    public StoredFilesBookedRoom( String storedFile) {
+        this.storedFile = storedFile;
         this.memory = read();
     }
 
     public int searchString(String key, String value) {
         int index = -1;
-        String username = null;
+        String value2 = null;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             
-            username = jsonObject.get(key).getAsString();
-            if (value.equalsIgnoreCase(username)) {
+            value2 = jsonObject.get(key).getAsString();
+            if (value.equalsIgnoreCase(value2)) {
                 index = i;
                 break;
             }
@@ -67,7 +67,7 @@ public  class StoredFilesBookedRoom {
     public JsonArray read() {
         JsonArray jsonArray = null;
            
-        try (FileReader reader = new FileReader(storeFile)) {
+        try (FileReader reader = new FileReader(storedFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,8 +85,8 @@ public  class StoredFilesBookedRoom {
         jsonObject.addProperty("un", username);
         jsonObject.addProperty("phone", phoneNumber);
         jsonObject.addProperty("email", email);
-        jsonObject.addProperty("date in", ngayVN.format(check_in));
-        jsonObject.addProperty("date out", ngayVN.format(check_out));
+        jsonObject.addProperty("date in", dateFormat.format(check_in));
+        jsonObject.addProperty("date out", dateFormat.format(check_out));
         jsonObject.addProperty("price", price);
         
         this.memory.add(jsonObject);
@@ -108,7 +108,7 @@ public  class StoredFilesBookedRoom {
             
             date = jsonObject.get(key).getAsString();
             try {
-                date2 = ngayVN.parse(date);
+                date2 = dateFormat.parse(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -132,7 +132,7 @@ public  class StoredFilesBookedRoom {
 
     public void write() {
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(storeFile)) {
+        try (FileWriter writer = new FileWriter(storedFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,11 +140,7 @@ public  class StoredFilesBookedRoom {
         }
     }
 
-    public JsonArray getAll(){
+    public JsonArray getMemory(){
         return this.memory;
-    }
-
-    public String getNameFile() {
-        return storeFile;
     }
 }

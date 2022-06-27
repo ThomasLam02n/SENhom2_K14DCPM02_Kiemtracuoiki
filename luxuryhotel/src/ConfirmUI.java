@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class ConfirmUI extends UITerminal{
     private Actions command;
     private Bill bill;
-    private ConfirmController confirmController;
+    private ConfirmBookedRoomController confirmController;
 
     public ConfirmUI() {
     }
 
-    public ConfirmUI(ConfirmController confirmController) {
+    public ConfirmUI(ConfirmBookedRoomController confirmController) {
         this.confirmController = confirmController;
     }
 
@@ -20,7 +20,7 @@ public class ConfirmUI extends UITerminal{
         this.command = Actions.valueOf(cmd);
 
         if (this.command.equals(Actions.CF)) {
-            return "room transaction confirmation";
+            return "Enter the room confirmation ID.";
         } else {
             return "Unkown command.";
         }
@@ -31,9 +31,8 @@ public class ConfirmUI extends UITerminal{
         if (this.command.equals(Actions.CF)) {
             List<Object> list;
             list = confirmInput();
-            confirmController.confirm(list.get(0).toString());
+            confirmController.confirmBookedRoom(list.get(0).toString());
         }
-        
     }
 
     private List<Object> confirmInput() {
@@ -41,7 +40,9 @@ public class ConfirmUI extends UITerminal{
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
         String id = scanner.nextLine();
+        
         list.add(id);
+        
         return list;
     } 
 

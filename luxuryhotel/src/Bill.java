@@ -5,7 +5,7 @@ public class Bill {
     private int id;
     private double price;
     private JsonArray service;
-    private boolean state_bill;
+    private boolean stateBill;
     private static StoredFilesBill storedFilesBill;
 
     public Bill() {
@@ -26,7 +26,7 @@ public class Bill {
         this.id = id;
         this.price = prices;
         this.service = service;
-        this.state_bill = true;
+        this.stateBill = true;
     }
 
     public void setBill(int id, JsonArray service, double prices) {
@@ -52,6 +52,6 @@ public class Bill {
     }
 
     public boolean checkBill() {
-        return state_bill;
+        return stateBill;
     }
 }

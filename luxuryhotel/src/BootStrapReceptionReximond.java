@@ -1,19 +1,19 @@
 import java.util.Scanner;
 
-public class BootStrapReception {
-    private static Scanner scanner = new Scanner(System.in);
-    private static BookedRoom bookedRoom = new BookedRoom("GALLICIBOOKEDROOMS.json");
-    private static Bill bill = new Bill("GALLICIBILLS.json");
+public class BootStrapReceptionReximond {
+    private static BookedRoom bookedRoom = new BookedRoom("REXIMONDBOOKEDROOMS.json");
+    private static Bill bill = new Bill("REXIMONDBILLS.json");
+
     private static CheckBookedRoomController checkBookedRoomController = new CheckBookedRoomController(bookedRoom);
     private static CheckBookedRoomUI checkBookedRoomUI = new CheckBookedRoomUI(checkBookedRoomController);
 
     private static PrintBillController printBillController = new PrintBillController(bill);
     private static PrintBillUI pBillUI =  new PrintBillUI(printBillController);
 
-    private static ConfirmController confirmController = new ConfirmController(bookedRoom, bill);
+    private static ConfirmBookedRoomController confirmController = new ConfirmBookedRoomController(bookedRoom, bill);
     private static ConfirmUI confirmUI = new ConfirmUI(confirmController); 
 
-
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args){
 
         System.out.println("Front desk system");
@@ -25,10 +25,7 @@ public class BootStrapReception {
             }
             displayOption();
             System.out.println("[EX] Exit");
-            //chon
-            //command
             String rep = scanner.nextLine();
-            //si
             String rescmd;
             if(rep.toUpperCase().equals(Actions.SI.toString())){
                 rescmd = checkBookedRoomUI.handleCommand(rep);
@@ -37,10 +34,10 @@ public class BootStrapReception {
                 if(rescmd != null && !rescmd.equals("Unkown command.")){
                     checkBookedRoomUI.handleInputs();
                 }
-                
             } else if(rep.toUpperCase().equals(Actions.PB.toString())){
                 rescmd = pBillUI.handleCommand(rep);
                 System.out.println(rescmd);
+
                 if(rescmd != null && !rescmd.equals("Unkown command.")){
                         pBillUI.handleInputs();
                 } else {
@@ -50,23 +47,21 @@ public class BootStrapReception {
             } else if(rep.toUpperCase().equals(Actions.CF.toString())){
                 rescmd = confirmUI.handleCommand(rep);
                 System.out.println(rescmd);
+
                 if(rescmd != null && !rescmd.equals("Unkown command")){
                         confirmUI.handleInputs();
                 } else {
                     System.out.println("[ERROR] Unkown command.");
                 }
-
             }  else if (rep.toUpperCase().equals(Actions.AS.toString())) {
                 Hotel hotel = new Hotel();
-                // String fileBill = hotel.getName() + "BILLS.json";
-                // Bill bill = new Bill(fileBill);
                 AddServiceController addServiceController = new AddServiceController(bill);
                 AddServicesUI addServicesUI = new AddServicesUI(addServiceController);
                 rescmd = addServicesUI.handleCommand(rep);
                 System.out.println(rescmd);
+
                 if (rescmd != null && !rescmd.equals("Unkown command.")) {
                     addServicesUI.handleInputs();
-                    // displayOptionSearchRoom(searchRoomController);
                 } else {
                     System.out.println("[ERRO] Unknown command");
                 }
@@ -78,20 +73,16 @@ public class BootStrapReception {
     
     public static void displayOption(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~CRS MENU~~~~~~~~~~~~~~~~~~~");
-        // check
         String str = "";
         if(checkBookedRoomController.getBookedRoom().checkBooked()){
             str = "Enter on of the conmand in brackets: \n"+
             "[CF] Confirm BookedRoom";
-            System.out.println(str);
         } else {
-              
             str = "Enter one of the command in the brakets:\n" + 
                       "[SI] check booked room \n"+
                       "[AS] Add Services \n"
                       +"[PB] print bill";
-            System.out.println(str);
         }
+        System.out.println(str);
     }
-
 }

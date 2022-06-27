@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class AddServicesUI extends UITerminal {
     private Actions command;
     private AddServiceController addServiceController = new AddServiceController();
-    Scanner scanner = new Scanner(System.in);
+    public Scanner scanner = new Scanner(System.in);
+
     public AddServicesUI() {
     }
     
@@ -33,14 +35,19 @@ public class AddServicesUI extends UITerminal {
             for (int i = 1; i < list.size(); i++) {
                 addServiceController.addService((int)list.get(0), list.get(i).toString());
             }
-        }
-            
+        }    
     }
 
-    public List<Object> addServiceInput() {
+    private List<Object> addServiceInput() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID room: ");
-        int id = scanner.nextInt();
+        int id = 0;
+        try {
+            id = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+        }
+        
         scanner.nextLine();
         list.add(id);
         while (true) {

@@ -1,36 +1,140 @@
 [
     {
         "id": 101,
-        "area": 40,
-        "price": 6000000,
+        "area": 30,
+        "price": 1000000,
         "utilities": [ 
             {
-                "1": "Double bed"
-            },
-            {
-                "1": "Sofa"
+                "1": "Single bed"
             }
         ],
-        "amount of people": 2
+        "amount of people": 1
     },
     {
         "id": 102,
-        "area": 40,
-        "price": 4000000,
-        "utilities": [
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
             {
-                "1": "Double bed"
-            },
-            {
-                "1": "Sofa"
+                "1": "Single bed"
             }
         ],
         "amount of people": 1
     },
     {
         "id": 103,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 104,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 105,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 106,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 107,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 108,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 109,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 110,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 111,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 112,
+        "area": 30,
+        "price": 1000000,
+        "utilities": [ 
+            {
+                "1": "Single bed"
+            }
+        ],
+        "amount of people": 1
+    },
+    {
+        "id": 201,
         "area": 40,
-        "price": 4000000,
+        "price": 2000000,
         "utilities": [
             {
                 "1": "Double bed"
@@ -42,9 +146,9 @@
         "amount of people": 2
     },
     {
-        "id": 104,
+        "id": 202,
         "area": 40,
-        "price": 4000000,
+        "price": 2000000,
         "utilities": [
             {
                 "1": "Double bed"
@@ -53,12 +157,166 @@
                 "1": "Sofa"
             }
         ],
-        "amount of people": 1
+        "amount of people": 2
     },
     {
-        "id": 105,
+        "id": 203,
         "area": 40,
-        "price": 4000000,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 204,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 205,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 206,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 206,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 207,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 208,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 209,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 210,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 211,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 212,
+        "area": 40,
+        "price": 2000000,
+        "utilities": [
+            {
+                "1": "Double bed"
+            },
+            {
+                "1": "Sofa"
+            }
+        ],
+        "amount of people": 2
+    },
+    {
+        "id": 213,
+        "area": 40,
+        "price": 2000000,
         "utilities": [
             {
                 "1": "Double bed"

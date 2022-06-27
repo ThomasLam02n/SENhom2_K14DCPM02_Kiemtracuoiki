@@ -1,7 +1,7 @@
 public enum Actions {
     //Create Account , Login Account, Logout
     CA, LO, LA,
-    //check BookedRoom
+    //check BookedRoom, cofirm
     SI, CF,
     //Search
     SR, SH, 

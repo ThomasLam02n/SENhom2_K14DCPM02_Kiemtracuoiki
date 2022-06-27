@@ -2,9 +2,9 @@ public class Service {
     private String username;
     private double  price;
     private boolean state_services;
-    private static StoredFilesService service = new StoredFilesService("Services.json");
     private Room room;
-
+    private static StoredFilesService service = new StoredFilesService("Services.json");
+   
     public Service() {
         this.username = null;
         this.price = 0;

@@ -1,11 +1,8 @@
 public class BootStrapEvluate {
     public static void main(String[] args) {
         Hotel hotel = new Hotel();
-        Bill bill = new Bill();
         EvaluateController evaluateController = new EvaluateController(hotel);
         EvaluateUI evaluateUI = new EvaluateUI();
-        AddServiceController addServiceController = new AddServiceController(bill);
-        AddServicesUI addServicesUI = new AddServicesUI();
 
         while (true) {
             displayEvaluate(evaluateController);

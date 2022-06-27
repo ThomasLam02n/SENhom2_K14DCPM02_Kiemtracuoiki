@@ -1,36 +1,21 @@
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class CancelBookedRoomUI extends UITerminal {
     private Actions command;
-    private CancelBookedRoomController cancelBookedRoomController = new CancelBookedRoomController();
-    Scanner scanner = new Scanner(System.in);
     private Account account;
-
+    private CancelBookedRoomController cancelBookedRoomController = new CancelBookedRoomController();
     
+    public Scanner scanner = new Scanner(System.in);
 
+    public CancelBookedRoomUI() {
+    }
 
     public CancelBookedRoomUI(CancelBookedRoomController cancelBookedRoomController, Account account) {
         this.cancelBookedRoomController = cancelBookedRoomController;
         this.account = account;
     }
-
-
-
-    public CancelBookedRoomUI() {
-    }
-
-    
-
-    public CancelBookedRoomUI(CancelBookedRoomController cancelBookedRoomController) {
-        this.cancelBookedRoomController = cancelBookedRoomController;
-    }
-
-
 
     @Override
     public String handleCommand(String rep) {
@@ -47,20 +32,21 @@ public class CancelBookedRoomUI extends UITerminal {
 
     @Override
     public void handleInputs() {
-        // TODO Auto-generated method stub
         if (this.command.equals(Actions.CB)) {
-            List<Object> list =  CancelBill();
+            List<Object> list =  cancelBill();
             this.account.checkLoggedIn();
             String name = this.account.getUsername();
             cancelBookedRoomController.RemoveBill(list.get(0).toString(), name);
         }
     }
 
-    public List<Object> CancelBill() {
+    private List<Object> cancelBill() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
         String id = scanner.nextLine();
+
         list.add(id);
+        
         return list;
     }
 }

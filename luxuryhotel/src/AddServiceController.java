@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 public class AddServiceController {
     private Service service;
     private Bill bill;
+    public Scanner scanner = new Scanner(System.in);
 
     public AddServiceController() {
     }
@@ -19,10 +20,10 @@ public class AddServiceController {
 
     public void viewService() {
         JsonArray tempMemory = Service.getService().getMemory();
-        System.out.printf("%-10s %-10s\n", "NAME:", "PRICE:");
+        System.out.printf("%-30s %-10s\n", "NAME:", "PRICE:");
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
-            System.out.printf("%-10s %-10s\n", jsonObject.get("service").getAsString(),
+            System.out.printf("%-30s %-10s\n", jsonObject.get("service").getAsString(),
                     jsonObject.get("price").getAsDouble());
         }
     }
@@ -66,7 +67,6 @@ public class AddServiceController {
             double price;
 
             if (nameService.equalsIgnoreCase("Laundry")) {
-                Scanner scanner = new Scanner(System.in);
                 System.out.print("Enter the number of clothes: ");
                 int number = scanner.nextInt();
                 price = ((prices * number) + pricesBill);

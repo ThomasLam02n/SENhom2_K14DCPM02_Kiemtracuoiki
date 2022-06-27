@@ -41,17 +41,4 @@ public class Room {
         this.amounOfPeople = amounOfPeople;
         this.booked = true;
     }
-    
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
-
-    public int getId() {
-        return id;
-    }  
-    
 }

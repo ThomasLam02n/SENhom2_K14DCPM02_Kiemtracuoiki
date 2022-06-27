@@ -3,31 +3,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CheckBookedRoomUI extends UITerminal {
-
-
     private Actions command;
     private CheckBookedRoomController checkBookedRoomController;
-    Scanner scanner = new Scanner(System.in);
+    public Scanner scanner = new Scanner(System.in);
 
-    
+    public CheckBookedRoomUI() {
+    }
 
     public CheckBookedRoomUI(CheckBookedRoomController checkBookedRoomController) {
         this.checkBookedRoomController = checkBookedRoomController;
     }
 
-
-    public CheckBookedRoomUI() {
-    }
-
     @Override
     public String handleCommand(String rep) {
-        // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
         if (this.command.equals(Actions.SI)) {
-            return " Enter the request you want to find.";
-        
+            return "Enter the ID you want to find.";
         }else {
             return "Unkown command.";
         }
@@ -35,18 +28,19 @@ public class CheckBookedRoomUI extends UITerminal {
 
     @Override
     public void handleInputs() {
-        // TODO Auto-generated method stub
         if (this.command.equals(Actions.SI)) {
             List<Object> list =  searchInputId();
-            checkBookedRoomController.SearchBookedRoom(list.get(0 ).toString());
+            checkBookedRoomController.searchBookedRoom(list.get(0 ).toString());
         }
     }
 
-    public List<Object> searchInputId() {
+    private List<Object> searchInputId() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
         String id = scanner.nextLine();
+
         list.add(id);
+        
         return list;
     }
     

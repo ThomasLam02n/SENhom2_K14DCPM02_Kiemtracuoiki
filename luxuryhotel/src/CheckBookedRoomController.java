@@ -1,44 +1,42 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class CheckBookedRoomController {
     private BookedRoom bookedRoom;
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    public BookedRoom getBookedRoom() {
-        return bookedRoom;
+    public CheckBookedRoomController() {
     }
-
 
     public CheckBookedRoomController(BookedRoom bookedRoom){
         this.bookedRoom = bookedRoom;
     }
+    
+    public BookedRoom getBookedRoom() {
+        return bookedRoom;
+    }
 
-    public void SearchBookedRoom(String id){
+    public void searchBookedRoom(String id){
         List<Object> listcheck;
-        listcheck = check_bill_valid(id);
+        listcheck = checkBillValid(id);
 
-            if(!(boolean) listcheck.get(0)){
-                System.out.println(listcheck.get(1));
-            
-            } else {
-                for (int i = 1; i < listcheck.size(); i++) {
-                    System.out.println(listcheck.get(i));
-                }
-                
+        if(!(boolean) listcheck.get(0)){
+            System.out.println(listcheck.get(1));
+        } else {
+            for (int i = 1; i < listcheck.size(); i++) {
+                System.out.println(listcheck.get(i));
             }
         }
+    }
 
-    public List<Object> check_bill_valid(String id){
+    public List<Object> checkBillValid(String id){
         List<Object> list = new ArrayList<>();
-        JsonArray tempMemory = BookedRoom.getBookedRoom().getAll();
+        JsonArray tempMemory = BookedRoom.getBookedRoom().getMemory();
         int index = 0;
         index = BookedRoom.getBookedRoom().searchString("id", id);
         
@@ -60,11 +58,13 @@ public class CheckBookedRoomController {
             list.add(email);
             list.add(datei);
             list.add(dateo);
+
             try {
                 this.bookedRoom.setBookedRoom(idr, nameCusomer, phone, email, dateFormat.parse(datei), dateFormat.parse(dateo), check);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            
             return list;
         } else{
             list.add(false);

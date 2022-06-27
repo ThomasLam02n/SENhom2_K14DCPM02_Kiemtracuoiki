@@ -6,30 +6,27 @@ import java.util.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class ConfirmController {
+public class ConfirmBookedRoomController {
     private BookedRoom bookedRoom;
     private Bill bill;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    public ConfirmController() {
+    public ConfirmBookedRoomController() {
     }
 
-    public ConfirmController(BookedRoom bookedRoom) {
-        this.bookedRoom = bookedRoom;
-    }
-
-    public ConfirmController(BookedRoom bookedRoom, Bill bill) {
+    public ConfirmBookedRoomController(BookedRoom bookedRoom, Bill bill) {
         this.bookedRoom = bookedRoom;
         this.bill = bill;
     }
 
-    public void confirm(String id) {
-        List<Object> check_valid;
-        check_valid = check_booked_valid(id);
-        if ((boolean)check_valid.get(0)) {
+    public void confirmBookedRoom(String id) {
+        List<Object> checkValid;
+        checkValid = checkBookedValid(id);
+        
+        if ((boolean)checkValid.get(0)) {
             int index = 0;
             index = BookedRoom.getBookedRoom().searchString("id", id);
-            JsonArray bookArray = BookedRoom.getBookedRoom().getAll();
+            JsonArray bookArray = BookedRoom.getBookedRoom().getMemory();
             JsonObject bookObject = bookArray.get(index).getAsJsonObject();
             int idRoom = bookObject.get("id room").getAsInt();
             String username = bookObject.get("un").getAsString();
@@ -54,16 +51,14 @@ public class ConfirmController {
                 e.printStackTrace();
             }    
 
-            System.out.println(check_valid.get(1));
+            System.out.println(checkValid.get(1));
             
         } else {
-            System.out.println(check_valid.get(1));
+            System.out.println(checkValid.get(1));
         }
-        
-
     }
 
-    public List<Object> check_booked_valid(String id) {
+    public List<Object> checkBookedValid(String id) {
         List<Object> list = new ArrayList<>();
         int index = 0;
         index = BookedRoom.getBookedRoom().searchString("id", id);

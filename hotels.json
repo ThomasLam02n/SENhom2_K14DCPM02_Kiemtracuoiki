@@ -1,9 +1,9 @@
 [
     {
         "na": "REXIMOND",
-        "add": "12/1, HaiBaChung, District 1",
+        "add": "12/1 Hai Ba Trung, District 1",
         "loca": "HCM",
-        "room": 25,
+        "room": 24,
         "uti": "five stars",
         "ev": [
             {
@@ -13,9 +13,9 @@
     },
     {
         "na": "GALLICI",
-        "add": "12/1, HaiBaChung, District 1",
+        "add": "05 Truong Sa, Ngu Hanh Son",
         "loca": "DANANG",
-        "room": 28,
+        "room": 25,
         "uti": "five stars",
         "ev": [
             {
@@ -25,9 +25,9 @@
     },
     {
         "na": "SIXSENSES",
-        "add": "12/1, HaiBaChung, District 1",
+        "add": "33 Duong Thanh, Hoan Kiem",
         "loca": "HANOI",
-        "room": 24,
+        "room": 26,
         "uti": "five stars",
         "ev": [
             {
@@ -35,6 +35,9 @@
             },
             {
                 "good": "neat and clean"
+            },
+            {
+                "bad": "service attitude is very bad"
             }
         ]
     }

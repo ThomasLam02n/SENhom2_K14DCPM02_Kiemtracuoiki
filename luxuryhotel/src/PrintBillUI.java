@@ -32,11 +32,13 @@ public class PrintBillUI extends UITerminal{
         }
     }
 
-    public List<Object> printBillInput() {
+    private List<Object> printBillInput() {
         List<Object> list = new ArrayList<>();
         System.out.print("ID: ");
         String id = this.printBillController.scanner.nextLine();
+
         list.add(id);
+
         return list;
     }
 }
