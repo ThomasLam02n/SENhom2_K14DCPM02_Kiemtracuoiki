@@ -8,11 +8,9 @@ public class Hotel {
     private JsonArray evaluation;
     private String utilities;
     private boolean opening;
-    private static StoredFilesHotelController hotels = new StoredFilesHotelController("Hotels.json");
-    // private static StorefilesHotelController hotels;
+    private static StoredFilesHotel hotels = new StoredFilesHotel("Hotels.json");
     
     public Hotel(){
-
     }
 
     public Hotel(String name, String address, String location,int room_quantity, JsonArray evaluation, String utilities) {
@@ -38,30 +36,15 @@ public class Hotel {
         this.opening = true;
     }
    
-    public static StoredFilesHotelController getHotels() {
+    public static StoredFilesHotel getHotels() {
         return hotels;
     }
 
-    public boolean check_opening(){
+    public boolean checkOpening(){
         return this.opening;
-    }
+    } 
     
     public String getName() {
         return name;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getRoom_quantity() {
-        return room_quantity;
-    }
-
-    public String getUtilities() {
-        return utilities;
-    }
-
-    
-    
 }

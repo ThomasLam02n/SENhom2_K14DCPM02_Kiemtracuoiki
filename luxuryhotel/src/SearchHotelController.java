@@ -7,11 +7,8 @@ import com.google.gson.JsonObject;
 public class SearchHotelController {
     private Hotel hotelobject;
     private SearchRoomController searchRoomController;    
-    private StoredFilesHotelController hotels = new StoredFilesHotelController("hotels.json");
+    private static StoredFilesHotel hotels = new StoredFilesHotel("hotels.json");
 
-    public Hotel getHotel(){
-        return hotelobject;
-    }
     public SearchHotelController() {
 
     }
@@ -19,10 +16,14 @@ public class SearchHotelController {
     public SearchHotelController(Hotel hotelobject) {
         this.hotelobject = hotelobject;
     }
+
+    public Hotel getHotel(){
+        return hotelobject;
+    }
     
     public void searchHotelName(String name) {
         List<Object> listCheck;
-        listCheck = checkHotel_Valid(name);
+        listCheck = checkHotelValid(name);
         if (!(boolean) listCheck.get(0)) {
             System.out.println(listCheck.get(1));
             System.out.print("Name: "+listCheck.get(2));
@@ -41,11 +42,12 @@ public class SearchHotelController {
         }
     }
 
-    public List<Object> checkHotel_Valid(String name) {
+    public List<Object> checkHotelValid(String name) {
         List<Object> list = new ArrayList<>();
         JsonArray tempMemory = hotels.getMemory();
         int index = 0;
-        index = Hotel.getHotels().searchAddressHotel("na", name);
+        index = Hotel.getHotels().searchString("na", name);
+
         if (index != -1) {
             list.add(false);
             list.add("[FOUND OUT] hotel infomation:");
@@ -79,6 +81,7 @@ public class SearchHotelController {
                     }
                 }
             }
+
             list.add(names);
             list.add(addresses);
             list.add(locations);
@@ -96,12 +99,12 @@ public class SearchHotelController {
 
     public void viewHotel() {
         JsonArray tempMemory = hotels.getMemory();
-        System.out.println("Name: \t\t Address: \t\t\t Location: \tRooms: \t Utilities: \t Evaluations: ");
+        System.out.println("Name: \t\t Address: \t\t\t\t Location: \tRooms: \t Utilities: \t Evaluations: ");
         for (int i = 0; i < tempMemory.size(); i++) {
             JsonObject jsonObject = tempMemory.get(i).getAsJsonObject();
             System.out.print(jsonObject.get("na").getAsString());
             System.out.print(" \t " + jsonObject.get("add").getAsString());
-            System.out.print("\t " + jsonObject.get("loca").getAsString());
+            System.out.print("\t\t " + jsonObject.get("loca").getAsString());
             System.out.print("\t\t" + jsonObject.get("room").getAsInt());
             System.out.print("\t " + jsonObject.get("uti").getAsString());
             JsonArray jsonArray = jsonObject.get("ev").getAsJsonArray();
@@ -131,5 +134,4 @@ public class SearchHotelController {
             System.out.println("\t " + str);
         }
     }
-
 }

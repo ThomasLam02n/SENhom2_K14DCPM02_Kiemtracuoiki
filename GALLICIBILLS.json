@@ -1,38 +1,68 @@
 [
     {
-        "id": "101716217898",
+        "id": "101587969838",
         "id room": 101,
         "un": "thai",
         "phone": 12345,
         "email": "thai@",
-        "date in": "20/07/2022",
-        "date out": "21/07/2022",
+        "date in": "28/06/2022",
+        "date out": "29/06/2022",
         "service": [
             {
-                "1": "wifi"
+                "1": "Food and drink"
             },
             {
                 "1": "laundry"
+            },
+            {
+                "1": "wifi5g"
             }
         ],
-        "price": 4070000.0
+        "price": 2160000.0
     },
     {
-        "id": "104405781527",
-        "id room": 104,
-        "un": "tung",
-        "phone": 126236,
-        "email": "tung@gmail.com",
-        "date in": "25/06/2022",
-        "date out": "27/06/2022",
+        "id": "102561045568",
+        "id room": 102,
+        "un": "tai",
+        "phone": 13579,
+        "email": "tai@",
+        "date in": "28/06/2022",
+        "date out": "30/06/2022",
         "service": [
             {
-                "1": "wifi"
-            },
+                "1": "wifi5g"
+            }
+        ],
+        "price": 2220000.0
+    },
+    {
+        "id": "103197268212",
+        "id room": 103,
+        "un": "phong",
+        "phone": 98217,
+        "email": "Pji@jd",
+        "date in": "28/06/2022",
+        "date out": "01/07/2022",
+        "service": [
             {
                 "1": "laundry"
             }
         ],
-        "price": 8070000.0
+        "price": 3350000.0
+    },
+    {
+        "id": "104350876312",
+        "id room": 104,
+        "un": "thach",
+        "phone": 12468,
+        "email": "thach@",
+        "date in": "28/06/2022",
+        "date out": "02/07/2022",
+        "service": [
+            {
+                "1": "food and drink"
+            }
+        ],
+        "price": 8400000.0
     }
 ]

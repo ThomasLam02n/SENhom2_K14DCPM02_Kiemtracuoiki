@@ -17,29 +17,17 @@ public class BookingRoomController {
     public BookingRoomController(){        
     }
 
-    public BookingRoomController(Room room) {
-        BookingRoomController.room = room;
-    }
-
-    public BookingRoomController(BookedRoom bookroom) {
-        BookingRoomController.bookroom = bookroom;
-    }
-
-    public BookingRoomController(Account account) {
-        BookingRoomController.account = account;
-    }
-
     public BookingRoomController(BookedRoom bookroom, Room room, Account account) {
         BookingRoomController.bookroom = bookroom;
         BookingRoomController.room = room;
         BookingRoomController.account = account;
     }
 
-    public void bookingRoom(int idRoom , Date check_in , Date check_out){
+    public void bookingRoom(int idRoom , Date checkIn , Date checkOut){
         List<Object> listCheck;
         List<Object> listCheck2;
-        listCheck = checkBookedRoomValid(idRoom, check_in, check_out);
-        listCheck2 = checkDateValid(check_in, check_out);
+        listCheck = checkBookedRoomValid(idRoom, checkIn, checkOut);
+        listCheck2 = checkDateValid(checkIn, checkOut);
         if(!(boolean) listCheck.get(0)){
             for (int i = 1; i < listCheck.size(); i++) {
                 System.out.println(listCheck.toString());
@@ -51,9 +39,6 @@ public class BookingRoomController {
         } else {
             JsonArray tempMemory = Room.getRooms().getMemory();
             int index = 0;
-            for (int i = 0; i < tempMemory.size(); i++) {
-                
-            }
             index = Room.getRooms().searchInt("id", idRoom);
             JsonObject jsonObject = tempMemory.get(index).getAsJsonObject();
             int areas = jsonObject.get("area").getAsInt();
@@ -69,38 +54,38 @@ public class BookingRoomController {
 
             BookingRoomController.account.checkLoggedIn();
             String nameCustomer = BookingRoomController.account.getUsername();
-            JsonArray accArray = Account.getAccounts().getAll();
+            JsonArray accArray = Account.getAccounts().getMemory();
             int index3 = 0;
-            index3 = Account.getAccounts().search("un", nameCustomer);
-            JsonObject accObject = accArray.get(index3).getAsJsonObject();
+            index3 = Account.getAccounts().searchString("un", nameCustomer);
+            JsonObject accObject = accArray.get(index3).getAsJsonObject();  
             Integer phoneNumber = accObject.get("phone").getAsInt();
             String email =  accObject.get("email").getAsString();
-            int diffDays = (int)calculateTheDateOfUse(check_in, check_out);
+            int diffDays = (int)calculateTheDateOfUse(checkIn, checkOut);
             prices = prices * diffDays;
             String id = createID(idRoom);
-            BookedRoom.getBookedRoom().update(id, idRoom, nameCustomer, phoneNumber, email, check_in, check_out, prices);
+            BookedRoom.getBookedRoom().update(id, idRoom, nameCustomer, phoneNumber, email, checkIn, checkOut, prices);
             BookedRoom.getBookedRoom().write();
             System.out.println(listCheck.get(1));
         } 
     }
     
-    public List<Object> checkBookedRoomValid(int idRoom , Date check_in , Date check_out){
+    public List<Object> checkBookedRoomValid(int idRoom , Date checkIn , Date checkOut){
         List<Object> list = new ArrayList<>();
         int index = 0;
         int index2 = 0;
         int index3 = 0;
         index = Room.getRooms().searchInt("id", idRoom);
         if(index != -1){
-            JsonArray bookedroomArray = BookedRoom.getBookedRoom().getAll();
-            index2 = BookedRoom.getBookedRoom().searchInt("id room", idRoom);
+            JsonArray bookedroomArray = BookedRoom.getBookedRoom().getMemory();
+            index2 = BookedRoom.getBookedRoom().searchInt("id room", idRoom);   
             index3 = BookedRoom.getBookedRoom().searchString("un", BookingRoomController.account.getUsername());
             if (index2 != -1) {
                 JsonObject bookedroomObject = bookedroomArray.get(index2).getAsJsonObject();
-                List<Object> list3 = new ArrayList<>();
+                List<Object> list2 = new ArrayList<>();
                 String dateout = bookedroomObject.get("date out").getAsString();
                 
                 try {
-                    list3 = checkDateValid(dateFormat.parse(dateout), check_in);
+                    list2 = checkDateValid(dateFormat.parse(dateout), checkIn);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 } 
@@ -108,11 +93,11 @@ public class BookingRoomController {
                 if (index3 != -1) {
                     list.add(false);
                     list.add("The account has made a reservation before.");
-                } else if((boolean)list3.get(0)){                   
+                } else if((boolean)list2.get(0)){                   
                     list.add(true);
                     list.add("[BOOK ROOM SUCCESSFUL] You have successfully booked your room.");
                     return list;
-                } else if (!(boolean)list3.get(0)) {
+                } else if (!(boolean)list2.get(0)) {
                     list.add(false);
                     list.add("[ID ROOM EXISTS] This room ID is already booked.");
                     return list;
@@ -133,11 +118,11 @@ public class BookingRoomController {
         return list;
     }
 
-    public List<Object> checkDateValid(Date check_in , Date check_out){
+    public List<Object> checkDateValid(Date checkIn , Date checkOut){
         List<Object> list = new ArrayList<>();
         Date date = new Date();
-        boolean checkint = check(date, check_in);
-        boolean check = check(check_in, check_out);
+        boolean checkint = checkDate(date, checkIn);
+        boolean check = checkDate(checkIn, checkOut);
         if (!checkint) {
             list.add(false);
             list.add("Check-in date must be after current date.");
@@ -178,14 +163,14 @@ public class BookingRoomController {
         index = BookedRoom.getBookedRoom().searchString("un", username);
         if (index != -1) {
             list.add(false);
-            list.add("e");
+            list.add("Invoice ID does not exist");
         } else {
             list.add(true);
         }
         return list;
     }
 
-    private boolean check(Date dateint, Date dateout) {
+    private boolean checkDate(Date dateint, Date dateout) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dateint);
         int ngayVao = calendar.get(Calendar.DATE);

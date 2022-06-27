@@ -1,7 +1,7 @@
 [
     {
         "un": "phong",
-        "ps": 218,
+        "ps": 123,
         "email": "Pji@jd",
         "phone": 98217
     },
@@ -70,11 +70,5 @@
         "ps": 1111,
         "email": "teo@gmail.com",
         "phone": 333777555
-    },
-    {
-        "un": "mam thach",
-        "ps": 123,
-        "email": "thachkute",
-        "phone": 117
     }
 ]

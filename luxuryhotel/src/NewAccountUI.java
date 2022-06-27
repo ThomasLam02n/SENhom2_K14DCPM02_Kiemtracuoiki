@@ -1,23 +1,21 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class NewAccountUI {
-    private static Scanner scanner = new Scanner(System.in);
+public class NewAccountUI extends UITerminal{
     private Actions command;
     private NewAccountController newAccountController;
+    private static Scanner scanner = new Scanner(System.in);
 
-    
+    public NewAccountUI() {
+    }
 
-    /**
-     * @param command
-     * @param newAccountController
-     */
     public NewAccountUI( NewAccountController newAccountController) {
         this.command = null;
         this.newAccountController = newAccountController;
     }
 
-    // CA LI LO li
-    public String handleCommands(String rep) {
+    @Override
+    public String handleCommand(String rep) {
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
         if (this.command.equals(Actions.CA)) {
@@ -27,6 +25,7 @@ public class NewAccountUI {
         }
     }
 
+    @Override
     public void handleInputs() {
         if (this.command.equals(Actions.CA)) {
             Account account = createAccountInputs();
@@ -38,13 +37,27 @@ public class NewAccountUI {
         System.out.print("USERNAME: ");
         String username = scanner.nextLine();
         System.out.print("PASSWORD: ");
-        Integer password = scanner.nextInt();
+        Integer password = null;
+
+        try {
+            password = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+        }
+
         scanner.nextLine();
         System.out.print("EMAIL: ");
         String email = scanner.nextLine();
         System.out.print("PHONENUMBER: ");
-        Integer phone = scanner.nextInt();
+        Integer phone = null;
+        
+        try {
+            phone = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+        }
         scanner.nextLine();
+        
         return new Account(username, password, email, phone);
     }
 }

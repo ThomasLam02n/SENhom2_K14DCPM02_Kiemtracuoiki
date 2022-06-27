@@ -1,22 +1,22 @@
 import java.util.Date;
 
-public class BookedRoom {
-    private static StoredFilesBookedRoom bookedRoom;     
+public class BookedRoom {    
     private String nameCustomer;
     private int phoneNumber;
     private String email;
     private int idRoom;
-    private Date checkin_date;
-    private Date checkout_date;
+    private Date checkinDate;
+    private Date checkoutDate;
     private boolean checkBookedRoom;
+    private static StoredFilesBookedRoom bookedRoom; 
     
     public BookedRoom() {
         this.nameCustomer = null;
         this.phoneNumber = 0;
         this.email = null;
         this.idRoom = 0;
-        this.checkin_date = null;
-        this.checkout_date = null;
+        this.checkinDate = null;
+        this.checkoutDate = null;
         this.checkBookedRoom = false;
     }
 
@@ -24,31 +24,31 @@ public class BookedRoom {
         BookedRoom.bookedRoom = new StoredFilesBookedRoom(nameFile);
     }
 
-    public BookedRoom(String nameCustomer, int phoneNumber, String email, int idRoom, Date checkin_date,
-            Date checkout_date) {
+    public BookedRoom(String nameCustomer, int phoneNumber, String email, int idRoom, Date checkinDate,
+            Date checkoutDdate) {
         this.nameCustomer = nameCustomer;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.idRoom = idRoom;
-        this.checkin_date = checkin_date;
-        this.checkout_date = checkout_date;
+        this.checkinDate = checkinDate;
+        this.checkinDate = checkoutDdate;
         this.checkBookedRoom = true;
     }
 
-    public void  setBookedRoom(int idRoom, Date checkin_date, Date checkout_date) {
+    public void  setBookedRoom(int idRoom, Date checkinDate, Date checkoutDate) {
         this.idRoom = idRoom;
-        this.checkin_date = checkin_date;
-        this.checkout_date = checkout_date;
+        this.checkinDate = checkinDate;
+        this.checkoutDate = checkoutDate;
     }
 
-    public void setBookedRoom(int idRoom, String name, int phonr, String  email,  Date checkdi, Date checkdo, boolean check_booked){
+    public void setBookedRoom(int idRoom, String name, int phonr, String  email,  Date checkdi, Date checkdo, boolean checkBooked){
         this.idRoom = idRoom;
         this.nameCustomer = name;
         this.phoneNumber = phonr;
         this.email = email;
-        this.checkin_date = checkdi;
-        this.checkout_date = checkdo;
-        this.checkBookedRoom = check_booked;
+        this.checkinDate = checkdi;
+        this.checkoutDate = checkdo;
+        this.checkBookedRoom = checkBooked;
     }
 
     public static StoredFilesBookedRoom getBookedRoom(){
@@ -56,20 +56,17 @@ public class BookedRoom {
     }
 
     public Date getCheckinDate() {
-        return checkin_date;
+        return checkinDate;
     }
 
-    public Date getCheckout_date() {
-        return checkout_date;
+    public Date getCheckoutDate() {
+        return checkoutDate;
     }
 
     public int getIdRoom() {
         return idRoom;
     }
-
-    public void setIdRoom(int idRoom) {
-        this.idRoom = idRoom;
-    } 
+    
     public boolean checkBooked() {
         return checkBookedRoom;
     }

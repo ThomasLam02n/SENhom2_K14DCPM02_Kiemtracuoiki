@@ -1,6 +1,5 @@
 import java.io.FileReader;
 import java.io.FileWriter;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -8,39 +7,48 @@ import com.google.gson.JsonParser;
 
 public class StoredFilesHotel {
     private JsonArray memory;
-    private String storeFile;
+    private String storedFile;
 
-    public StoredFilesHotel( String storeFile) {
-        this.storeFile = storeFile;
-        this.memory = read(storeFile);
+    public StoredFilesHotel(String storedFile) {
+        this.storedFile = storedFile;
+        this.memory = read();
     }
 
     public JsonArray getMemory() {
-        return this.memory;
+        return memory;
     }
-    public void update(String name, String address,int room_quantity, String evaluation, String utilities){
+
+    public void update(String name, String address, String location,int room_quantity, JsonArray evaluation, String utilities){
         JsonObject jsonObject = new JsonObject();
 
-        jsonObject.addProperty("name", name);
-        jsonObject.addProperty("address", address);
-        jsonObject.addProperty("RoomQuantity", room_quantity);
-        jsonObject.addProperty("Evaluation", evaluation);
-        jsonObject.addProperty("utilities", utilities);
-        
+        jsonObject.addProperty("na", name);
+        jsonObject.addProperty("add", address);
+        jsonObject.addProperty("loca", location);
+        jsonObject.addProperty("room", room_quantity);
+        jsonObject.addProperty("uti", utilities);
+        jsonObject.add("ev", evaluation);
+
         this.memory.add(jsonObject);
     }
-    // public void ssearch(String name, String evaluation){
-    //     JsonObject jsonObject = new JsonObject();
-    //     jsonObject.addProperty("name", name);
-    //     jsonObject.addProperty("Evaluation", evaluation);
-        
-        
-    //     this.memory.add(jsonObject);
-    // }
-    public JsonArray read(String storeFile) {
+
+    public int searchString(String key, String value) {
+        int index = -1;
+        String value2 = null;
+        for (int i = 0; i < memory.size(); i++) {
+            JsonObject jsonObject = memory.get(i).getAsJsonObject();
+            value2 = jsonObject.get(key).getAsString();
+            if (value.equalsIgnoreCase(value2)) {
+                index = i++;
+                break;
+            }
+        }
+        return index;
+    }
+
+    public JsonArray read() {
         JsonArray jsonArray = null;
-           
-        try (FileReader reader = new FileReader(storeFile)) {
+        
+        try (FileReader reader = new FileReader(storedFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,11 +59,10 @@ public class StoredFilesHotel {
 
     public void write() {
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(this.storeFile)) {
+        try (FileWriter writer = new FileWriter(storedFile)) {
             gson.toJson(memory, writer);
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 }

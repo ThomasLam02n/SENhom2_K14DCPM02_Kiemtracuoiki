@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -6,7 +7,7 @@ public class SearchRoomUI extends UITerminal{
     private Actions command;
     private SearchRoomController searchRoomController;
 
-    Scanner scanner = new Scanner(System.in);
+    public Scanner scanner = new Scanner(System.in);
 
     public SearchRoomUI() {
     }
@@ -36,12 +37,19 @@ public class SearchRoomUI extends UITerminal{
         }
     }
 
-    public List<Object> searchRoomInput() {
+    private List<Object> searchRoomInput() {
         List<Object> list = new ArrayList<>();
         System.out.print("AMOUNT OF PEOPLE: ");
-        int aop = scanner.nextInt();
+        int aop = 0;
+        try {
+            aop = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+        }
         scanner.nextLine();
+        
         list.add(aop);
+        
         return list;
     }
 }

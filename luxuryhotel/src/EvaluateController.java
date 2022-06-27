@@ -1,26 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class EvaluateController {
-    static Scanner input = new Scanner(System.in);
+    public Scanner input = new Scanner(System.in);
     private Hotel hotel ;
     
     public EvaluateController() {
     }
     
+    public EvaluateController(Hotel hotel) {
+        this.hotel = hotel;
+    
+    }
 
     public void Evaluate(String nameHotel, String vote, String evaluate){
-        List<Object> listcheck  ;
-        // List<Object> listcheck2;
-        listcheck = checkName_vail(nameHotel);
-        // listcheck2 = checkAddress_valid(address);
+        List<Object> listcheck;
+        listcheck = checkNameVail(nameHotel);
+        
         if((boolean) listcheck.get(0)){
             int index = 0;
-            index = Hotel.getHotels().search("na", nameHotel);
+            index = Hotel.getHotels().searchString("na", nameHotel);
             JsonArray tenmArray = Hotel.getHotels().getMemory();
             JsonObject jsonObject = tenmArray.get(index).getAsJsonObject();
             String names = jsonObject.get("na").getAsString();
@@ -32,84 +34,27 @@ public class EvaluateController {
             JsonObject jsonObject2 = new JsonObject();
             jsonObject2.addProperty(vote, evaluate);
             temArray1.add(jsonObject2);
-            
-            // this.hotel.setHotel(name, temArray1);
-            
-            //Hotel.getHotel().update();  Hotel.getHotel.Write();
-            // for(int i =1 ;i< listcheck.size();i++){
-            //     System.out.println(listcheck.toString());
-            // }
+
             System.out.println(jsonObject.toString());
             tenmArray.remove(tenmArray.get(index));
             
             Hotel.getHotels().update(names, address, locations, room_quantity, temArray1, utilities);
             Hotel.getHotels().write();
-           
-            
-
-        // }
-        // // else if(!(boolean) listcheck2.get(0)){
-        // //     System.out.println(listcheck2.toString());
-        // // }
-        }else {
-            //  name = this.hotel.getName();
-            //  address = this.hotel.getAddress();
+        } else {
             System.out.println(listcheck.get(1).toString());
-            
-           
         }
-     }   
-    public EvaluateController(Hotel hotel) {
-        this.hotel = hotel;
-    
-    }
+    }   
 
-    // public void ArrayEvaluate(){
-    //     List list = new ArrayList<>();
-    //     list.add("Very bad");
-    //     list.add("Bad");
-    //     list.add("Normal");
-    //     list.add("good");
-    //     list.add("Very good");
-    // }
-    public List<Object> checkName_vail(String name){
+    public List<Object> checkNameVail(String name){
         List<Object> list = new ArrayList<>();
-        JsonArray temp = Hotel.getHotels().getMemory();
         int index = 0;
-        index = Hotel.getHotels().searchAddressHotel("na", name);
+        index = Hotel.getHotels().searchString("na", name);
         
         if(index != -1){
             list.add(true);
-            
-
-        }else
-        {
+        } else{
             list.add(false);
-            list.add("[ERRO]");
-        }
-        return list;
-        
-    }
-    public List<Object> checkAddress_valid(String address){
-        List<Object> list = new ArrayList();
-        int index = 0;
-        index = Hotel.getHotels().searchAddressHotel("address", address);
-        if(index != -1){
-            list.add(false);
-        }else{
-            list.add(true);
-        }
-        return list;
-
-    }
-    public List<Object> checkUtilities(String utilities ){
-        List<Object> list = new ArrayList<>();
-        int index = 0;
-        index = Hotel.getHotels().search("utilities",utilities);
-        if(index != -1){
-            list.add(false);
-        }else{
-            list.add(true);
+            list.add("[ERRO] The hotel name does not exist.");
         }
         return list;
     }

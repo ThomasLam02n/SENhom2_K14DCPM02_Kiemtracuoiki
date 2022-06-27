@@ -1,10 +1,14 @@
 [
     {
-        "service": "Wifi",
+        "service": "Wifi5G",
         "price": 10000
+    },
+    {
+        "service": "Food and drink",
+        "price": 1000000
     },
     {
         "service": "Laundry",
         "price": 10000
-    } 
+    }
 ]

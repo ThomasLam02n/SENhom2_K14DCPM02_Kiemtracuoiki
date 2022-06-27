@@ -14,36 +14,25 @@ public class EvaluateUI extends UITerminal {
     }
     @Override
     public String handleCommand(String rep) {
-        // TODO Auto-generated method stub
         String cmd = rep.toUpperCase();
         this.command = Actions.valueOf(cmd);
 
         if (this.command.equals(Actions.EV)) {
-            return "Enter the name of the service you want to add.";
+            return "Enter your rating.";
         } else {
             return "Unkown command.";
         }
     }
+
     @Override
     public void handleInputs() {
-        // TODO Auto-generated method stub
         if (this.command.equals(Actions.EV)) {
-            // addServiceController.viewService();
-            // while (true) {
-                List<Object> list =  addEvaluateInput();
-                // addServiceController.addService((int)list.get(0), list.get(1).toString());
-                evaluateController.Evaluate(list.get(0).toString(), list.get(1).toString(), list.get(2).toString());
-                // System.out.print("Do you want to rate more?(Y/N): ");
-                // String n = input.nextLine();
-            //     if (n.equalsIgnoreCase("N")) {
-            //         break;
-            //     }
-            // }
-            
-        }
-        
+            List<Object> list =  addEvaluateInput();
+            evaluateController.Evaluate(list.get(0).toString(), list.get(1).toString(), list.get(2).toString());           
+        }   
     }
-    public List<Object> addEvaluateInput() {
+
+    private List<Object> addEvaluateInput() {
         List<Object> list = new ArrayList<>();
         System.out.print("Name Hotel: ");
         String name = input.nextLine();
@@ -51,11 +40,11 @@ public class EvaluateUI extends UITerminal {
         String vote = input.nextLine();
         System.out.print("Input Evalute: ");
         String ev = input.nextLine();
-        // System.out.println("");
+
         list.add(name);
         list.add(vote);
         list.add(ev);
-        // list.add(nameSv);
+
         return list;
     }
     
