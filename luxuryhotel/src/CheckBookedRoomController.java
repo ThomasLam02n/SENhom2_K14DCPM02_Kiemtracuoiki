@@ -28,9 +28,12 @@ public class CheckBookedRoomController {
         if(!(boolean) listcheck.get(0)){
             System.out.println(listcheck.get(1));
         } else {
-            for (int i = 1; i < listcheck.size(); i++) {
-                System.out.println(listcheck.get(i));
-            }
+            System.out.println("ID ROOM: " + listcheck.get(2));
+            System.out.println("USERNAME: " + listcheck.get(3));
+            System.out.println("PHONENUMBER: " + listcheck.get(4));
+            System.out.println("EMAIL: " + listcheck.get(5));
+            System.out.println("DATE IN: " + listcheck.get(6));
+            System.out.println("DATE OUT: " + listcheck.get(7));
         }
     }
 

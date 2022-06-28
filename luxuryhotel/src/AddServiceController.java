@@ -60,9 +60,8 @@ public class AddServiceController {
             double prices = serObject.get("price").getAsDouble();
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("1", nameService);
-
-            service.add(jsonObject);
+            
+            
             double pricesBill = billObject.get("price").getAsDouble();
             double price;
 
@@ -70,12 +69,16 @@ public class AddServiceController {
                 System.out.print("Enter the number of clothes: ");
                 int number = scanner.nextInt();
                 price = ((prices * number) + pricesBill);
+                jsonObject.addProperty(nameService, number);
+
             } else{
                 price = (prices * diffDays) + pricesBill;
+                jsonObject.addProperty(nameService, diffDays);
+
             }            
 
             billArray.remove(billArray.get(index));
-
+            service.add(jsonObject);
             try {
                 Bill.getStoredFilesBill().update(id, idRoom, username, phoneNumber, email, BookingRoomController.dateFormat.parse(datein), BookingRoomController.dateFormat.parse(dateout), service, price);
             } catch (ParseException e) {

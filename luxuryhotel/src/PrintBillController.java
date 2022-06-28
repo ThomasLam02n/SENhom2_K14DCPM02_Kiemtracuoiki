@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 public class PrintBillController {
     private Bill bill;
+    private Hotel hotel;
     public Scanner scanner = new Scanner(System.in);
 
     public PrintBillController() {
@@ -29,7 +30,17 @@ public class PrintBillController {
             JsonArray jsonArray = Bill.getStoredFilesBill().getMemory();
             index = Bill.getStoredFilesBill().searchString("id", id);
             JsonObject jsonObject = jsonArray.get(index).getAsJsonObject();
-            System.out.println(jsonObject.toString());
+            // System.out.println("NAME HOTEL: " + this.hotel.getName());
+            System.out.println("ID: " + jsonObject.get("id").getAsString());
+            System.out.println("ROOM: " + jsonObject.get("id room").getAsInt());
+            System.out.println("USERNAME: " + jsonObject.get("un").getAsString());
+            System.out.println("PHONE: " + jsonObject.get("phone").getAsInt());
+            System.out.println("Email: " + jsonObject.get("email").getAsString());
+            System.out.println("Date in: " + jsonObject.get("date in").getAsString());
+            System.out.println("Date out: " + jsonObject.get("date out").getAsString());
+            System.out.println("Service: " + jsonObject.get("service").getAsJsonArray().toString());
+            System.out.println("Price: " + jsonObject.get("price").getAsDouble());
+            // System.out.println(jsonObject.toString());
             System.out.print("Do you want to print invoices?(Y/N): ");
             String print = scanner.nextLine();
             if (print.equalsIgnoreCase("Y")) {

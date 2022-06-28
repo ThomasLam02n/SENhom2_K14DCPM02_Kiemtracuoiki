@@ -1,26 +1,5 @@
 [
     {
-        "id": "101587969838",
-        "id room": 101,
-        "un": "thai",
-        "phone": 12345,
-        "email": "thai@",
-        "date in": "28/06/2022",
-        "date out": "29/06/2022",
-        "service": [
-            {
-                "1": "Food and drink"
-            },
-            {
-                "1": "laundry"
-            },
-            {
-                "1": "wifi5g"
-            }
-        ],
-        "price": 2160000.0
-    },
-    {
         "id": "102561045568",
         "id room": 102,
         "un": "tai",
@@ -30,10 +9,31 @@
         "date out": "30/06/2022",
         "service": [
             {
-                "1": "wifi5g"
+                "laundry": 3
             }
         ],
-        "price": 2220000.0
+        "price": 2230000.0
+    },
+    {
+        "id": "101587969838",
+        "id room": 101,
+        "un": "thai",
+        "phone": 12345,
+        "email": "thai@",
+        "date in": "28/06/2022",
+        "date out": "29/06/2022",
+        "service": [
+            {
+                "laundry": 5
+            },
+            {
+                "wifi5g": 1
+            },
+            {
+                "food and drink": 1
+            }
+        ],
+        "price": 2160000.0
     },
     {
         "id": "103197268212",
@@ -45,10 +45,10 @@
         "date out": "01/07/2022",
         "service": [
             {
-                "1": "laundry"
+                "wifi5g": 3
             }
         ],
-        "price": 3350000.0
+        "price": 3330000.0
     },
     {
         "id": "104350876312",
@@ -60,7 +60,7 @@
         "date out": "02/07/2022",
         "service": [
             {
-                "1": "food and drink"
+                "food and drink": 4
             }
         ],
         "price": 8400000.0
